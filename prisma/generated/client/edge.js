@@ -147,6 +147,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
@@ -216,8 +221,7 @@ const config = {
   "datasourceNames": [
     "db"
   ],
-  "activeProvider": "mysql",
-  "postinstall": false,
+  "activeProvider": "postgresql",
   "inlineDatasources": {
     "db": {
       "url": {
@@ -226,8 +230,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"./generated/client\"\n  previewFeatures = [\"fullTextSearch\", \"fullTextIndex\"]\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Property {\n  id                       Int     @id @default(autoincrement())\n  CodigoImovel             String\n  TipoImovel               String?\n  SubTipoImovel            String?\n  CategoriaImovel          String?\n  Cidade                   String\n  Bairro                   String?\n  Endereco                 String?\n  CEP                      String?\n  PrecoVenda               Float?\n  PrecoLocacao             Float?\n  PrecoLocacaoTemporada    Float?\n  AreaUtil                 Float?\n  AreaTotal                Float?\n  QtdDormitorios           Int?\n  QtdSuites                Int?\n  QtdBanheiros             Int?\n  QtdSalas                 Int?\n  QtdVagas                 Int?\n  QtdElevador              Int?\n  QtdUnidadesAndar         Int?\n  QtdAndar                 Int?\n  Observacao               String?\n  ArCondicionado           Int?\n  Varanda                  Int?\n  ProntoMorar              Int?\n  Lavabo                   Int?\n  TipoOferta               Int?\n  Churrasqueira            Int?\n  Copa                     Int?\n  WCEmpregada              Int?\n  Piscina                  Int?\n  EstacionamentoVisitantes Int?\n  Playground               Int?\n  QuadraTenis              Int?\n  QuadraPoliEsportiva      Int?\n  SalaGinastica            Int?\n  SalaoFestas              Int?\n  SalaoJogos               Int?\n  Interfone                Int?\n  campodefutebol           Int?\n  PrecoCondominio          Int?\n  NomeCondominio           String?\n  video                    String?\n\n  photos Photo[]\n}\n\nmodel Photo {\n  id          Int     @id @default(autoincrement())\n  property_id Int\n  URLArquivo  String? @db.VarChar(1500)\n  Principal   Int?\n  Alterada    Int?\n\n  property Property @relation(fields: [property_id], references: [id])\n}\n",
-  "inlineSchemaHash": "592e7208ab412af66ad243c101862642ce0fd071367a381b6efd98a374e12497",
+  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"./generated/client\"\n  previewFeatures = [\"fullTextSearch\", \"fullTextIndex\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Property {\n  id                       Int     @id @default(autoincrement())\n  CodigoImovel             String\n  TipoImovel               String?\n  SubTipoImovel            String?\n  CategoriaImovel          String?\n  Cidade                   String\n  Bairro                   String?\n  Endereco                 String?\n  CEP                      String?\n  PrecoVenda               Float?\n  PrecoLocacao             Float?\n  PrecoLocacaoTemporada    Float?\n  AreaUtil                 Float?\n  AreaTotal                Float?\n  QtdDormitorios           Int?\n  QtdSuites                Int?\n  QtdBanheiros             Int?\n  QtdSalas                 Int?\n  QtdVagas                 Int?\n  QtdElevador              Int?\n  QtdUnidadesAndar         Int?\n  QtdAndar                 Int?\n  Observacao               String?\n  ArCondicionado           Int?\n  Varanda                  Int?\n  ProntoMorar              Int?\n  Lavabo                   Int?\n  TipoOferta               Int?\n  Churrasqueira            Int?\n  Copa                     Int?\n  WCEmpregada              Int?\n  Piscina                  Int?\n  EstacionamentoVisitantes Int?\n  Playground               Int?\n  QuadraTenis              Int?\n  QuadraPoliEsportiva      Int?\n  SalaGinastica            Int?\n  SalaoFestas              Int?\n  SalaoJogos               Int?\n  Interfone                Int?\n  campodefutebol           Int?\n  PrecoCondominio          Int?\n  NomeCondominio           String?\n  video                    String?\n\n  photos Photo[]\n}\n\nmodel Photo {\n  id          Int     @id @default(autoincrement())\n  property_id Int\n  URLArquivo  String? @db.VarChar(1500)\n  Principal   Int?\n  Alterada    Int?\n\n  property Property @relation(fields: [property_id], references: [id])\n}\n",
+  "inlineSchemaHash": "4c04b6b5004f5df37aa8054ba0d07ce8250a7e68f64b3ed921c043d7c2f29a36",
   "copyEngine": true
 }
 config.dirname = '/'
