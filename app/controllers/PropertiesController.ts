@@ -97,7 +97,7 @@ export class GetImoveisController {
 
                 const currentPhotosMap: Record<string, any> = {};
                 currentPhotos.forEach((p) => {
-                    currentPhotosMap[p.URLArquivo] = p;
+                    if (p.URLArquivo) { currentPhotosMap[p.URLArquivo] = p; }
                 });
 
                 let order = 0;
@@ -106,7 +106,6 @@ export class GetImoveisController {
                     const principal = parseInt(singleFoto.Principal || 0);
 
                     if (currentPhotosMap[urlFoto]) {
-                        // Atualiza foto existente
                         await prismaClient.photo.update({
                             where: { id: currentPhotosMap[urlFoto].id },
                             data: {
@@ -142,3 +141,5 @@ export class GetImoveisController {
         }
     }
 }
+
+export default GetImoveisController;

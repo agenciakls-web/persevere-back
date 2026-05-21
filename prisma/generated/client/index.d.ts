@@ -3789,10 +3789,10 @@ export namespace Prisma {
 
   export type PropertyWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    CodigoImovel?: string
     AND?: PropertyWhereInput | PropertyWhereInput[]
     OR?: PropertyWhereInput[]
     NOT?: PropertyWhereInput | PropertyWhereInput[]
-    CodigoImovel?: StringFilter<"Property"> | string
     TipoImovel?: StringNullableFilter<"Property"> | string | null
     SubTipoImovel?: StringNullableFilter<"Property"> | string | null
     CategoriaImovel?: StringNullableFilter<"Property"> | string | null
@@ -3836,7 +3836,7 @@ export namespace Prisma {
     NomeCondominio?: StringNullableFilter<"Property"> | string | null
     video?: StringNullableFilter<"Property"> | string | null
     photos?: PhotoListRelationFilter
-  }, "id">
+  }, "id" | "CodigoImovel">
 
   export type PropertyOrderByWithAggregationInput = {
     id?: SortOrder
