@@ -9,15 +9,11 @@ export class GetImoveisController {
         try {
             const url =
                 "https://portais.infoideias.net/Midas/portais/002061/sitepp/5be54fc9eb29b08/siteproprio.xml";
-            const fileUrl = "./imoveis.xml";
 
             // Baixa XML via axios
             const { data } = await axios.get(url, { timeout: 15000 });
 
-            // Salva XML local
-            fs.writeFileSync(fileUrl, data);
-
-            // Converte XML para objeto JS
+            // Converte XML para objeto JS direto em memória
             const parser = new xml2js.Parser({ explicitArray: false });
             const parsed = await parser.parseStringPromise(data);
 
@@ -28,7 +24,7 @@ export class GetImoveisController {
                 ? listaImoveis
                 : [listaImoveis];
 
-            // >>> Remove imóveis que não estão mais no XML
+            // Remove imóveis que não estão mais no XML
             const codigosAtuais = imoveisArray.map(
                 (imovel: any) => imovel.CodigoImovel
             );
@@ -38,7 +34,6 @@ export class GetImoveisController {
                     CodigoImovel: { notIn: codigosAtuais },
                 },
             });
-            // <<<
 
             let countProperty = 0;
 
