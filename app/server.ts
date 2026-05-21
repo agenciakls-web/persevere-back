@@ -8,10 +8,10 @@ const app = express();
 // Configuração do CORS
 const corsOptions = {
     origin: [
-        'https://www.adqueimados.com',
-        'https://adqueimados.com',
-        'http://adqueimados.com',
-        'http://www.adqueimados.com',
+        'https://www.persevere.com.br',
+        'https://persevere.com.br',
+        'http://persevere.com.br',
+        'http://www.persevere.com.br',
         'http://localhost:3001',
         'http://localhost:3000',
     ], // Permite apenas requisições do front-end em localhost:3001

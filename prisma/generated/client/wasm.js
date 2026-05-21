@@ -119,69 +119,59 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.ObreirosScalarFieldEnum = {
+exports.Prisma.PropertyScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  phone: 'phone',
-  cargo: 'cargo',
-  created_at: 'created_at',
-  status: 'status'
+  CodigoImovel: 'CodigoImovel',
+  TipoImovel: 'TipoImovel',
+  SubTipoImovel: 'SubTipoImovel',
+  CategoriaImovel: 'CategoriaImovel',
+  Cidade: 'Cidade',
+  Bairro: 'Bairro',
+  Endereco: 'Endereco',
+  CEP: 'CEP',
+  PrecoVenda: 'PrecoVenda',
+  PrecoLocacao: 'PrecoLocacao',
+  PrecoLocacaoTemporada: 'PrecoLocacaoTemporada',
+  AreaUtil: 'AreaUtil',
+  AreaTotal: 'AreaTotal',
+  QtdDormitorios: 'QtdDormitorios',
+  QtdSuites: 'QtdSuites',
+  QtdBanheiros: 'QtdBanheiros',
+  QtdSalas: 'QtdSalas',
+  QtdVagas: 'QtdVagas',
+  QtdElevador: 'QtdElevador',
+  QtdUnidadesAndar: 'QtdUnidadesAndar',
+  QtdAndar: 'QtdAndar',
+  Observacao: 'Observacao',
+  ArCondicionado: 'ArCondicionado',
+  Varanda: 'Varanda',
+  ProntoMorar: 'ProntoMorar',
+  Lavabo: 'Lavabo',
+  TipoOferta: 'TipoOferta',
+  Churrasqueira: 'Churrasqueira',
+  Copa: 'Copa',
+  WCEmpregada: 'WCEmpregada',
+  Piscina: 'Piscina',
+  EstacionamentoVisitantes: 'EstacionamentoVisitantes',
+  Playground: 'Playground',
+  QuadraTenis: 'QuadraTenis',
+  QuadraPoliEsportiva: 'QuadraPoliEsportiva',
+  SalaGinastica: 'SalaGinastica',
+  SalaoFestas: 'SalaoFestas',
+  SalaoJogos: 'SalaoJogos',
+  Interfone: 'Interfone',
+  campodefutebol: 'campodefutebol',
+  PrecoCondominio: 'PrecoCondominio',
+  NomeCondominio: 'NomeCondominio',
+  video: 'video'
 };
 
-exports.Prisma.ObreirosNaCongregacaoScalarFieldEnum = {
+exports.Prisma.PhotoScalarFieldEnum = {
   id: 'id',
-  obreirosId: 'obreirosId',
-  congregacaoId: 'congregacaoId',
-  position: 'position'
-};
-
-exports.Prisma.CongregacaoScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  address: 'address',
-  maps: 'maps',
-  inauguration: 'inauguration',
-  email: 'email',
-  whatsapp: 'whatsapp',
-  telefone: 'telefone',
-  instagram: 'instagram',
-  facebook: 'facebook',
-  tiktok: 'tiktok',
-  youtube: 'youtube',
-  midia: 'midia',
-  midia_telefones: 'midia_telefones',
-  created_at: 'created_at',
-  status: 'status'
-};
-
-exports.Prisma.EventosScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  congregacaoId: 'congregacaoId',
-  date: 'date',
-  added: 'added',
-  modified: 'modified',
-  cancelled: 'cancelled',
-  created_at: 'created_at',
-  status: 'status'
-};
-
-exports.Prisma.LivesScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  slug: 'slug',
-  video: 'video',
-  created_at: 'created_at',
-  status: 'status'
-};
-
-exports.Prisma.GaleriaScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  slug: 'slug',
-  image: 'image',
-  created_at: 'created_at',
-  status: 'status'
+  property_id: 'property_id',
+  URLArquivo: 'URLArquivo',
+  Principal: 'Principal',
+  Alterada: 'Alterada'
 };
 
 exports.Prisma.SortOrder = {
@@ -194,63 +184,28 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
-exports.Prisma.ObreirosOrderByRelevanceFieldEnum = {
-  id: 'id',
-  name: 'name',
-  phone: 'phone',
-  cargo: 'cargo'
-};
-
-exports.Prisma.ObreirosNaCongregacaoOrderByRelevanceFieldEnum = {
-  id: 'id',
-  obreirosId: 'obreirosId',
-  congregacaoId: 'congregacaoId'
-};
-
-exports.Prisma.CongregacaoOrderByRelevanceFieldEnum = {
-  id: 'id',
-  name: 'name',
-  address: 'address',
-  maps: 'maps',
-  email: 'email',
-  whatsapp: 'whatsapp',
-  telefone: 'telefone',
-  instagram: 'instagram',
-  facebook: 'facebook',
-  tiktok: 'tiktok',
-  youtube: 'youtube',
-  midia: 'midia',
-  midia_telefones: 'midia_telefones'
-};
-
-exports.Prisma.EventosOrderByRelevanceFieldEnum = {
-  id: 'id',
-  name: 'name',
-  congregacaoId: 'congregacaoId'
-};
-
-exports.Prisma.LivesOrderByRelevanceFieldEnum = {
-  id: 'id',
-  title: 'title',
-  slug: 'slug',
+exports.Prisma.PropertyOrderByRelevanceFieldEnum = {
+  CodigoImovel: 'CodigoImovel',
+  TipoImovel: 'TipoImovel',
+  SubTipoImovel: 'SubTipoImovel',
+  CategoriaImovel: 'CategoriaImovel',
+  Cidade: 'Cidade',
+  Bairro: 'Bairro',
+  Endereco: 'Endereco',
+  CEP: 'CEP',
+  Observacao: 'Observacao',
+  NomeCondominio: 'NomeCondominio',
   video: 'video'
 };
 
-exports.Prisma.GaleriaOrderByRelevanceFieldEnum = {
-  id: 'id',
-  title: 'title',
-  slug: 'slug',
-  image: 'image'
+exports.Prisma.PhotoOrderByRelevanceFieldEnum = {
+  URLArquivo: 'URLArquivo'
 };
 
 
 exports.Prisma.ModelName = {
-  Obreiros: 'Obreiros',
-  ObreirosNaCongregacao: 'ObreirosNaCongregacao',
-  Congregacao: 'Congregacao',
-  Eventos: 'Eventos',
-  Lives: 'Lives',
-  Galeria: 'Galeria'
+  Property: 'Property',
+  Photo: 'Photo'
 };
 
 /**
