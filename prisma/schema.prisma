@@ -1,0 +1,81 @@
+generator client {
+    provider        = "prisma-client-js"
+    output          = "./generated/client"
+    previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model Obreiros {
+    id          String                  @id @default(uuid())
+    name        String
+    phone       String?
+    cargo       String?
+    created_at  DateTime                @default(now())
+    Congregacao ObreirosNaCongregacao[]
+    status      Boolean
+}
+
+model ObreirosNaCongregacao {
+    id            String       @id @default(uuid())
+    Obreiros      Obreiros?    @relation(fields: [obreirosId], references: [id])
+    obreirosId    String?
+    Congregacao   Congregacao? @relation(fields: [congregacaoId], references: [id])
+    congregacaoId String?
+    position      Int?
+}
+
+model Congregacao {
+    id              String                  @id @default(uuid())
+    name            String
+    address         String
+    maps            String?
+    inauguration    DateTime?               @db.Date
+    email           String?
+    whatsapp        String?
+    telefone        String?
+    instagram       String?
+    facebook        String?
+    tiktok          String?
+    youtube         String?
+    Obreiros        ObreirosNaCongregacao[]
+    midia           String?
+    midia_telefones String?
+    created_at      DateTime                @default(now())
+    Eventos         Eventos[]
+    status          Boolean
+}
+
+model Eventos {
+    id            String       @id @default(uuid())
+    name          String
+    congregacao   Congregacao? @relation(fields: [congregacaoId], references: [id])
+    congregacaoId String?
+    date          DateTime     @db.Date
+    added         Boolean
+    modified      Boolean
+    cancelled     Boolean
+    created_at    DateTime     @default(now())
+    status        Boolean
+}
+
+model Lives {
+    id         String   @id @default(uuid())
+    title      String
+    slug       String
+    video      String
+    created_at DateTime @default(now())
+    status     Boolean
+}
+
+model Galeria {
+    id         String   @id @default(uuid())
+    title      String
+    slug       String
+    image      String
+    created_at DateTime @default(now())
+    status     Boolean
+}
