@@ -117,12 +117,61 @@ properties.get('/codigo/:slug', async (req: Request, res: Response) => {
     }
 });
 
-// $destaque2 = $tableProperty->find('all')->limit(4)->contain(['Photos'])->where(['OR' => [
-//     ['CodigoImovel' => 'Psi269'],
-//     ['CodigoImovel' => 'Psi245'], 
-//     ['CodigoImovel' => 'Psi151'], 
-//     ['CodigoImovel' => 'PSI022'], 
-// ]]);
+properties.get('/ofertas', async (req: Request, res: Response) => {
+    try {
+        // Os 4 códigos que você deseja colocar nas ofertas prioritariamente
+        const codigosOfertas = ['Psi269', 'Psi245', 'Psi151', 'PSI022'];
+
+        // 1. Busca os imóveis que correspondem aos códigos fornecidos
+        const ofertasEncontradas = await prismaClient.property.findMany({
+            where: {
+                CodigoImovel: { in: codigosOfertas }
+            },
+            include: { photos: true }
+        });
+
+        let resultadoFinal = [...ofertasEncontradas];
+
+        // 2. Se encontrou menos de 4, buscamos substitutos aleatórios
+        if (resultadoFinal.length < 4) {
+            const quantidadeFaltante = 4 - resultadoFinal.length;
+
+            // Evita duplicar os imóveis que já localizamos por código
+            const idsIgnorados = resultadoFinal.map(imovel => imovel.id);
+
+            // Conta quantos outros registros existem disponíveis no banco
+            const totalDisponivel = await prismaClient.property.count({
+                where: {
+                    id: { notIn: idsIgnorados }
+                }
+            });
+
+            if (totalDisponivel > 0) {
+                // Calcula um deslocamento (skip) randômico seguro
+                const maxDisponivel = Math.max(0, totalDisponivel - quantidadeFaltante);
+                const randomSkip = Math.floor(Math.random() * (maxDisponivel + 1));
+
+                const imoveisSubstitutos = await prismaClient.property.findMany({
+                    where: {
+                        id: { notIn: idsIgnorados }
+                    },
+                    include: { photos: true },
+                    take: quantidadeFaltante,
+                    skip: randomSkip
+                });
+
+                resultadoFinal = [...resultadoFinal, ...imoveisSubstitutos];
+            }
+        }
+
+        // Retorna exatamente os 4 imóveis estruturados
+        res.json(resultadoFinal.slice(0, 4));
+
+    } catch (error) {
+        console.error("Erro ao buscar ofertas da semana:", error);
+        res.status(500).json({ error: "Erro interno no servidor" });
+    }
+});
 
 properties.get('/destaques', async (req: Request, res: Response) => {
     try {
