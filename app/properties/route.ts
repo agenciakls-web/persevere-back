@@ -96,4 +96,25 @@ properties.get('/', async (req: Request, res: Response) => {
     }
 });
 
+// Nova rota adicionada no backend para buscar pelo slug
+properties.get('/:slug', async (req: Request, res: Response) => {
+    try {
+        const { slug } = req.params;
+
+        const property = await prismaClient.property.findFirst({
+            where: { CodigoImovel: slug },
+            include: { photos: true },
+        });
+
+        if (!property) {
+            return res.status(404).json({ error: 'Imóvel não encontrado' });
+        }
+
+        res.json(property);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao buscar o imóvel' });
+    }
+});
+
 export default properties;
