@@ -117,4 +117,67 @@ properties.get('/:slug', async (req: Request, res: Response) => {
     }
 });
 
+// $destaque2 = $tableProperty->find('all')->limit(4)->contain(['Photos'])->where(['OR' => [
+//     ['CodigoImovel' => 'Psi269'],
+//     ['CodigoImovel' => 'Psi245'], 
+//     ['CodigoImovel' => 'Psi151'], 
+//     ['CodigoImovel' => 'PSI022'], 
+// ]]);
+
+properties.get('/destaques', async (req: Request, res: Response) => {
+    try {
+        // Os 3 códigos que você deseja destacar prioritariamente
+        const codigosSelecionados = ['PSI169', 'PSI012', 'PSI311'];
+
+        // 1. Busca os imóveis que correspondem aos códigos fornecidos
+        const imoveisEncontrados = await prismaClient.property.findMany({
+            where: {
+                CodigoImovel: { in: codigosSelecionados }
+            },
+            include: { photos: true }
+        });
+
+        let resultadoFinal = [...imoveisEncontrados];
+
+        // 2. Se encontrou menos de 3, precisamos buscar substitutos aleatórios
+        if (resultadoFinal.length < 3) {
+            const quantidadeFaltante = 3 - resultadoFinal.length;
+
+            // Pega os IDs dos imóveis que já temos para não repeti-los na busca aleatória
+            const idsIgnorados = resultadoFinal.map(imovel => imovel.id);
+
+            // Conta quantos outros imóveis existem no banco de dados para calcular o sorteio
+            const totalDisponivel = await prismaClient.property.count({
+                where: {
+                    id: { notIn: idsIgnorados }
+                }
+            });
+
+            if (totalDisponivel > 0) {
+                // Gera um deslocamento (skip) aleatório seguro dentro do limite de registros existentes
+                const razoavelMax = Math.max(0, totalDisponivel - quantidadeFaltante);
+                const randomSkip = Math.floor(Math.random() * (razoavelMax + 1));
+
+                const imoveisSubstitutos = await prismaClient.property.findMany({
+                    where: {
+                        id: { notIn: idsIgnorados }
+                    },
+                    include: { photos: true },
+                    take: quantidadeFaltante,
+                    skip: randomSkip
+                });
+
+                resultadoFinal = [...resultadoFinal, ...imoveisSubstitutos];
+            }
+        }
+
+        // Garante que retorne no máximo 3 itens (caso o banco tenha menos que 3 no total)
+        res.json(resultadoFinal.slice(0, 3));
+
+    } catch (error) {
+        console.error("Erro ao buscar imóveis de destaque:", error);
+        res.status(500).json({ error: "Erro interno no servidor" });
+    }
+});
+
 export default properties;
