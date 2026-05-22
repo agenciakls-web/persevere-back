@@ -97,7 +97,7 @@ properties.get('/', async (req: Request, res: Response) => {
 });
 
 // Nova rota adicionada no backend para buscar pelo slug
-properties.get('/:slug', async (req: Request, res: Response) => {
+properties.get('/codigo/:slug', async (req: Request, res: Response) => {
     try {
         const { slug } = req.params;
 
