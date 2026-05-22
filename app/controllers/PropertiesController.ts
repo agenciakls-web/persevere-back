@@ -17,7 +17,7 @@ export class GetImoveisController {
             const parser = new xml2js.Parser({ explicitArray: false });
             const parsed = await parser.parseStringPromise(data);
 
-            const listaImoveis = parsed?.Imoveis?.Imovel ?? [];
+            const listaImoveis = parsed?.Carga.Imoveis?.Imovel ?? [];
 
             // Normaliza para array
             const imoveisArray = Array.isArray(listaImoveis)

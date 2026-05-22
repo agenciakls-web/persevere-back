@@ -9,11 +9,11 @@ const example = {
 };
 const getImoveisController = new GetImoveisController();
 
-router.get("/imoveis", (request, response) => {
+router.get("/getimoveis-api", (request, response) => {
     return getImoveisController.handle(request, response);
 });
 
-router.use('/properties', properties);
+router.use('/imoveis', properties);
 
 router.get("/", function (req: Request, res: Response) {
     res.json(example);
