@@ -119,8 +119,8 @@ properties.get('/codigo/:slug', async (req: Request, res: Response) => {
 
 properties.get('/ofertas', async (req: Request, res: Response) => {
     try {
-        // Os 4 códigos que você deseja colocar nas ofertas prioritariamente
-        const codigosOfertas = ['Psi269', 'Psi245', 'Psi151', 'PSI022'];
+        // Os 8 códigos que você deseja colocar nas ofertas prioritariamente
+        const codigosOfertas = ['Psi269', 'Psi245', 'Psi151', 'PSI022', '123893ujds', '237rhf', '3h89de', '123edf'];
 
         // 1. Busca os imóveis que correspondem aos códigos fornecidos
         const ofertasEncontradas = await prismaClient.property.findMany({
@@ -133,8 +133,8 @@ properties.get('/ofertas', async (req: Request, res: Response) => {
         let resultadoFinal = [...ofertasEncontradas];
 
         // 2. Se encontrou menos de 4, buscamos substitutos aleatórios
-        if (resultadoFinal.length < 4) {
-            const quantidadeFaltante = 4 - resultadoFinal.length;
+        if (resultadoFinal.length < 8) {
+            const quantidadeFaltante = 8 - resultadoFinal.length;
 
             // Evita duplicar os imóveis que já localizamos por código
             const idsIgnorados = resultadoFinal.map(imovel => imovel.id);
@@ -165,7 +165,7 @@ properties.get('/ofertas', async (req: Request, res: Response) => {
         }
 
         // Retorna exatamente os 4 imóveis estruturados
-        res.json(resultadoFinal.slice(0, 4));
+        res.json(resultadoFinal.slice(0, 8));
 
     } catch (error) {
         console.error("Erro ao buscar ofertas da semana:", error);
