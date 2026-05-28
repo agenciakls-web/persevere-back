@@ -31,7 +31,7 @@ properties.get('/', async (req: Request, res: Response) => {
         // CONDICIONAL DA ACTION
         if (currentAction === 'codigo') {
             // Se a action for código, busca APENAS pelo Código do Imóvel (%pesquisa%)
-            if (pesquisa) {
+            if (CodigoImovel) {
                 whereClause.CodigoImovel = {
                     contains: CodigoImovel as string,
                     mode: 'insensitive' // Ignora maiúsculas/minúsculas
