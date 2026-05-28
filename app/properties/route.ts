@@ -12,71 +12,83 @@ properties.get('/', async (req: Request, res: Response) => {
             TipoImovel,
             PrecoVenda,
             quartos,
-            condominio
+            condominio,
+            action // Captura o input hidden enviado na requisição
         } = req.query;
 
+        // Define 'comprar' como padrão caso o action não venha preenchido
+        const currentAction = (action as string) || 'comprar';
+
         // 2. Configuração da Paginação
-        const itemsPerPage = 9; // Quantidade por página (deve bater com o 'limit' do frontend)
+        const itemsPerPage = 9; 
         const currentPage = Math.max(1, parseInt(page as string) || 1);
         const skip = (currentPage - 1) * itemsPerPage;
 
         // 3. Construindo dinamicamente o objeto de filtros (where) do Prisma
         const whereClause: any = {};
 
-        // Filtro de pesquisa por texto (busca no SubTipo, Bairro ou Cidade) [cite: 3, 14]
-        if (pesquisa) {
-            whereClause.OR = [
-                { SubTipoImovel: { contains: pesquisa as string, mode: 'insensitive' } },
-                { Bairro: { contains: pesquisa as string, mode: 'insensitive' } },
-                { Cidade: { contains: pesquisa as string, mode: 'insensitive' } },
-            ];
-        }
+        // CONDICIONAL DA ACTION
+        if (currentAction === 'codigo') {
+            // Se a action for código, busca APENAS pelo Código do Imóvel (%pesquisa%)
+            if (pesquisa) {
+                whereClause.CodigoImovel = {
+                    contains: pesquisa as string,
+                    mode: 'insensitive' // Ignora maiúsculas/minúsculas
+                };
+            }
+        } else {
+            // Comportamento padrão (action = comprar ou qualquer outra)
+            // Filtro de pesquisa por texto (busca no SubTipo, Bairro ou Cidade)
+            if (pesquisa) {
+                whereClause.OR = [
+                    { SubTipoImovel: { contains: pesquisa as string, mode: 'insensitive' } },
+                    { Bairro: { contains: pesquisa as string, mode: 'insensitive' } },
+                    { Cidade: { contains: pesquisa as string, mode: 'insensitive' } },
+                ];
+            }
 
-        // Filtro por Tipo de Imóvel [cite: 2, 18]
-        if (TipoImovel) {
-            whereClause.SubTipoImovel = {
-                equals: TipoImovel as string,
-                mode: 'insensitive'
-            };
-        }
+            // Filtro por Tipo de Imóvel
+            if (TipoImovel) {
+                whereClause.SubTipoImovel = {
+                    equals: TipoImovel as string,
+                    mode: 'insensitive'
+                };
+            }
 
-        // Filtro por Quantidade Mínima de Quartos [cite: 4, 69]
-        if (quartos) {
-            whereClause.QtdDormitorios = {
-                gte: parseInt(quartos as string)
-            };
-        }
+            // Filtro por Quantidade Mínima de Quartos
+            if (quartos) {
+                whereClause.QtdDormitorios = {
+                    gte: parseInt(quartos as string)
+                };
+            }
 
-        // Filtro por Condomínio Fechado (Geralmente um booleano no banco) [cite: 86]
-        if (condominio === '1' || condominio === '0') {
-            // Se no seu banco for Boolean (true/false)
-            whereClause.EmCondominio = condominio === '1';
+            // Filtro por Condomínio Fechado
+            if (condominio === '1' || condominio === '0') {
+                whereClause.EmCondominio = condominio === '1';
+            }
 
-            // Se no seu banco for numérico (1/0), descomente a linha abaixo e comente a de cima:
-            // whereClause.EmCondominio = parseInt(condominio);
-        }
-
-        // Filtro por Faixa de Preço [cite: 4, 39]
-        if (PrecoVenda) {
-            switch (PrecoVenda as string) {
-                case '1': whereClause.PrecoVenda = { lte: 200000 }; break;
-                case '2': whereClause.PrecoVenda = { gte: 200000, lte: 400000 }; break;
-                case '3': whereClause.PrecoVenda = { gte: 400000, lte: 600000 }; break;
-                case '4': whereClause.PrecoVenda = { gte: 600000, lte: 800000 }; break;
-                case '5': whereClause.PrecoVenda = { gte: 800000, lte: 1000000 }; break;
-                case '6': whereClause.PrecoVenda = { gte: 1000000 }; break;
+            // Filtro por Faixa de Preço
+            if (PrecoVenda) {
+                switch (PrecoVenda as string) {
+                    case '1': whereClause.PrecoVenda = { lte: 200000 }; break;
+                    case '2': whereClause.PrecoVenda = { gte: 200000, lte: 400000 }; break;
+                    case '3': whereClause.PrecoVenda = { gte: 400000, lte: 600000 }; break;
+                    case '4': whereClause.PrecoVenda = { gte: 600000, lte: 800000 }; break;
+                    case '5': whereClause.PrecoVenda = { gte: 800000, lte: 1000000 }; break;
+                    case '6': whereClause.PrecoVenda = { gte: 1000000 }; break;
+                }
             }
         }
 
-        // 4. Executa as queries no banco de forma paralela (ganho de performance)
+        // 4. Executa as queries no banco de forma paralela
         const [totalItems, filteredProperties] = await prismaClient.$transaction([
             prismaClient.property.count({ where: whereClause }),
             prismaClient.property.findMany({
                 where: whereClause,
-                include: { Photos: true }, // [cite: 4, 112]
+                include: { Photos: true }, 
                 skip: skip,
                 take: itemsPerPage,
-                orderBy: { id: 'desc' } // Opcional: mostra os mais recentes primeiro [cite: 4]
+                orderBy: { id: 'desc' } 
             })
         ]);
 
