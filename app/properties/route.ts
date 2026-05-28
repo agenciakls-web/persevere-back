@@ -31,10 +31,10 @@ properties.get('/', async (req: Request, res: Response) => {
         // CONDICIONAL DA ACTION
         if (currentAction === 'codigo') {
             // Se a action for código, busca APENAS pelo Código do Imóvel (%pesquisa%)
-            if (CodigoImovel) {
+            if (CodigoImovel && (CodigoImovel as string).trim() !== "") {
                 whereClause.CodigoImovel = {
-                    contains: CodigoImovel as string,
-                    mode: 'insensitive' // Ignora maiúsculas/minúsculas
+                    contains: (CodigoImovel as string).trim(), // .trim() remove espaços extras acidentais
+                    mode: 'insensitive' // Faz PSI022 encontrar psi022 ou Psi022
                 };
             }
         } else {
