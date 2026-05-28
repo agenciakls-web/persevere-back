@@ -927,11 +927,11 @@ export namespace Prisma {
    */
 
   export type PropertyCountOutputType = {
-    photos: number
+    Photos: number
   }
 
   export type PropertyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    photos?: boolean | PropertyCountOutputTypeCountPhotosArgs
+    Photos?: boolean | PropertyCountOutputTypeCountPhotosArgs
   }
 
   // Custom InputTypes
@@ -1595,7 +1595,7 @@ export namespace Prisma {
     PrecoCondominio?: boolean
     NomeCondominio?: boolean
     video?: boolean
-    photos?: boolean | Property$photosArgs<ExtArgs>
+    Photos?: boolean | Property$PhotosArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -1694,7 +1694,7 @@ export namespace Prisma {
   }
 
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    photos?: boolean | Property$photosArgs<ExtArgs>
+    Photos?: boolean | Property$PhotosArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PropertyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1702,7 +1702,7 @@ export namespace Prisma {
   export type $PropertyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Property"
     objects: {
-      photos: Prisma.$PhotoPayload<ExtArgs>[]
+      Photos: Prisma.$PhotoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2113,7 +2113,7 @@ export namespace Prisma {
    */
   export interface Prisma__PropertyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    photos<T extends Property$photosArgs<ExtArgs> = {}>(args?: Subset<T, Property$photosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findMany"> | Null>
+    Photos<T extends Property$PhotosArgs<ExtArgs> = {}>(args?: Subset<T, Property$PhotosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2501,9 +2501,9 @@ export namespace Prisma {
   }
 
   /**
-   * Property.photos
+   * Property.Photos
    */
-  export type Property$photosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Property$PhotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Photo
      */
@@ -3735,7 +3735,7 @@ export namespace Prisma {
     PrecoCondominio?: IntNullableFilter<"Property"> | number | null
     NomeCondominio?: StringNullableFilter<"Property"> | string | null
     video?: StringNullableFilter<"Property"> | string | null
-    photos?: PhotoListRelationFilter
+    Photos?: PhotoListRelationFilter
   }
 
   export type PropertyOrderByWithRelationInput = {
@@ -3783,7 +3783,7 @@ export namespace Prisma {
     PrecoCondominio?: SortOrderInput | SortOrder
     NomeCondominio?: SortOrderInput | SortOrder
     video?: SortOrderInput | SortOrder
-    photos?: PhotoOrderByRelationAggregateInput
+    Photos?: PhotoOrderByRelationAggregateInput
     _relevance?: PropertyOrderByRelevanceInput
   }
 
@@ -3835,7 +3835,7 @@ export namespace Prisma {
     PrecoCondominio?: IntNullableFilter<"Property"> | number | null
     NomeCondominio?: StringNullableFilter<"Property"> | string | null
     video?: StringNullableFilter<"Property"> | string | null
-    photos?: PhotoListRelationFilter
+    Photos?: PhotoListRelationFilter
   }, "id" | "CodigoImovel">
 
   export type PropertyOrderByWithAggregationInput = {
@@ -4042,7 +4042,7 @@ export namespace Prisma {
     PrecoCondominio?: number | null
     NomeCondominio?: string | null
     video?: string | null
-    photos?: PhotoCreateNestedManyWithoutPropertyInput
+    Photos?: PhotoCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateInput = {
@@ -4090,7 +4090,7 @@ export namespace Prisma {
     PrecoCondominio?: number | null
     NomeCondominio?: string | null
     video?: string | null
-    photos?: PhotoUncheckedCreateNestedManyWithoutPropertyInput
+    Photos?: PhotoUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUpdateInput = {
@@ -4137,7 +4137,7 @@ export namespace Prisma {
     PrecoCondominio?: NullableIntFieldUpdateOperationsInput | number | null
     NomeCondominio?: NullableStringFieldUpdateOperationsInput | string | null
     video?: NullableStringFieldUpdateOperationsInput | string | null
-    photos?: PhotoUpdateManyWithoutPropertyNestedInput
+    Photos?: PhotoUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateInput = {
@@ -4185,7 +4185,7 @@ export namespace Prisma {
     PrecoCondominio?: NullableIntFieldUpdateOperationsInput | number | null
     NomeCondominio?: NullableStringFieldUpdateOperationsInput | string | null
     video?: NullableStringFieldUpdateOperationsInput | string | null
-    photos?: PhotoUncheckedUpdateManyWithoutPropertyNestedInput
+    Photos?: PhotoUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyCreateManyInput = {
