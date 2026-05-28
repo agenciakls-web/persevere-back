@@ -13,6 +13,7 @@ properties.get('/', async (req: Request, res: Response) => {
             PrecoVenda,
             quartos,
             condominio,
+            CodigoImovel,
             action // Captura o input hidden enviado na requisição
         } = req.query;
 
@@ -32,7 +33,7 @@ properties.get('/', async (req: Request, res: Response) => {
             // Se a action for código, busca APENAS pelo Código do Imóvel (%pesquisa%)
             if (pesquisa) {
                 whereClause.CodigoImovel = {
-                    contains: pesquisa as string,
+                    contains: CodigoImovel as string,
                     mode: 'insensitive' // Ignora maiúsculas/minúsculas
                 };
             }
