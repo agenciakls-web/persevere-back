@@ -42,6 +42,7 @@ properties.get('/', async (req: Request, res: Response) => {
             if (pesquisa) {
                 whereClause.OR = [
                     { SubTipoImovel: { contains: pesquisa as string, mode: 'insensitive' } },
+                    { CodigoImovel: { contains: pesquisa as string, mode: 'insensitive' } },
                     { Bairro: { contains: pesquisa as string, mode: 'insensitive' } },
                     { Cidade: { contains: pesquisa as string, mode: 'insensitive' } },
                 ];
