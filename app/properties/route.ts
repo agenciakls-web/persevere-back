@@ -243,4 +243,33 @@ properties.get('/destaques', async (req: Request, res: Response) => {
     }
 });
 
+// Rota para pegar apenas os tipos de imóveis existentes (sem repetir)
+properties.get('/tipos', async (req: Request, res: Response) => {
+    try {
+        const tiposDistintos = await prismaClient.property.findMany({
+            select: {
+                SubTipoImovel: true, // Ou 'TipoImovel' dependendo de como está no seu schema.prisma
+            },
+            distinct: ['SubTipoImovel'], // Evita registros duplicados (Faz o papel do DISTINCT do SQL)
+            where: {
+                // Opcional: Garante que só vai trazer tipos de imóveis que não estejam nulos
+                SubTipoImovel: { not: null } 
+            },
+            orderBy: {
+                SubTipoImovel: 'asc' // Organiza de A-Z para o menu ficar bonito
+            }
+        });
+
+        // Formata o retorno para bater com a estrutura que o seu frontend já espera
+        const resultadoFormatado = tiposDistintos.map(item => ({
+            TipoImovel: item.SubTipoImovel
+        }));
+
+        res.json(resultadoFormatado);
+    } catch (error) {
+        console.error("Erro ao buscar tipos de imóveis:", error);
+        res.status(500).json({ error: 'Erro interno ao buscar tipos' });
+    }
+});
+
 export default properties;
