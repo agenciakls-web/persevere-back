@@ -73,7 +73,7 @@ properties.get('/', async (req: Request, res: Response) => {
             prismaClient.property.count({ where: whereClause }),
             prismaClient.property.findMany({
                 where: whereClause,
-                include: { photos: true }, // [cite: 4, 112]
+                include: { Photos: true }, // [cite: 4, 112]
                 skip: skip,
                 take: itemsPerPage,
                 orderBy: { id: 'desc' } // Opcional: mostra os mais recentes primeiro [cite: 4]
@@ -103,7 +103,7 @@ properties.get('/codigo/:slug', async (req: Request, res: Response) => {
 
         const property = await prismaClient.property.findFirst({
             where: { CodigoImovel: slug },
-            include: { photos: true },
+            include: { Photos: true },
         });
 
         if (!property) {
@@ -127,7 +127,7 @@ properties.get('/ofertas', async (req: Request, res: Response) => {
             where: {
                 CodigoImovel: { in: codigosOfertas }
             },
-            include: { photos: true }
+            include: { Photos: true }
         });
 
         let resultadoFinal = [...ofertasEncontradas];
@@ -155,7 +155,7 @@ properties.get('/ofertas', async (req: Request, res: Response) => {
                     where: {
                         id: { notIn: idsIgnorados }
                     },
-                    include: { photos: true },
+                    include: { Photos: true },
                     take: quantidadeFaltante,
                     skip: randomSkip
                 });
@@ -183,7 +183,7 @@ properties.get('/destaques', async (req: Request, res: Response) => {
             where: {
                 CodigoImovel: { in: codigosSelecionados }
             },
-            include: { photos: true }
+            include: { Photos: true }
         });
 
         let resultadoFinal = [...imoveisEncontrados];
@@ -211,7 +211,7 @@ properties.get('/destaques', async (req: Request, res: Response) => {
                     where: {
                         id: { notIn: idsIgnorados }
                     },
-                    include: { photos: true },
+                    include: { Photos: true },
                     take: quantidadeFaltante,
                     skip: randomSkip
                 });
