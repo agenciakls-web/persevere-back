@@ -318,4 +318,98 @@ properties.get('/tipos', async (req: Request, res: Response) => {
     }
 });
 
+interface SlideRequest {
+    codigo: string;
+    img: string;
+}
+
+properties.post('/banners', async (req: Request, res: Response) => {
+    try {
+        // Recebe a lista local enviada pelo front-end
+        const slidesLocais: SlideRequest[] = req.body.slides || [];
+
+        if (slidesLocais.length === 0) {
+            return res.status(400).json({ error: "Nenhum slide foi enviado." });
+        }
+
+        // Extrai apenas os códigos para fazer uma busca em lote no banco
+        const codigosParaBuscar = slidesLocais.map(s => s.codigo);
+
+        // 1. Busca os imóveis ativos correspondentes aos códigos enviados
+        const imoveisEncontrados = await prismaClient.property.findMany({
+            where: {
+                CodigoImovel: { in: codigosParaBuscar }
+                // Se você tiver um status de ativo, adicione aqui. Ex: Status: 'Ativo'
+            },
+            include: { Photos: true }
+        });
+
+        // 2. Prepara a lista de IDs para ignorar no sorteio (evita duplicar imóveis que já temos)
+        const idsIgnorados = imoveisEncontrados.map(imovel => imovel.id);
+
+        // 3. Monta o resultado final baseado EXATAMENTE na lista enviada
+        const resultadoFinal = [];
+
+        for (const slide of slidesLocais) {
+            // Tenta encontrar o imóvel correspondente no banco de dados
+            const imovelValido = imoveisEncontrados.find(
+                imovel => imovel.CodigoImovel.toLowerCase() === slide.codigo.toLowerCase()
+            );
+
+            if (imovelValido) {
+                // Se o imóvel existe e está disponível, mantém o slide original do front-end
+                resultadoFinal.push({
+                    codigo: imovelValido.CodigoImovel,
+                    img: slide.img // Mantém a URL da pasta local sem marca d'água
+                });
+            } else {
+                // Se NÃO encontrou (imóvel indisponível), sorteia um substituto na hora
+                const totalDisponivel = await prismaClient.property.count({
+                    where: { id: { notIn: idsIgnorados } }
+                });
+
+                if (totalDisponivel > 0) {
+                    const randomSkip = Math.floor(Math.random() * totalDisponivel);
+
+                    const imovelSubstituto = await prismaClient.property.findFirst({
+                        where: { id: { notIn: idsIgnorados } },
+                        include: { Photos: true },
+                        skip: randomSkip
+                    });
+
+                    if (imovelSubstituto) {
+                        // Adiciona o ID do sorteado na lista de ignorados para o próximo loop não repetir ele
+                        idsIgnorados.push(imovelSubstituto.id);
+
+                        // Pega a primeira imagem do banco de dados (tabela Photos)
+                        // Ajuste para .url, .path ou .link de acordo com o seu banco
+                        const fotoBanco = imovelSubstituto.Photos && imovelSubstituto.Photos.length > 0
+                            ? imovelSubstituto.Photos[0].URLArquivo 
+                            : "/img/placeholder.jpg";
+
+                        resultadoFinal.push({
+                            codigo: imovelSubstituto.CodigoImovel,
+                            img: fotoBanco
+                        });
+                    } else {
+                        // Fallback de segurança se o sorteio falhar (mantém o original para não quebrar a contagem)
+                        resultadoFinal.push(slide);
+                    }
+                } else {
+                    // Se não houver nenhum outro imóvel no banco para sortear, mantém o original
+                    resultadoFinal.push(slide);
+                }
+            }
+        }
+
+        // Retorna exatamente a mesma quantidade recebida, porém tratada e higienizada
+        res.json(resultadoFinal);
+
+    } catch (error) {
+        console.error("Erro ao processar banners inteligentes:", error);
+        res.status(500).json({ error: "Erro interno no servidor" });
+    }
+});
+
+
 export default properties;
