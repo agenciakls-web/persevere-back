@@ -78,7 +78,7 @@ export class GetImoveisController {
                     
                     Observacao: singleImovel.Observacao || "",
                     titulo: singleImovel.titulo || "",
-                    TipoOffer: singleImovel.TipoOferta || "N",
+                    TipoOferta: singleImovel.TipoOferta || "N",
 
                     // Características / Flags (0 ou 1) sincronizadas com o XML
                     AceitaPermuta: parseIntFlag(singleImovel.AceitaPermuta),
