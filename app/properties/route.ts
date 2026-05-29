@@ -5,7 +5,7 @@ const properties = Router()
 
 properties.get('/', async (req: Request, res: Response) => {
     try {
-        // 1. Desestruturando os query params enviados pelo Axios
+        // 1. Desestruturando os query params enviados pelo Axios (Adicionado 'estilo')
         const {
             page,
             pesquisa,
@@ -14,7 +14,8 @@ properties.get('/', async (req: Request, res: Response) => {
             quartos,
             condominio,
             CodigoImovel,
-            action // Captura o input hidden enviado na requisição
+            estilo, // Novo parâmetro para capturar as buscas temáticas do Menu
+            action
         } = req.query;
 
         // Define 'comprar' como padrão caso o action não venha preenchido
@@ -28,13 +29,16 @@ properties.get('/', async (req: Request, res: Response) => {
         // 3. Construindo dinamicamente o objeto de filtros (where) do Prisma
         const whereClause: any = {};
 
+        // Como o foco é 100% Venda, garantimos que só traga imóveis com valor de venda ativo
+        whereClause.PrecoVenda = { gt: 0 };
+
         // CONDICIONAL DA ACTION
         if (currentAction === 'codigo') {
             // Se a action for código, busca APENAS pelo Código do Imóvel (%pesquisa%)
             if (CodigoImovel && (CodigoImovel as string).trim() !== "") {
                 whereClause.CodigoImovel = {
-                    contains: (CodigoImovel as string).trim(), // .trim() remove espaços extras acidentais
-                    mode: 'insensitive' // Faz PSI022 encontrar psi022 ou Psi022
+                    contains: (CodigoImovel as string).trim(),
+                    mode: 'insensitive'
                 };
             }
         } else {
@@ -64,20 +68,62 @@ properties.get('/', async (req: Request, res: Response) => {
                 };
             }
 
-            // Filtro por Condomínio Fechado
-            if (condominio === '1' || condominio === '0') {
-                whereClause.EmCondominio = condominio === '1';
+            // Filtro por Condomínio Fechado integrado com os dados reais do seu XML
+            if (condominio === '1') {
+                whereClause.NomeCondominio = { not: "" };
+            } else if (condominio === '0') {
+                whereClause.NomeCondominio = { equals: "" };
             }
 
             // Filtro por Faixa de Preço
             if (PrecoVenda) {
                 switch (PrecoVenda as string) {
-                    case '1': whereClause.PrecoVenda = { lte: 200000 }; break;
+                    case '1': whereClause.PrecoVenda = { gt: 0, lte: 200000 }; break;
                     case '2': whereClause.PrecoVenda = { gte: 200000, lte: 400000 }; break;
                     case '3': whereClause.PrecoVenda = { gte: 400000, lte: 600000 }; break;
                     case '4': whereClause.PrecoVenda = { gte: 600000, lte: 800000 }; break;
                     case '5': whereClause.PrecoVenda = { gte: 800000, lte: 1000000 }; break;
                     case '6': whereClause.PrecoVenda = { gte: 1000000 }; break;
+                }
+            }
+
+            // ==========================================
+            // NOVOS FILTROS: TRATAMENTO DE ESTILOS DE VIDA
+            // ==========================================
+            if (estilo) {
+                switch (estilo as string) {
+                    case 'condominio':
+                        // Filtra imóveis que possuem nome de condomínio registrado
+                        whereClause.NomeCondominio = { not: "" };
+                        break;
+                    
+                    case 'lazer':
+                        // Retorna imóveis que tenham piscina E churrasqueira juntos (Lazer Completo)
+                        whereClause.Piscina = 1;
+                        whereClause.Churrasqueira = 1;
+                        break;
+                    
+                    case 'espacoso':
+                        // Perfeito para famílias: 3 quartos ou mais e pelo menos 1 vaga
+                        whereClause.QtdDormitorios = { gte: 3 };
+                        whereClause.QtdVagas = { gte: 1 };
+                        break;
+
+                    case 'oportunidades':
+                        // Combina facilidades financeiras (Aceita Permuta OU Aceita FGTS)
+                        whereClause.OR = [
+                            { AceitaPermuta: 1 },
+                            { UtilizeFGTS: 1 }
+                        ];
+                        break;
+
+                    case 'permuta':
+                        whereClause.AceitaPermuta = 1;
+                        break;
+
+                    case 'fgts':
+                        whereClause.UtilizeFGTS = 1;
+                        break;
                 }
             }
         }
