@@ -10,50 +10,73 @@ datasource db {
 }
 
 model Property {
-  id                       Int     @id @default(autoincrement())
-  CodigoImovel             String  @unique
-  TipoImovel               String?
-  SubTipoImovel            String?
-  CategoriaImovel          String?
-  Cidade                   String
-  Bairro                   String?
-  Endereco                 String?
-  CEP                      String?
-  PrecoVenda               Float?
-  PrecoLocacao             Float?
-  PrecoLocacaoTemporada    Float?
-  AreaUtil                 Float?
-  AreaTotal                Float?
-  QtdDormitorios           Int?
-  QtdSuites                Int?
-  QtdBanheiros             Int?
-  QtdSalas                 Int?
-  QtdVagas                 Int?
-  QtdElevador              Int?
-  QtdUnidadesAndar         Int?
-  QtdAndar                 Int?
-  Observacao               String?
+  id                    Int     @id @default(autoincrement())
+  CodigoCliente         String?
+  CodigoImovel          String  @unique
+  TipoImovel            String?
+  SubTipoImovel         String?
+  CategoriaImovel       String?
+  Cidade                String
+  Bairro                String?
+  CEP                   String?
+  PrecoVenda            Float?
+  PrecoLocacao          Float?
+  PrecoLocacaoTemporada Float?
+  PrecoCondominio       Float? // Presente no XML (ex: PSI187)
+  AreaUtil              Float?
+  AreaTotal             Float?
+  QtdDormitorios        Int?
+  QtdSuites             Int?
+  QtdBanheiros          Int?
+  QtdSalas              Int?
+  QtdVagas              Int?
+  QtdElevador           Int?
+  QtdUnidadesAndar      Int?
+  QtdAndar              Int?
+  AnoConstrucao         Int? // Presente no XML (ex: casa / psi187)
+  Observacao            String? @db.Text
+  titulo                String?
+  TipoOferta            String? // Presente no XML como "N" (String)
+
+  // Características / Flags vindas do XML (0 ou 1)
+  AceitaPermuta            Int?
   ArCondicionado           Int?
-  Varanda                  Int?
-  ProntoMorar              Int?
-  Lavabo                   Int?
-  TipoOferta               Int?
+  Cerca                    Int?
   Churrasqueira            Int?
-  Copa                     Int?
-  WCEmpregada              Int?
-  Piscina                  Int?
+  Esgoto                   Int?
+  EstacionamentoRotativo   Int?
   EstacionamentoVisitantes Int?
+  Heliponto                Int?
+  InfraInternet            Int?
+  Jardim                   Int?
+  Lago                     Int?
+  Lavoura                  Int?
+  Pasto                    Int?
+  Piscina                  Int?
   Playground               Int?
   QuadraTenis              Int?
   QuadraPoliEsportiva      Int?
+  RuaAsfaltada             Int?
   SalaGinastica            Int?
   SalaoFestas              Int?
   SalaoJogos               Int?
+  Sauna                    Int? // Presente no XML (ex: PS1016)
+  Silos                    Int?
+  Telefone                 Int?
+  TVCabo                   Int?
+  Varanda                  Int? // Presente no XML (ex: PS855)
+  CasaCaseiro              Int?
+  EnergiaEletrica          Int?
   Interfone                Int?
-  campodefutebol           Int?
-  PrecoCondominio          Int?
-  NomeCondominio           String?
-  video                    String?
+  PocoArtesiano            Int?
+  Paiol                    Int?
+  ProntoMorar              Int? // Presente no XML (ex: LANDINGPAGE)
+  Curral                   Int?
+  UtilizeFGTS              Int?
+  Terraco                  Int? // Presente no XML (ex: snippet 12)
+  Lavabo                   Int? // Presente no XML (ex: snippet 7)
+  campodefutebol           Int? // Presente no XML (ex: PS1016)
+  NomeCondominio           String? // Presente no XML (ex: PS1016)
 
   Photos Photo[]
 }
@@ -65,5 +88,5 @@ model Photo {
   Principal   Int?
   Alterada    Int?
 
-  property Property @relation(fields: [property_id], references: [id])
+  property Property @relation(fields: [property_id], references: [id], onDelete: Cascade)
 }

@@ -974,6 +974,7 @@ export namespace Prisma {
     PrecoVenda: number | null
     PrecoLocacao: number | null
     PrecoLocacaoTemporada: number | null
+    PrecoCondominio: number | null
     AreaUtil: number | null
     AreaTotal: number | null
     QtdDormitorios: number | null
@@ -984,25 +985,44 @@ export namespace Prisma {
     QtdElevador: number | null
     QtdUnidadesAndar: number | null
     QtdAndar: number | null
+    AnoConstrucao: number | null
+    AceitaPermuta: number | null
     ArCondicionado: number | null
-    Varanda: number | null
-    ProntoMorar: number | null
-    Lavabo: number | null
-    TipoOferta: number | null
+    Cerca: number | null
     Churrasqueira: number | null
-    Copa: number | null
-    WCEmpregada: number | null
-    Piscina: number | null
+    Esgoto: number | null
+    EstacionamentoRotativo: number | null
     EstacionamentoVisitantes: number | null
+    Heliponto: number | null
+    InfraInternet: number | null
+    Jardim: number | null
+    Lago: number | null
+    Lavoura: number | null
+    Pasto: number | null
+    Piscina: number | null
     Playground: number | null
     QuadraTenis: number | null
     QuadraPoliEsportiva: number | null
+    RuaAsfaltada: number | null
     SalaGinastica: number | null
     SalaoFestas: number | null
     SalaoJogos: number | null
+    Sauna: number | null
+    Silos: number | null
+    Telefone: number | null
+    TVCabo: number | null
+    Varanda: number | null
+    CasaCaseiro: number | null
+    EnergiaEletrica: number | null
     Interfone: number | null
+    PocoArtesiano: number | null
+    Paiol: number | null
+    ProntoMorar: number | null
+    Curral: number | null
+    UtilizeFGTS: number | null
+    Terraco: number | null
+    Lavabo: number | null
     campodefutebol: number | null
-    PrecoCondominio: number | null
   }
 
   export type PropertySumAggregateOutputType = {
@@ -1010,6 +1030,7 @@ export namespace Prisma {
     PrecoVenda: number | null
     PrecoLocacao: number | null
     PrecoLocacaoTemporada: number | null
+    PrecoCondominio: number | null
     AreaUtil: number | null
     AreaTotal: number | null
     QtdDormitorios: number | null
@@ -1020,40 +1041,60 @@ export namespace Prisma {
     QtdElevador: number | null
     QtdUnidadesAndar: number | null
     QtdAndar: number | null
+    AnoConstrucao: number | null
+    AceitaPermuta: number | null
     ArCondicionado: number | null
-    Varanda: number | null
-    ProntoMorar: number | null
-    Lavabo: number | null
-    TipoOferta: number | null
+    Cerca: number | null
     Churrasqueira: number | null
-    Copa: number | null
-    WCEmpregada: number | null
-    Piscina: number | null
+    Esgoto: number | null
+    EstacionamentoRotativo: number | null
     EstacionamentoVisitantes: number | null
+    Heliponto: number | null
+    InfraInternet: number | null
+    Jardim: number | null
+    Lago: number | null
+    Lavoura: number | null
+    Pasto: number | null
+    Piscina: number | null
     Playground: number | null
     QuadraTenis: number | null
     QuadraPoliEsportiva: number | null
+    RuaAsfaltada: number | null
     SalaGinastica: number | null
     SalaoFestas: number | null
     SalaoJogos: number | null
+    Sauna: number | null
+    Silos: number | null
+    Telefone: number | null
+    TVCabo: number | null
+    Varanda: number | null
+    CasaCaseiro: number | null
+    EnergiaEletrica: number | null
     Interfone: number | null
+    PocoArtesiano: number | null
+    Paiol: number | null
+    ProntoMorar: number | null
+    Curral: number | null
+    UtilizeFGTS: number | null
+    Terraco: number | null
+    Lavabo: number | null
     campodefutebol: number | null
-    PrecoCondominio: number | null
   }
 
   export type PropertyMinAggregateOutputType = {
     id: number | null
+    CodigoCliente: string | null
     CodigoImovel: string | null
     TipoImovel: string | null
     SubTipoImovel: string | null
     CategoriaImovel: string | null
     Cidade: string | null
     Bairro: string | null
-    Endereco: string | null
     CEP: string | null
     PrecoVenda: number | null
     PrecoLocacao: number | null
     PrecoLocacaoTemporada: number | null
+    PrecoCondominio: number | null
     AreaUtil: number | null
     AreaTotal: number | null
     QtdDormitorios: number | null
@@ -1064,43 +1105,64 @@ export namespace Prisma {
     QtdElevador: number | null
     QtdUnidadesAndar: number | null
     QtdAndar: number | null
+    AnoConstrucao: number | null
     Observacao: string | null
+    titulo: string | null
+    TipoOferta: string | null
+    AceitaPermuta: number | null
     ArCondicionado: number | null
-    Varanda: number | null
-    ProntoMorar: number | null
-    Lavabo: number | null
-    TipoOferta: number | null
+    Cerca: number | null
     Churrasqueira: number | null
-    Copa: number | null
-    WCEmpregada: number | null
-    Piscina: number | null
+    Esgoto: number | null
+    EstacionamentoRotativo: number | null
     EstacionamentoVisitantes: number | null
+    Heliponto: number | null
+    InfraInternet: number | null
+    Jardim: number | null
+    Lago: number | null
+    Lavoura: number | null
+    Pasto: number | null
+    Piscina: number | null
     Playground: number | null
     QuadraTenis: number | null
     QuadraPoliEsportiva: number | null
+    RuaAsfaltada: number | null
     SalaGinastica: number | null
     SalaoFestas: number | null
     SalaoJogos: number | null
+    Sauna: number | null
+    Silos: number | null
+    Telefone: number | null
+    TVCabo: number | null
+    Varanda: number | null
+    CasaCaseiro: number | null
+    EnergiaEletrica: number | null
     Interfone: number | null
+    PocoArtesiano: number | null
+    Paiol: number | null
+    ProntoMorar: number | null
+    Curral: number | null
+    UtilizeFGTS: number | null
+    Terraco: number | null
+    Lavabo: number | null
     campodefutebol: number | null
-    PrecoCondominio: number | null
     NomeCondominio: string | null
-    video: string | null
   }
 
   export type PropertyMaxAggregateOutputType = {
     id: number | null
+    CodigoCliente: string | null
     CodigoImovel: string | null
     TipoImovel: string | null
     SubTipoImovel: string | null
     CategoriaImovel: string | null
     Cidade: string | null
     Bairro: string | null
-    Endereco: string | null
     CEP: string | null
     PrecoVenda: number | null
     PrecoLocacao: number | null
     PrecoLocacaoTemporada: number | null
+    PrecoCondominio: number | null
     AreaUtil: number | null
     AreaTotal: number | null
     QtdDormitorios: number | null
@@ -1111,43 +1173,64 @@ export namespace Prisma {
     QtdElevador: number | null
     QtdUnidadesAndar: number | null
     QtdAndar: number | null
+    AnoConstrucao: number | null
     Observacao: string | null
+    titulo: string | null
+    TipoOferta: string | null
+    AceitaPermuta: number | null
     ArCondicionado: number | null
-    Varanda: number | null
-    ProntoMorar: number | null
-    Lavabo: number | null
-    TipoOferta: number | null
+    Cerca: number | null
     Churrasqueira: number | null
-    Copa: number | null
-    WCEmpregada: number | null
-    Piscina: number | null
+    Esgoto: number | null
+    EstacionamentoRotativo: number | null
     EstacionamentoVisitantes: number | null
+    Heliponto: number | null
+    InfraInternet: number | null
+    Jardim: number | null
+    Lago: number | null
+    Lavoura: number | null
+    Pasto: number | null
+    Piscina: number | null
     Playground: number | null
     QuadraTenis: number | null
     QuadraPoliEsportiva: number | null
+    RuaAsfaltada: number | null
     SalaGinastica: number | null
     SalaoFestas: number | null
     SalaoJogos: number | null
+    Sauna: number | null
+    Silos: number | null
+    Telefone: number | null
+    TVCabo: number | null
+    Varanda: number | null
+    CasaCaseiro: number | null
+    EnergiaEletrica: number | null
     Interfone: number | null
+    PocoArtesiano: number | null
+    Paiol: number | null
+    ProntoMorar: number | null
+    Curral: number | null
+    UtilizeFGTS: number | null
+    Terraco: number | null
+    Lavabo: number | null
     campodefutebol: number | null
-    PrecoCondominio: number | null
     NomeCondominio: string | null
-    video: string | null
   }
 
   export type PropertyCountAggregateOutputType = {
     id: number
+    CodigoCliente: number
     CodigoImovel: number
     TipoImovel: number
     SubTipoImovel: number
     CategoriaImovel: number
     Cidade: number
     Bairro: number
-    Endereco: number
     CEP: number
     PrecoVenda: number
     PrecoLocacao: number
     PrecoLocacaoTemporada: number
+    PrecoCondominio: number
     AreaUtil: number
     AreaTotal: number
     QtdDormitorios: number
@@ -1158,28 +1241,48 @@ export namespace Prisma {
     QtdElevador: number
     QtdUnidadesAndar: number
     QtdAndar: number
+    AnoConstrucao: number
     Observacao: number
-    ArCondicionado: number
-    Varanda: number
-    ProntoMorar: number
-    Lavabo: number
+    titulo: number
     TipoOferta: number
+    AceitaPermuta: number
+    ArCondicionado: number
+    Cerca: number
     Churrasqueira: number
-    Copa: number
-    WCEmpregada: number
-    Piscina: number
+    Esgoto: number
+    EstacionamentoRotativo: number
     EstacionamentoVisitantes: number
+    Heliponto: number
+    InfraInternet: number
+    Jardim: number
+    Lago: number
+    Lavoura: number
+    Pasto: number
+    Piscina: number
     Playground: number
     QuadraTenis: number
     QuadraPoliEsportiva: number
+    RuaAsfaltada: number
     SalaGinastica: number
     SalaoFestas: number
     SalaoJogos: number
+    Sauna: number
+    Silos: number
+    Telefone: number
+    TVCabo: number
+    Varanda: number
+    CasaCaseiro: number
+    EnergiaEletrica: number
     Interfone: number
+    PocoArtesiano: number
+    Paiol: number
+    ProntoMorar: number
+    Curral: number
+    UtilizeFGTS: number
+    Terraco: number
+    Lavabo: number
     campodefutebol: number
-    PrecoCondominio: number
     NomeCondominio: number
-    video: number
     _all: number
   }
 
@@ -1189,6 +1292,7 @@ export namespace Prisma {
     PrecoVenda?: true
     PrecoLocacao?: true
     PrecoLocacaoTemporada?: true
+    PrecoCondominio?: true
     AreaUtil?: true
     AreaTotal?: true
     QtdDormitorios?: true
@@ -1199,25 +1303,44 @@ export namespace Prisma {
     QtdElevador?: true
     QtdUnidadesAndar?: true
     QtdAndar?: true
+    AnoConstrucao?: true
+    AceitaPermuta?: true
     ArCondicionado?: true
-    Varanda?: true
-    ProntoMorar?: true
-    Lavabo?: true
-    TipoOferta?: true
+    Cerca?: true
     Churrasqueira?: true
-    Copa?: true
-    WCEmpregada?: true
-    Piscina?: true
+    Esgoto?: true
+    EstacionamentoRotativo?: true
     EstacionamentoVisitantes?: true
+    Heliponto?: true
+    InfraInternet?: true
+    Jardim?: true
+    Lago?: true
+    Lavoura?: true
+    Pasto?: true
+    Piscina?: true
     Playground?: true
     QuadraTenis?: true
     QuadraPoliEsportiva?: true
+    RuaAsfaltada?: true
     SalaGinastica?: true
     SalaoFestas?: true
     SalaoJogos?: true
+    Sauna?: true
+    Silos?: true
+    Telefone?: true
+    TVCabo?: true
+    Varanda?: true
+    CasaCaseiro?: true
+    EnergiaEletrica?: true
     Interfone?: true
+    PocoArtesiano?: true
+    Paiol?: true
+    ProntoMorar?: true
+    Curral?: true
+    UtilizeFGTS?: true
+    Terraco?: true
+    Lavabo?: true
     campodefutebol?: true
-    PrecoCondominio?: true
   }
 
   export type PropertySumAggregateInputType = {
@@ -1225,6 +1348,7 @@ export namespace Prisma {
     PrecoVenda?: true
     PrecoLocacao?: true
     PrecoLocacaoTemporada?: true
+    PrecoCondominio?: true
     AreaUtil?: true
     AreaTotal?: true
     QtdDormitorios?: true
@@ -1235,40 +1359,60 @@ export namespace Prisma {
     QtdElevador?: true
     QtdUnidadesAndar?: true
     QtdAndar?: true
+    AnoConstrucao?: true
+    AceitaPermuta?: true
     ArCondicionado?: true
-    Varanda?: true
-    ProntoMorar?: true
-    Lavabo?: true
-    TipoOferta?: true
+    Cerca?: true
     Churrasqueira?: true
-    Copa?: true
-    WCEmpregada?: true
-    Piscina?: true
+    Esgoto?: true
+    EstacionamentoRotativo?: true
     EstacionamentoVisitantes?: true
+    Heliponto?: true
+    InfraInternet?: true
+    Jardim?: true
+    Lago?: true
+    Lavoura?: true
+    Pasto?: true
+    Piscina?: true
     Playground?: true
     QuadraTenis?: true
     QuadraPoliEsportiva?: true
+    RuaAsfaltada?: true
     SalaGinastica?: true
     SalaoFestas?: true
     SalaoJogos?: true
+    Sauna?: true
+    Silos?: true
+    Telefone?: true
+    TVCabo?: true
+    Varanda?: true
+    CasaCaseiro?: true
+    EnergiaEletrica?: true
     Interfone?: true
+    PocoArtesiano?: true
+    Paiol?: true
+    ProntoMorar?: true
+    Curral?: true
+    UtilizeFGTS?: true
+    Terraco?: true
+    Lavabo?: true
     campodefutebol?: true
-    PrecoCondominio?: true
   }
 
   export type PropertyMinAggregateInputType = {
     id?: true
+    CodigoCliente?: true
     CodigoImovel?: true
     TipoImovel?: true
     SubTipoImovel?: true
     CategoriaImovel?: true
     Cidade?: true
     Bairro?: true
-    Endereco?: true
     CEP?: true
     PrecoVenda?: true
     PrecoLocacao?: true
     PrecoLocacaoTemporada?: true
+    PrecoCondominio?: true
     AreaUtil?: true
     AreaTotal?: true
     QtdDormitorios?: true
@@ -1279,43 +1423,64 @@ export namespace Prisma {
     QtdElevador?: true
     QtdUnidadesAndar?: true
     QtdAndar?: true
+    AnoConstrucao?: true
     Observacao?: true
-    ArCondicionado?: true
-    Varanda?: true
-    ProntoMorar?: true
-    Lavabo?: true
+    titulo?: true
     TipoOferta?: true
+    AceitaPermuta?: true
+    ArCondicionado?: true
+    Cerca?: true
     Churrasqueira?: true
-    Copa?: true
-    WCEmpregada?: true
-    Piscina?: true
+    Esgoto?: true
+    EstacionamentoRotativo?: true
     EstacionamentoVisitantes?: true
+    Heliponto?: true
+    InfraInternet?: true
+    Jardim?: true
+    Lago?: true
+    Lavoura?: true
+    Pasto?: true
+    Piscina?: true
     Playground?: true
     QuadraTenis?: true
     QuadraPoliEsportiva?: true
+    RuaAsfaltada?: true
     SalaGinastica?: true
     SalaoFestas?: true
     SalaoJogos?: true
+    Sauna?: true
+    Silos?: true
+    Telefone?: true
+    TVCabo?: true
+    Varanda?: true
+    CasaCaseiro?: true
+    EnergiaEletrica?: true
     Interfone?: true
+    PocoArtesiano?: true
+    Paiol?: true
+    ProntoMorar?: true
+    Curral?: true
+    UtilizeFGTS?: true
+    Terraco?: true
+    Lavabo?: true
     campodefutebol?: true
-    PrecoCondominio?: true
     NomeCondominio?: true
-    video?: true
   }
 
   export type PropertyMaxAggregateInputType = {
     id?: true
+    CodigoCliente?: true
     CodigoImovel?: true
     TipoImovel?: true
     SubTipoImovel?: true
     CategoriaImovel?: true
     Cidade?: true
     Bairro?: true
-    Endereco?: true
     CEP?: true
     PrecoVenda?: true
     PrecoLocacao?: true
     PrecoLocacaoTemporada?: true
+    PrecoCondominio?: true
     AreaUtil?: true
     AreaTotal?: true
     QtdDormitorios?: true
@@ -1326,43 +1491,64 @@ export namespace Prisma {
     QtdElevador?: true
     QtdUnidadesAndar?: true
     QtdAndar?: true
+    AnoConstrucao?: true
     Observacao?: true
-    ArCondicionado?: true
-    Varanda?: true
-    ProntoMorar?: true
-    Lavabo?: true
+    titulo?: true
     TipoOferta?: true
+    AceitaPermuta?: true
+    ArCondicionado?: true
+    Cerca?: true
     Churrasqueira?: true
-    Copa?: true
-    WCEmpregada?: true
-    Piscina?: true
+    Esgoto?: true
+    EstacionamentoRotativo?: true
     EstacionamentoVisitantes?: true
+    Heliponto?: true
+    InfraInternet?: true
+    Jardim?: true
+    Lago?: true
+    Lavoura?: true
+    Pasto?: true
+    Piscina?: true
     Playground?: true
     QuadraTenis?: true
     QuadraPoliEsportiva?: true
+    RuaAsfaltada?: true
     SalaGinastica?: true
     SalaoFestas?: true
     SalaoJogos?: true
+    Sauna?: true
+    Silos?: true
+    Telefone?: true
+    TVCabo?: true
+    Varanda?: true
+    CasaCaseiro?: true
+    EnergiaEletrica?: true
     Interfone?: true
+    PocoArtesiano?: true
+    Paiol?: true
+    ProntoMorar?: true
+    Curral?: true
+    UtilizeFGTS?: true
+    Terraco?: true
+    Lavabo?: true
     campodefutebol?: true
-    PrecoCondominio?: true
     NomeCondominio?: true
-    video?: true
   }
 
   export type PropertyCountAggregateInputType = {
     id?: true
+    CodigoCliente?: true
     CodigoImovel?: true
     TipoImovel?: true
     SubTipoImovel?: true
     CategoriaImovel?: true
     Cidade?: true
     Bairro?: true
-    Endereco?: true
     CEP?: true
     PrecoVenda?: true
     PrecoLocacao?: true
     PrecoLocacaoTemporada?: true
+    PrecoCondominio?: true
     AreaUtil?: true
     AreaTotal?: true
     QtdDormitorios?: true
@@ -1373,28 +1559,48 @@ export namespace Prisma {
     QtdElevador?: true
     QtdUnidadesAndar?: true
     QtdAndar?: true
+    AnoConstrucao?: true
     Observacao?: true
-    ArCondicionado?: true
-    Varanda?: true
-    ProntoMorar?: true
-    Lavabo?: true
+    titulo?: true
     TipoOferta?: true
+    AceitaPermuta?: true
+    ArCondicionado?: true
+    Cerca?: true
     Churrasqueira?: true
-    Copa?: true
-    WCEmpregada?: true
-    Piscina?: true
+    Esgoto?: true
+    EstacionamentoRotativo?: true
     EstacionamentoVisitantes?: true
+    Heliponto?: true
+    InfraInternet?: true
+    Jardim?: true
+    Lago?: true
+    Lavoura?: true
+    Pasto?: true
+    Piscina?: true
     Playground?: true
     QuadraTenis?: true
     QuadraPoliEsportiva?: true
+    RuaAsfaltada?: true
     SalaGinastica?: true
     SalaoFestas?: true
     SalaoJogos?: true
+    Sauna?: true
+    Silos?: true
+    Telefone?: true
+    TVCabo?: true
+    Varanda?: true
+    CasaCaseiro?: true
+    EnergiaEletrica?: true
     Interfone?: true
+    PocoArtesiano?: true
+    Paiol?: true
+    ProntoMorar?: true
+    Curral?: true
+    UtilizeFGTS?: true
+    Terraco?: true
+    Lavabo?: true
     campodefutebol?: true
-    PrecoCondominio?: true
     NomeCondominio?: true
-    video?: true
     _all?: true
   }
 
@@ -1486,17 +1692,18 @@ export namespace Prisma {
 
   export type PropertyGroupByOutputType = {
     id: number
+    CodigoCliente: string | null
     CodigoImovel: string
     TipoImovel: string | null
     SubTipoImovel: string | null
     CategoriaImovel: string | null
     Cidade: string
     Bairro: string | null
-    Endereco: string | null
     CEP: string | null
     PrecoVenda: number | null
     PrecoLocacao: number | null
     PrecoLocacaoTemporada: number | null
+    PrecoCondominio: number | null
     AreaUtil: number | null
     AreaTotal: number | null
     QtdDormitorios: number | null
@@ -1507,28 +1714,48 @@ export namespace Prisma {
     QtdElevador: number | null
     QtdUnidadesAndar: number | null
     QtdAndar: number | null
+    AnoConstrucao: number | null
     Observacao: string | null
+    titulo: string | null
+    TipoOferta: string | null
+    AceitaPermuta: number | null
     ArCondicionado: number | null
-    Varanda: number | null
-    ProntoMorar: number | null
-    Lavabo: number | null
-    TipoOferta: number | null
+    Cerca: number | null
     Churrasqueira: number | null
-    Copa: number | null
-    WCEmpregada: number | null
-    Piscina: number | null
+    Esgoto: number | null
+    EstacionamentoRotativo: number | null
     EstacionamentoVisitantes: number | null
+    Heliponto: number | null
+    InfraInternet: number | null
+    Jardim: number | null
+    Lago: number | null
+    Lavoura: number | null
+    Pasto: number | null
+    Piscina: number | null
     Playground: number | null
     QuadraTenis: number | null
     QuadraPoliEsportiva: number | null
+    RuaAsfaltada: number | null
     SalaGinastica: number | null
     SalaoFestas: number | null
     SalaoJogos: number | null
+    Sauna: number | null
+    Silos: number | null
+    Telefone: number | null
+    TVCabo: number | null
+    Varanda: number | null
+    CasaCaseiro: number | null
+    EnergiaEletrica: number | null
     Interfone: number | null
+    PocoArtesiano: number | null
+    Paiol: number | null
+    ProntoMorar: number | null
+    Curral: number | null
+    UtilizeFGTS: number | null
+    Terraco: number | null
+    Lavabo: number | null
     campodefutebol: number | null
-    PrecoCondominio: number | null
     NomeCondominio: string | null
-    video: string | null
     _count: PropertyCountAggregateOutputType | null
     _avg: PropertyAvgAggregateOutputType | null
     _sum: PropertySumAggregateOutputType | null
@@ -1552,17 +1779,18 @@ export namespace Prisma {
 
   export type PropertySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    CodigoCliente?: boolean
     CodigoImovel?: boolean
     TipoImovel?: boolean
     SubTipoImovel?: boolean
     CategoriaImovel?: boolean
     Cidade?: boolean
     Bairro?: boolean
-    Endereco?: boolean
     CEP?: boolean
     PrecoVenda?: boolean
     PrecoLocacao?: boolean
     PrecoLocacaoTemporada?: boolean
+    PrecoCondominio?: boolean
     AreaUtil?: boolean
     AreaTotal?: boolean
     QtdDormitorios?: boolean
@@ -1573,45 +1801,66 @@ export namespace Prisma {
     QtdElevador?: boolean
     QtdUnidadesAndar?: boolean
     QtdAndar?: boolean
+    AnoConstrucao?: boolean
     Observacao?: boolean
-    ArCondicionado?: boolean
-    Varanda?: boolean
-    ProntoMorar?: boolean
-    Lavabo?: boolean
+    titulo?: boolean
     TipoOferta?: boolean
+    AceitaPermuta?: boolean
+    ArCondicionado?: boolean
+    Cerca?: boolean
     Churrasqueira?: boolean
-    Copa?: boolean
-    WCEmpregada?: boolean
-    Piscina?: boolean
+    Esgoto?: boolean
+    EstacionamentoRotativo?: boolean
     EstacionamentoVisitantes?: boolean
+    Heliponto?: boolean
+    InfraInternet?: boolean
+    Jardim?: boolean
+    Lago?: boolean
+    Lavoura?: boolean
+    Pasto?: boolean
+    Piscina?: boolean
     Playground?: boolean
     QuadraTenis?: boolean
     QuadraPoliEsportiva?: boolean
+    RuaAsfaltada?: boolean
     SalaGinastica?: boolean
     SalaoFestas?: boolean
     SalaoJogos?: boolean
+    Sauna?: boolean
+    Silos?: boolean
+    Telefone?: boolean
+    TVCabo?: boolean
+    Varanda?: boolean
+    CasaCaseiro?: boolean
+    EnergiaEletrica?: boolean
     Interfone?: boolean
+    PocoArtesiano?: boolean
+    Paiol?: boolean
+    ProntoMorar?: boolean
+    Curral?: boolean
+    UtilizeFGTS?: boolean
+    Terraco?: boolean
+    Lavabo?: boolean
     campodefutebol?: boolean
-    PrecoCondominio?: boolean
     NomeCondominio?: boolean
-    video?: boolean
     Photos?: boolean | Property$PhotosArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
   export type PropertySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    CodigoCliente?: boolean
     CodigoImovel?: boolean
     TipoImovel?: boolean
     SubTipoImovel?: boolean
     CategoriaImovel?: boolean
     Cidade?: boolean
     Bairro?: boolean
-    Endereco?: boolean
     CEP?: boolean
     PrecoVenda?: boolean
     PrecoLocacao?: boolean
     PrecoLocacaoTemporada?: boolean
+    PrecoCondominio?: boolean
     AreaUtil?: boolean
     AreaTotal?: boolean
     QtdDormitorios?: boolean
@@ -1622,43 +1871,64 @@ export namespace Prisma {
     QtdElevador?: boolean
     QtdUnidadesAndar?: boolean
     QtdAndar?: boolean
+    AnoConstrucao?: boolean
     Observacao?: boolean
-    ArCondicionado?: boolean
-    Varanda?: boolean
-    ProntoMorar?: boolean
-    Lavabo?: boolean
+    titulo?: boolean
     TipoOferta?: boolean
+    AceitaPermuta?: boolean
+    ArCondicionado?: boolean
+    Cerca?: boolean
     Churrasqueira?: boolean
-    Copa?: boolean
-    WCEmpregada?: boolean
-    Piscina?: boolean
+    Esgoto?: boolean
+    EstacionamentoRotativo?: boolean
     EstacionamentoVisitantes?: boolean
+    Heliponto?: boolean
+    InfraInternet?: boolean
+    Jardim?: boolean
+    Lago?: boolean
+    Lavoura?: boolean
+    Pasto?: boolean
+    Piscina?: boolean
     Playground?: boolean
     QuadraTenis?: boolean
     QuadraPoliEsportiva?: boolean
+    RuaAsfaltada?: boolean
     SalaGinastica?: boolean
     SalaoFestas?: boolean
     SalaoJogos?: boolean
+    Sauna?: boolean
+    Silos?: boolean
+    Telefone?: boolean
+    TVCabo?: boolean
+    Varanda?: boolean
+    CasaCaseiro?: boolean
+    EnergiaEletrica?: boolean
     Interfone?: boolean
+    PocoArtesiano?: boolean
+    Paiol?: boolean
+    ProntoMorar?: boolean
+    Curral?: boolean
+    UtilizeFGTS?: boolean
+    Terraco?: boolean
+    Lavabo?: boolean
     campodefutebol?: boolean
-    PrecoCondominio?: boolean
     NomeCondominio?: boolean
-    video?: boolean
   }, ExtArgs["result"]["property"]>
 
   export type PropertySelectScalar = {
     id?: boolean
+    CodigoCliente?: boolean
     CodigoImovel?: boolean
     TipoImovel?: boolean
     SubTipoImovel?: boolean
     CategoriaImovel?: boolean
     Cidade?: boolean
     Bairro?: boolean
-    Endereco?: boolean
     CEP?: boolean
     PrecoVenda?: boolean
     PrecoLocacao?: boolean
     PrecoLocacaoTemporada?: boolean
+    PrecoCondominio?: boolean
     AreaUtil?: boolean
     AreaTotal?: boolean
     QtdDormitorios?: boolean
@@ -1669,28 +1939,48 @@ export namespace Prisma {
     QtdElevador?: boolean
     QtdUnidadesAndar?: boolean
     QtdAndar?: boolean
+    AnoConstrucao?: boolean
     Observacao?: boolean
-    ArCondicionado?: boolean
-    Varanda?: boolean
-    ProntoMorar?: boolean
-    Lavabo?: boolean
+    titulo?: boolean
     TipoOferta?: boolean
+    AceitaPermuta?: boolean
+    ArCondicionado?: boolean
+    Cerca?: boolean
     Churrasqueira?: boolean
-    Copa?: boolean
-    WCEmpregada?: boolean
-    Piscina?: boolean
+    Esgoto?: boolean
+    EstacionamentoRotativo?: boolean
     EstacionamentoVisitantes?: boolean
+    Heliponto?: boolean
+    InfraInternet?: boolean
+    Jardim?: boolean
+    Lago?: boolean
+    Lavoura?: boolean
+    Pasto?: boolean
+    Piscina?: boolean
     Playground?: boolean
     QuadraTenis?: boolean
     QuadraPoliEsportiva?: boolean
+    RuaAsfaltada?: boolean
     SalaGinastica?: boolean
     SalaoFestas?: boolean
     SalaoJogos?: boolean
+    Sauna?: boolean
+    Silos?: boolean
+    Telefone?: boolean
+    TVCabo?: boolean
+    Varanda?: boolean
+    CasaCaseiro?: boolean
+    EnergiaEletrica?: boolean
     Interfone?: boolean
+    PocoArtesiano?: boolean
+    Paiol?: boolean
+    ProntoMorar?: boolean
+    Curral?: boolean
+    UtilizeFGTS?: boolean
+    Terraco?: boolean
+    Lavabo?: boolean
     campodefutebol?: boolean
-    PrecoCondominio?: boolean
     NomeCondominio?: boolean
-    video?: boolean
   }
 
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1706,17 +1996,18 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      CodigoCliente: string | null
       CodigoImovel: string
       TipoImovel: string | null
       SubTipoImovel: string | null
       CategoriaImovel: string | null
       Cidade: string
       Bairro: string | null
-      Endereco: string | null
       CEP: string | null
       PrecoVenda: number | null
       PrecoLocacao: number | null
       PrecoLocacaoTemporada: number | null
+      PrecoCondominio: number | null
       AreaUtil: number | null
       AreaTotal: number | null
       QtdDormitorios: number | null
@@ -1727,28 +2018,48 @@ export namespace Prisma {
       QtdElevador: number | null
       QtdUnidadesAndar: number | null
       QtdAndar: number | null
+      AnoConstrucao: number | null
       Observacao: string | null
+      titulo: string | null
+      TipoOferta: string | null
+      AceitaPermuta: number | null
       ArCondicionado: number | null
-      Varanda: number | null
-      ProntoMorar: number | null
-      Lavabo: number | null
-      TipoOferta: number | null
+      Cerca: number | null
       Churrasqueira: number | null
-      Copa: number | null
-      WCEmpregada: number | null
-      Piscina: number | null
+      Esgoto: number | null
+      EstacionamentoRotativo: number | null
       EstacionamentoVisitantes: number | null
+      Heliponto: number | null
+      InfraInternet: number | null
+      Jardim: number | null
+      Lago: number | null
+      Lavoura: number | null
+      Pasto: number | null
+      Piscina: number | null
       Playground: number | null
       QuadraTenis: number | null
       QuadraPoliEsportiva: number | null
+      RuaAsfaltada: number | null
       SalaGinastica: number | null
       SalaoFestas: number | null
       SalaoJogos: number | null
+      Sauna: number | null
+      Silos: number | null
+      Telefone: number | null
+      TVCabo: number | null
+      Varanda: number | null
+      CasaCaseiro: number | null
+      EnergiaEletrica: number | null
       Interfone: number | null
+      PocoArtesiano: number | null
+      Paiol: number | null
+      ProntoMorar: number | null
+      Curral: number | null
+      UtilizeFGTS: number | null
+      Terraco: number | null
+      Lavabo: number | null
       campodefutebol: number | null
-      PrecoCondominio: number | null
       NomeCondominio: string | null
-      video: string | null
     }, ExtArgs["result"]["property"]>
     composites: {}
   }
@@ -2144,17 +2455,18 @@ export namespace Prisma {
    */ 
   interface PropertyFieldRefs {
     readonly id: FieldRef<"Property", 'Int'>
+    readonly CodigoCliente: FieldRef<"Property", 'String'>
     readonly CodigoImovel: FieldRef<"Property", 'String'>
     readonly TipoImovel: FieldRef<"Property", 'String'>
     readonly SubTipoImovel: FieldRef<"Property", 'String'>
     readonly CategoriaImovel: FieldRef<"Property", 'String'>
     readonly Cidade: FieldRef<"Property", 'String'>
     readonly Bairro: FieldRef<"Property", 'String'>
-    readonly Endereco: FieldRef<"Property", 'String'>
     readonly CEP: FieldRef<"Property", 'String'>
     readonly PrecoVenda: FieldRef<"Property", 'Float'>
     readonly PrecoLocacao: FieldRef<"Property", 'Float'>
     readonly PrecoLocacaoTemporada: FieldRef<"Property", 'Float'>
+    readonly PrecoCondominio: FieldRef<"Property", 'Float'>
     readonly AreaUtil: FieldRef<"Property", 'Float'>
     readonly AreaTotal: FieldRef<"Property", 'Float'>
     readonly QtdDormitorios: FieldRef<"Property", 'Int'>
@@ -2165,28 +2477,48 @@ export namespace Prisma {
     readonly QtdElevador: FieldRef<"Property", 'Int'>
     readonly QtdUnidadesAndar: FieldRef<"Property", 'Int'>
     readonly QtdAndar: FieldRef<"Property", 'Int'>
+    readonly AnoConstrucao: FieldRef<"Property", 'Int'>
     readonly Observacao: FieldRef<"Property", 'String'>
+    readonly titulo: FieldRef<"Property", 'String'>
+    readonly TipoOferta: FieldRef<"Property", 'String'>
+    readonly AceitaPermuta: FieldRef<"Property", 'Int'>
     readonly ArCondicionado: FieldRef<"Property", 'Int'>
-    readonly Varanda: FieldRef<"Property", 'Int'>
-    readonly ProntoMorar: FieldRef<"Property", 'Int'>
-    readonly Lavabo: FieldRef<"Property", 'Int'>
-    readonly TipoOferta: FieldRef<"Property", 'Int'>
+    readonly Cerca: FieldRef<"Property", 'Int'>
     readonly Churrasqueira: FieldRef<"Property", 'Int'>
-    readonly Copa: FieldRef<"Property", 'Int'>
-    readonly WCEmpregada: FieldRef<"Property", 'Int'>
-    readonly Piscina: FieldRef<"Property", 'Int'>
+    readonly Esgoto: FieldRef<"Property", 'Int'>
+    readonly EstacionamentoRotativo: FieldRef<"Property", 'Int'>
     readonly EstacionamentoVisitantes: FieldRef<"Property", 'Int'>
+    readonly Heliponto: FieldRef<"Property", 'Int'>
+    readonly InfraInternet: FieldRef<"Property", 'Int'>
+    readonly Jardim: FieldRef<"Property", 'Int'>
+    readonly Lago: FieldRef<"Property", 'Int'>
+    readonly Lavoura: FieldRef<"Property", 'Int'>
+    readonly Pasto: FieldRef<"Property", 'Int'>
+    readonly Piscina: FieldRef<"Property", 'Int'>
     readonly Playground: FieldRef<"Property", 'Int'>
     readonly QuadraTenis: FieldRef<"Property", 'Int'>
     readonly QuadraPoliEsportiva: FieldRef<"Property", 'Int'>
+    readonly RuaAsfaltada: FieldRef<"Property", 'Int'>
     readonly SalaGinastica: FieldRef<"Property", 'Int'>
     readonly SalaoFestas: FieldRef<"Property", 'Int'>
     readonly SalaoJogos: FieldRef<"Property", 'Int'>
+    readonly Sauna: FieldRef<"Property", 'Int'>
+    readonly Silos: FieldRef<"Property", 'Int'>
+    readonly Telefone: FieldRef<"Property", 'Int'>
+    readonly TVCabo: FieldRef<"Property", 'Int'>
+    readonly Varanda: FieldRef<"Property", 'Int'>
+    readonly CasaCaseiro: FieldRef<"Property", 'Int'>
+    readonly EnergiaEletrica: FieldRef<"Property", 'Int'>
     readonly Interfone: FieldRef<"Property", 'Int'>
+    readonly PocoArtesiano: FieldRef<"Property", 'Int'>
+    readonly Paiol: FieldRef<"Property", 'Int'>
+    readonly ProntoMorar: FieldRef<"Property", 'Int'>
+    readonly Curral: FieldRef<"Property", 'Int'>
+    readonly UtilizeFGTS: FieldRef<"Property", 'Int'>
+    readonly Terraco: FieldRef<"Property", 'Int'>
+    readonly Lavabo: FieldRef<"Property", 'Int'>
     readonly campodefutebol: FieldRef<"Property", 'Int'>
-    readonly PrecoCondominio: FieldRef<"Property", 'Int'>
     readonly NomeCondominio: FieldRef<"Property", 'String'>
-    readonly video: FieldRef<"Property", 'String'>
   }
     
 
@@ -3530,17 +3862,18 @@ export namespace Prisma {
 
   export const PropertyScalarFieldEnum: {
     id: 'id',
+    CodigoCliente: 'CodigoCliente',
     CodigoImovel: 'CodigoImovel',
     TipoImovel: 'TipoImovel',
     SubTipoImovel: 'SubTipoImovel',
     CategoriaImovel: 'CategoriaImovel',
     Cidade: 'Cidade',
     Bairro: 'Bairro',
-    Endereco: 'Endereco',
     CEP: 'CEP',
     PrecoVenda: 'PrecoVenda',
     PrecoLocacao: 'PrecoLocacao',
     PrecoLocacaoTemporada: 'PrecoLocacaoTemporada',
+    PrecoCondominio: 'PrecoCondominio',
     AreaUtil: 'AreaUtil',
     AreaTotal: 'AreaTotal',
     QtdDormitorios: 'QtdDormitorios',
@@ -3551,28 +3884,48 @@ export namespace Prisma {
     QtdElevador: 'QtdElevador',
     QtdUnidadesAndar: 'QtdUnidadesAndar',
     QtdAndar: 'QtdAndar',
+    AnoConstrucao: 'AnoConstrucao',
     Observacao: 'Observacao',
-    ArCondicionado: 'ArCondicionado',
-    Varanda: 'Varanda',
-    ProntoMorar: 'ProntoMorar',
-    Lavabo: 'Lavabo',
+    titulo: 'titulo',
     TipoOferta: 'TipoOferta',
+    AceitaPermuta: 'AceitaPermuta',
+    ArCondicionado: 'ArCondicionado',
+    Cerca: 'Cerca',
     Churrasqueira: 'Churrasqueira',
-    Copa: 'Copa',
-    WCEmpregada: 'WCEmpregada',
-    Piscina: 'Piscina',
+    Esgoto: 'Esgoto',
+    EstacionamentoRotativo: 'EstacionamentoRotativo',
     EstacionamentoVisitantes: 'EstacionamentoVisitantes',
+    Heliponto: 'Heliponto',
+    InfraInternet: 'InfraInternet',
+    Jardim: 'Jardim',
+    Lago: 'Lago',
+    Lavoura: 'Lavoura',
+    Pasto: 'Pasto',
+    Piscina: 'Piscina',
     Playground: 'Playground',
     QuadraTenis: 'QuadraTenis',
     QuadraPoliEsportiva: 'QuadraPoliEsportiva',
+    RuaAsfaltada: 'RuaAsfaltada',
     SalaGinastica: 'SalaGinastica',
     SalaoFestas: 'SalaoFestas',
     SalaoJogos: 'SalaoJogos',
+    Sauna: 'Sauna',
+    Silos: 'Silos',
+    Telefone: 'Telefone',
+    TVCabo: 'TVCabo',
+    Varanda: 'Varanda',
+    CasaCaseiro: 'CasaCaseiro',
+    EnergiaEletrica: 'EnergiaEletrica',
     Interfone: 'Interfone',
+    PocoArtesiano: 'PocoArtesiano',
+    Paiol: 'Paiol',
+    ProntoMorar: 'ProntoMorar',
+    Curral: 'Curral',
+    UtilizeFGTS: 'UtilizeFGTS',
+    Terraco: 'Terraco',
+    Lavabo: 'Lavabo',
     campodefutebol: 'campodefutebol',
-    PrecoCondominio: 'PrecoCondominio',
-    NomeCondominio: 'NomeCondominio',
-    video: 'video'
+    NomeCondominio: 'NomeCondominio'
   };
 
   export type PropertyScalarFieldEnum = (typeof PropertyScalarFieldEnum)[keyof typeof PropertyScalarFieldEnum]
@@ -3614,17 +3967,18 @@ export namespace Prisma {
 
 
   export const PropertyOrderByRelevanceFieldEnum: {
+    CodigoCliente: 'CodigoCliente',
     CodigoImovel: 'CodigoImovel',
     TipoImovel: 'TipoImovel',
     SubTipoImovel: 'SubTipoImovel',
     CategoriaImovel: 'CategoriaImovel',
     Cidade: 'Cidade',
     Bairro: 'Bairro',
-    Endereco: 'Endereco',
     CEP: 'CEP',
     Observacao: 'Observacao',
-    NomeCondominio: 'NomeCondominio',
-    video: 'video'
+    titulo: 'titulo',
+    TipoOferta: 'TipoOferta',
+    NomeCondominio: 'NomeCondominio'
   };
 
   export type PropertyOrderByRelevanceFieldEnum = (typeof PropertyOrderByRelevanceFieldEnum)[keyof typeof PropertyOrderByRelevanceFieldEnum]
@@ -3692,17 +4046,18 @@ export namespace Prisma {
     OR?: PropertyWhereInput[]
     NOT?: PropertyWhereInput | PropertyWhereInput[]
     id?: IntFilter<"Property"> | number
+    CodigoCliente?: StringNullableFilter<"Property"> | string | null
     CodigoImovel?: StringFilter<"Property"> | string
     TipoImovel?: StringNullableFilter<"Property"> | string | null
     SubTipoImovel?: StringNullableFilter<"Property"> | string | null
     CategoriaImovel?: StringNullableFilter<"Property"> | string | null
     Cidade?: StringFilter<"Property"> | string
     Bairro?: StringNullableFilter<"Property"> | string | null
-    Endereco?: StringNullableFilter<"Property"> | string | null
     CEP?: StringNullableFilter<"Property"> | string | null
     PrecoVenda?: FloatNullableFilter<"Property"> | number | null
     PrecoLocacao?: FloatNullableFilter<"Property"> | number | null
     PrecoLocacaoTemporada?: FloatNullableFilter<"Property"> | number | null
+    PrecoCondominio?: FloatNullableFilter<"Property"> | number | null
     AreaUtil?: FloatNullableFilter<"Property"> | number | null
     AreaTotal?: FloatNullableFilter<"Property"> | number | null
     QtdDormitorios?: IntNullableFilter<"Property"> | number | null
@@ -3713,44 +4068,65 @@ export namespace Prisma {
     QtdElevador?: IntNullableFilter<"Property"> | number | null
     QtdUnidadesAndar?: IntNullableFilter<"Property"> | number | null
     QtdAndar?: IntNullableFilter<"Property"> | number | null
+    AnoConstrucao?: IntNullableFilter<"Property"> | number | null
     Observacao?: StringNullableFilter<"Property"> | string | null
+    titulo?: StringNullableFilter<"Property"> | string | null
+    TipoOferta?: StringNullableFilter<"Property"> | string | null
+    AceitaPermuta?: IntNullableFilter<"Property"> | number | null
     ArCondicionado?: IntNullableFilter<"Property"> | number | null
-    Varanda?: IntNullableFilter<"Property"> | number | null
-    ProntoMorar?: IntNullableFilter<"Property"> | number | null
-    Lavabo?: IntNullableFilter<"Property"> | number | null
-    TipoOferta?: IntNullableFilter<"Property"> | number | null
+    Cerca?: IntNullableFilter<"Property"> | number | null
     Churrasqueira?: IntNullableFilter<"Property"> | number | null
-    Copa?: IntNullableFilter<"Property"> | number | null
-    WCEmpregada?: IntNullableFilter<"Property"> | number | null
-    Piscina?: IntNullableFilter<"Property"> | number | null
+    Esgoto?: IntNullableFilter<"Property"> | number | null
+    EstacionamentoRotativo?: IntNullableFilter<"Property"> | number | null
     EstacionamentoVisitantes?: IntNullableFilter<"Property"> | number | null
+    Heliponto?: IntNullableFilter<"Property"> | number | null
+    InfraInternet?: IntNullableFilter<"Property"> | number | null
+    Jardim?: IntNullableFilter<"Property"> | number | null
+    Lago?: IntNullableFilter<"Property"> | number | null
+    Lavoura?: IntNullableFilter<"Property"> | number | null
+    Pasto?: IntNullableFilter<"Property"> | number | null
+    Piscina?: IntNullableFilter<"Property"> | number | null
     Playground?: IntNullableFilter<"Property"> | number | null
     QuadraTenis?: IntNullableFilter<"Property"> | number | null
     QuadraPoliEsportiva?: IntNullableFilter<"Property"> | number | null
+    RuaAsfaltada?: IntNullableFilter<"Property"> | number | null
     SalaGinastica?: IntNullableFilter<"Property"> | number | null
     SalaoFestas?: IntNullableFilter<"Property"> | number | null
     SalaoJogos?: IntNullableFilter<"Property"> | number | null
+    Sauna?: IntNullableFilter<"Property"> | number | null
+    Silos?: IntNullableFilter<"Property"> | number | null
+    Telefone?: IntNullableFilter<"Property"> | number | null
+    TVCabo?: IntNullableFilter<"Property"> | number | null
+    Varanda?: IntNullableFilter<"Property"> | number | null
+    CasaCaseiro?: IntNullableFilter<"Property"> | number | null
+    EnergiaEletrica?: IntNullableFilter<"Property"> | number | null
     Interfone?: IntNullableFilter<"Property"> | number | null
+    PocoArtesiano?: IntNullableFilter<"Property"> | number | null
+    Paiol?: IntNullableFilter<"Property"> | number | null
+    ProntoMorar?: IntNullableFilter<"Property"> | number | null
+    Curral?: IntNullableFilter<"Property"> | number | null
+    UtilizeFGTS?: IntNullableFilter<"Property"> | number | null
+    Terraco?: IntNullableFilter<"Property"> | number | null
+    Lavabo?: IntNullableFilter<"Property"> | number | null
     campodefutebol?: IntNullableFilter<"Property"> | number | null
-    PrecoCondominio?: IntNullableFilter<"Property"> | number | null
     NomeCondominio?: StringNullableFilter<"Property"> | string | null
-    video?: StringNullableFilter<"Property"> | string | null
     Photos?: PhotoListRelationFilter
   }
 
   export type PropertyOrderByWithRelationInput = {
     id?: SortOrder
+    CodigoCliente?: SortOrderInput | SortOrder
     CodigoImovel?: SortOrder
     TipoImovel?: SortOrderInput | SortOrder
     SubTipoImovel?: SortOrderInput | SortOrder
     CategoriaImovel?: SortOrderInput | SortOrder
     Cidade?: SortOrder
     Bairro?: SortOrderInput | SortOrder
-    Endereco?: SortOrderInput | SortOrder
     CEP?: SortOrderInput | SortOrder
     PrecoVenda?: SortOrderInput | SortOrder
     PrecoLocacao?: SortOrderInput | SortOrder
     PrecoLocacaoTemporada?: SortOrderInput | SortOrder
+    PrecoCondominio?: SortOrderInput | SortOrder
     AreaUtil?: SortOrderInput | SortOrder
     AreaTotal?: SortOrderInput | SortOrder
     QtdDormitorios?: SortOrderInput | SortOrder
@@ -3761,28 +4137,48 @@ export namespace Prisma {
     QtdElevador?: SortOrderInput | SortOrder
     QtdUnidadesAndar?: SortOrderInput | SortOrder
     QtdAndar?: SortOrderInput | SortOrder
+    AnoConstrucao?: SortOrderInput | SortOrder
     Observacao?: SortOrderInput | SortOrder
-    ArCondicionado?: SortOrderInput | SortOrder
-    Varanda?: SortOrderInput | SortOrder
-    ProntoMorar?: SortOrderInput | SortOrder
-    Lavabo?: SortOrderInput | SortOrder
+    titulo?: SortOrderInput | SortOrder
     TipoOferta?: SortOrderInput | SortOrder
+    AceitaPermuta?: SortOrderInput | SortOrder
+    ArCondicionado?: SortOrderInput | SortOrder
+    Cerca?: SortOrderInput | SortOrder
     Churrasqueira?: SortOrderInput | SortOrder
-    Copa?: SortOrderInput | SortOrder
-    WCEmpregada?: SortOrderInput | SortOrder
-    Piscina?: SortOrderInput | SortOrder
+    Esgoto?: SortOrderInput | SortOrder
+    EstacionamentoRotativo?: SortOrderInput | SortOrder
     EstacionamentoVisitantes?: SortOrderInput | SortOrder
+    Heliponto?: SortOrderInput | SortOrder
+    InfraInternet?: SortOrderInput | SortOrder
+    Jardim?: SortOrderInput | SortOrder
+    Lago?: SortOrderInput | SortOrder
+    Lavoura?: SortOrderInput | SortOrder
+    Pasto?: SortOrderInput | SortOrder
+    Piscina?: SortOrderInput | SortOrder
     Playground?: SortOrderInput | SortOrder
     QuadraTenis?: SortOrderInput | SortOrder
     QuadraPoliEsportiva?: SortOrderInput | SortOrder
+    RuaAsfaltada?: SortOrderInput | SortOrder
     SalaGinastica?: SortOrderInput | SortOrder
     SalaoFestas?: SortOrderInput | SortOrder
     SalaoJogos?: SortOrderInput | SortOrder
+    Sauna?: SortOrderInput | SortOrder
+    Silos?: SortOrderInput | SortOrder
+    Telefone?: SortOrderInput | SortOrder
+    TVCabo?: SortOrderInput | SortOrder
+    Varanda?: SortOrderInput | SortOrder
+    CasaCaseiro?: SortOrderInput | SortOrder
+    EnergiaEletrica?: SortOrderInput | SortOrder
     Interfone?: SortOrderInput | SortOrder
+    PocoArtesiano?: SortOrderInput | SortOrder
+    Paiol?: SortOrderInput | SortOrder
+    ProntoMorar?: SortOrderInput | SortOrder
+    Curral?: SortOrderInput | SortOrder
+    UtilizeFGTS?: SortOrderInput | SortOrder
+    Terraco?: SortOrderInput | SortOrder
+    Lavabo?: SortOrderInput | SortOrder
     campodefutebol?: SortOrderInput | SortOrder
-    PrecoCondominio?: SortOrderInput | SortOrder
     NomeCondominio?: SortOrderInput | SortOrder
-    video?: SortOrderInput | SortOrder
     Photos?: PhotoOrderByRelationAggregateInput
     _relevance?: PropertyOrderByRelevanceInput
   }
@@ -3793,16 +4189,17 @@ export namespace Prisma {
     AND?: PropertyWhereInput | PropertyWhereInput[]
     OR?: PropertyWhereInput[]
     NOT?: PropertyWhereInput | PropertyWhereInput[]
+    CodigoCliente?: StringNullableFilter<"Property"> | string | null
     TipoImovel?: StringNullableFilter<"Property"> | string | null
     SubTipoImovel?: StringNullableFilter<"Property"> | string | null
     CategoriaImovel?: StringNullableFilter<"Property"> | string | null
     Cidade?: StringFilter<"Property"> | string
     Bairro?: StringNullableFilter<"Property"> | string | null
-    Endereco?: StringNullableFilter<"Property"> | string | null
     CEP?: StringNullableFilter<"Property"> | string | null
     PrecoVenda?: FloatNullableFilter<"Property"> | number | null
     PrecoLocacao?: FloatNullableFilter<"Property"> | number | null
     PrecoLocacaoTemporada?: FloatNullableFilter<"Property"> | number | null
+    PrecoCondominio?: FloatNullableFilter<"Property"> | number | null
     AreaUtil?: FloatNullableFilter<"Property"> | number | null
     AreaTotal?: FloatNullableFilter<"Property"> | number | null
     QtdDormitorios?: IntNullableFilter<"Property"> | number | null
@@ -3813,44 +4210,65 @@ export namespace Prisma {
     QtdElevador?: IntNullableFilter<"Property"> | number | null
     QtdUnidadesAndar?: IntNullableFilter<"Property"> | number | null
     QtdAndar?: IntNullableFilter<"Property"> | number | null
+    AnoConstrucao?: IntNullableFilter<"Property"> | number | null
     Observacao?: StringNullableFilter<"Property"> | string | null
+    titulo?: StringNullableFilter<"Property"> | string | null
+    TipoOferta?: StringNullableFilter<"Property"> | string | null
+    AceitaPermuta?: IntNullableFilter<"Property"> | number | null
     ArCondicionado?: IntNullableFilter<"Property"> | number | null
-    Varanda?: IntNullableFilter<"Property"> | number | null
-    ProntoMorar?: IntNullableFilter<"Property"> | number | null
-    Lavabo?: IntNullableFilter<"Property"> | number | null
-    TipoOferta?: IntNullableFilter<"Property"> | number | null
+    Cerca?: IntNullableFilter<"Property"> | number | null
     Churrasqueira?: IntNullableFilter<"Property"> | number | null
-    Copa?: IntNullableFilter<"Property"> | number | null
-    WCEmpregada?: IntNullableFilter<"Property"> | number | null
-    Piscina?: IntNullableFilter<"Property"> | number | null
+    Esgoto?: IntNullableFilter<"Property"> | number | null
+    EstacionamentoRotativo?: IntNullableFilter<"Property"> | number | null
     EstacionamentoVisitantes?: IntNullableFilter<"Property"> | number | null
+    Heliponto?: IntNullableFilter<"Property"> | number | null
+    InfraInternet?: IntNullableFilter<"Property"> | number | null
+    Jardim?: IntNullableFilter<"Property"> | number | null
+    Lago?: IntNullableFilter<"Property"> | number | null
+    Lavoura?: IntNullableFilter<"Property"> | number | null
+    Pasto?: IntNullableFilter<"Property"> | number | null
+    Piscina?: IntNullableFilter<"Property"> | number | null
     Playground?: IntNullableFilter<"Property"> | number | null
     QuadraTenis?: IntNullableFilter<"Property"> | number | null
     QuadraPoliEsportiva?: IntNullableFilter<"Property"> | number | null
+    RuaAsfaltada?: IntNullableFilter<"Property"> | number | null
     SalaGinastica?: IntNullableFilter<"Property"> | number | null
     SalaoFestas?: IntNullableFilter<"Property"> | number | null
     SalaoJogos?: IntNullableFilter<"Property"> | number | null
+    Sauna?: IntNullableFilter<"Property"> | number | null
+    Silos?: IntNullableFilter<"Property"> | number | null
+    Telefone?: IntNullableFilter<"Property"> | number | null
+    TVCabo?: IntNullableFilter<"Property"> | number | null
+    Varanda?: IntNullableFilter<"Property"> | number | null
+    CasaCaseiro?: IntNullableFilter<"Property"> | number | null
+    EnergiaEletrica?: IntNullableFilter<"Property"> | number | null
     Interfone?: IntNullableFilter<"Property"> | number | null
+    PocoArtesiano?: IntNullableFilter<"Property"> | number | null
+    Paiol?: IntNullableFilter<"Property"> | number | null
+    ProntoMorar?: IntNullableFilter<"Property"> | number | null
+    Curral?: IntNullableFilter<"Property"> | number | null
+    UtilizeFGTS?: IntNullableFilter<"Property"> | number | null
+    Terraco?: IntNullableFilter<"Property"> | number | null
+    Lavabo?: IntNullableFilter<"Property"> | number | null
     campodefutebol?: IntNullableFilter<"Property"> | number | null
-    PrecoCondominio?: IntNullableFilter<"Property"> | number | null
     NomeCondominio?: StringNullableFilter<"Property"> | string | null
-    video?: StringNullableFilter<"Property"> | string | null
     Photos?: PhotoListRelationFilter
   }, "id" | "CodigoImovel">
 
   export type PropertyOrderByWithAggregationInput = {
     id?: SortOrder
+    CodigoCliente?: SortOrderInput | SortOrder
     CodigoImovel?: SortOrder
     TipoImovel?: SortOrderInput | SortOrder
     SubTipoImovel?: SortOrderInput | SortOrder
     CategoriaImovel?: SortOrderInput | SortOrder
     Cidade?: SortOrder
     Bairro?: SortOrderInput | SortOrder
-    Endereco?: SortOrderInput | SortOrder
     CEP?: SortOrderInput | SortOrder
     PrecoVenda?: SortOrderInput | SortOrder
     PrecoLocacao?: SortOrderInput | SortOrder
     PrecoLocacaoTemporada?: SortOrderInput | SortOrder
+    PrecoCondominio?: SortOrderInput | SortOrder
     AreaUtil?: SortOrderInput | SortOrder
     AreaTotal?: SortOrderInput | SortOrder
     QtdDormitorios?: SortOrderInput | SortOrder
@@ -3861,28 +4279,48 @@ export namespace Prisma {
     QtdElevador?: SortOrderInput | SortOrder
     QtdUnidadesAndar?: SortOrderInput | SortOrder
     QtdAndar?: SortOrderInput | SortOrder
+    AnoConstrucao?: SortOrderInput | SortOrder
     Observacao?: SortOrderInput | SortOrder
-    ArCondicionado?: SortOrderInput | SortOrder
-    Varanda?: SortOrderInput | SortOrder
-    ProntoMorar?: SortOrderInput | SortOrder
-    Lavabo?: SortOrderInput | SortOrder
+    titulo?: SortOrderInput | SortOrder
     TipoOferta?: SortOrderInput | SortOrder
+    AceitaPermuta?: SortOrderInput | SortOrder
+    ArCondicionado?: SortOrderInput | SortOrder
+    Cerca?: SortOrderInput | SortOrder
     Churrasqueira?: SortOrderInput | SortOrder
-    Copa?: SortOrderInput | SortOrder
-    WCEmpregada?: SortOrderInput | SortOrder
-    Piscina?: SortOrderInput | SortOrder
+    Esgoto?: SortOrderInput | SortOrder
+    EstacionamentoRotativo?: SortOrderInput | SortOrder
     EstacionamentoVisitantes?: SortOrderInput | SortOrder
+    Heliponto?: SortOrderInput | SortOrder
+    InfraInternet?: SortOrderInput | SortOrder
+    Jardim?: SortOrderInput | SortOrder
+    Lago?: SortOrderInput | SortOrder
+    Lavoura?: SortOrderInput | SortOrder
+    Pasto?: SortOrderInput | SortOrder
+    Piscina?: SortOrderInput | SortOrder
     Playground?: SortOrderInput | SortOrder
     QuadraTenis?: SortOrderInput | SortOrder
     QuadraPoliEsportiva?: SortOrderInput | SortOrder
+    RuaAsfaltada?: SortOrderInput | SortOrder
     SalaGinastica?: SortOrderInput | SortOrder
     SalaoFestas?: SortOrderInput | SortOrder
     SalaoJogos?: SortOrderInput | SortOrder
+    Sauna?: SortOrderInput | SortOrder
+    Silos?: SortOrderInput | SortOrder
+    Telefone?: SortOrderInput | SortOrder
+    TVCabo?: SortOrderInput | SortOrder
+    Varanda?: SortOrderInput | SortOrder
+    CasaCaseiro?: SortOrderInput | SortOrder
+    EnergiaEletrica?: SortOrderInput | SortOrder
     Interfone?: SortOrderInput | SortOrder
+    PocoArtesiano?: SortOrderInput | SortOrder
+    Paiol?: SortOrderInput | SortOrder
+    ProntoMorar?: SortOrderInput | SortOrder
+    Curral?: SortOrderInput | SortOrder
+    UtilizeFGTS?: SortOrderInput | SortOrder
+    Terraco?: SortOrderInput | SortOrder
+    Lavabo?: SortOrderInput | SortOrder
     campodefutebol?: SortOrderInput | SortOrder
-    PrecoCondominio?: SortOrderInput | SortOrder
     NomeCondominio?: SortOrderInput | SortOrder
-    video?: SortOrderInput | SortOrder
     _count?: PropertyCountOrderByAggregateInput
     _avg?: PropertyAvgOrderByAggregateInput
     _max?: PropertyMaxOrderByAggregateInput
@@ -3895,17 +4333,18 @@ export namespace Prisma {
     OR?: PropertyScalarWhereWithAggregatesInput[]
     NOT?: PropertyScalarWhereWithAggregatesInput | PropertyScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Property"> | number
+    CodigoCliente?: StringNullableWithAggregatesFilter<"Property"> | string | null
     CodigoImovel?: StringWithAggregatesFilter<"Property"> | string
     TipoImovel?: StringNullableWithAggregatesFilter<"Property"> | string | null
     SubTipoImovel?: StringNullableWithAggregatesFilter<"Property"> | string | null
     CategoriaImovel?: StringNullableWithAggregatesFilter<"Property"> | string | null
     Cidade?: StringWithAggregatesFilter<"Property"> | string
     Bairro?: StringNullableWithAggregatesFilter<"Property"> | string | null
-    Endereco?: StringNullableWithAggregatesFilter<"Property"> | string | null
     CEP?: StringNullableWithAggregatesFilter<"Property"> | string | null
     PrecoVenda?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     PrecoLocacao?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     PrecoLocacaoTemporada?: FloatNullableWithAggregatesFilter<"Property"> | number | null
+    PrecoCondominio?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     AreaUtil?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     AreaTotal?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     QtdDormitorios?: IntNullableWithAggregatesFilter<"Property"> | number | null
@@ -3916,28 +4355,48 @@ export namespace Prisma {
     QtdElevador?: IntNullableWithAggregatesFilter<"Property"> | number | null
     QtdUnidadesAndar?: IntNullableWithAggregatesFilter<"Property"> | number | null
     QtdAndar?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    AnoConstrucao?: IntNullableWithAggregatesFilter<"Property"> | number | null
     Observacao?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    titulo?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    TipoOferta?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    AceitaPermuta?: IntNullableWithAggregatesFilter<"Property"> | number | null
     ArCondicionado?: IntNullableWithAggregatesFilter<"Property"> | number | null
-    Varanda?: IntNullableWithAggregatesFilter<"Property"> | number | null
-    ProntoMorar?: IntNullableWithAggregatesFilter<"Property"> | number | null
-    Lavabo?: IntNullableWithAggregatesFilter<"Property"> | number | null
-    TipoOferta?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Cerca?: IntNullableWithAggregatesFilter<"Property"> | number | null
     Churrasqueira?: IntNullableWithAggregatesFilter<"Property"> | number | null
-    Copa?: IntNullableWithAggregatesFilter<"Property"> | number | null
-    WCEmpregada?: IntNullableWithAggregatesFilter<"Property"> | number | null
-    Piscina?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Esgoto?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    EstacionamentoRotativo?: IntNullableWithAggregatesFilter<"Property"> | number | null
     EstacionamentoVisitantes?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Heliponto?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    InfraInternet?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Jardim?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Lago?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Lavoura?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Pasto?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Piscina?: IntNullableWithAggregatesFilter<"Property"> | number | null
     Playground?: IntNullableWithAggregatesFilter<"Property"> | number | null
     QuadraTenis?: IntNullableWithAggregatesFilter<"Property"> | number | null
     QuadraPoliEsportiva?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    RuaAsfaltada?: IntNullableWithAggregatesFilter<"Property"> | number | null
     SalaGinastica?: IntNullableWithAggregatesFilter<"Property"> | number | null
     SalaoFestas?: IntNullableWithAggregatesFilter<"Property"> | number | null
     SalaoJogos?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Sauna?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Silos?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Telefone?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    TVCabo?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Varanda?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    CasaCaseiro?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    EnergiaEletrica?: IntNullableWithAggregatesFilter<"Property"> | number | null
     Interfone?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    PocoArtesiano?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Paiol?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    ProntoMorar?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Curral?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    UtilizeFGTS?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Terraco?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    Lavabo?: IntNullableWithAggregatesFilter<"Property"> | number | null
     campodefutebol?: IntNullableWithAggregatesFilter<"Property"> | number | null
-    PrecoCondominio?: IntNullableWithAggregatesFilter<"Property"> | number | null
     NomeCondominio?: StringNullableWithAggregatesFilter<"Property"> | string | null
-    video?: StringNullableWithAggregatesFilter<"Property"> | string | null
   }
 
   export type PhotoWhereInput = {
@@ -3999,17 +4458,18 @@ export namespace Prisma {
   }
 
   export type PropertyCreateInput = {
+    CodigoCliente?: string | null
     CodigoImovel: string
     TipoImovel?: string | null
     SubTipoImovel?: string | null
     CategoriaImovel?: string | null
     Cidade: string
     Bairro?: string | null
-    Endereco?: string | null
     CEP?: string | null
     PrecoVenda?: number | null
     PrecoLocacao?: number | null
     PrecoLocacaoTemporada?: number | null
+    PrecoCondominio?: number | null
     AreaUtil?: number | null
     AreaTotal?: number | null
     QtdDormitorios?: number | null
@@ -4020,44 +4480,65 @@ export namespace Prisma {
     QtdElevador?: number | null
     QtdUnidadesAndar?: number | null
     QtdAndar?: number | null
+    AnoConstrucao?: number | null
     Observacao?: string | null
+    titulo?: string | null
+    TipoOferta?: string | null
+    AceitaPermuta?: number | null
     ArCondicionado?: number | null
-    Varanda?: number | null
-    ProntoMorar?: number | null
-    Lavabo?: number | null
-    TipoOferta?: number | null
+    Cerca?: number | null
     Churrasqueira?: number | null
-    Copa?: number | null
-    WCEmpregada?: number | null
-    Piscina?: number | null
+    Esgoto?: number | null
+    EstacionamentoRotativo?: number | null
     EstacionamentoVisitantes?: number | null
+    Heliponto?: number | null
+    InfraInternet?: number | null
+    Jardim?: number | null
+    Lago?: number | null
+    Lavoura?: number | null
+    Pasto?: number | null
+    Piscina?: number | null
     Playground?: number | null
     QuadraTenis?: number | null
     QuadraPoliEsportiva?: number | null
+    RuaAsfaltada?: number | null
     SalaGinastica?: number | null
     SalaoFestas?: number | null
     SalaoJogos?: number | null
+    Sauna?: number | null
+    Silos?: number | null
+    Telefone?: number | null
+    TVCabo?: number | null
+    Varanda?: number | null
+    CasaCaseiro?: number | null
+    EnergiaEletrica?: number | null
     Interfone?: number | null
+    PocoArtesiano?: number | null
+    Paiol?: number | null
+    ProntoMorar?: number | null
+    Curral?: number | null
+    UtilizeFGTS?: number | null
+    Terraco?: number | null
+    Lavabo?: number | null
     campodefutebol?: number | null
-    PrecoCondominio?: number | null
     NomeCondominio?: string | null
-    video?: string | null
     Photos?: PhotoCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateInput = {
     id?: number
+    CodigoCliente?: string | null
     CodigoImovel: string
     TipoImovel?: string | null
     SubTipoImovel?: string | null
     CategoriaImovel?: string | null
     Cidade: string
     Bairro?: string | null
-    Endereco?: string | null
     CEP?: string | null
     PrecoVenda?: number | null
     PrecoLocacao?: number | null
     PrecoLocacaoTemporada?: number | null
+    PrecoCondominio?: number | null
     AreaUtil?: number | null
     AreaTotal?: number | null
     QtdDormitorios?: number | null
@@ -4068,43 +4549,64 @@ export namespace Prisma {
     QtdElevador?: number | null
     QtdUnidadesAndar?: number | null
     QtdAndar?: number | null
+    AnoConstrucao?: number | null
     Observacao?: string | null
+    titulo?: string | null
+    TipoOferta?: string | null
+    AceitaPermuta?: number | null
     ArCondicionado?: number | null
-    Varanda?: number | null
-    ProntoMorar?: number | null
-    Lavabo?: number | null
-    TipoOferta?: number | null
+    Cerca?: number | null
     Churrasqueira?: number | null
-    Copa?: number | null
-    WCEmpregada?: number | null
-    Piscina?: number | null
+    Esgoto?: number | null
+    EstacionamentoRotativo?: number | null
     EstacionamentoVisitantes?: number | null
+    Heliponto?: number | null
+    InfraInternet?: number | null
+    Jardim?: number | null
+    Lago?: number | null
+    Lavoura?: number | null
+    Pasto?: number | null
+    Piscina?: number | null
     Playground?: number | null
     QuadraTenis?: number | null
     QuadraPoliEsportiva?: number | null
+    RuaAsfaltada?: number | null
     SalaGinastica?: number | null
     SalaoFestas?: number | null
     SalaoJogos?: number | null
+    Sauna?: number | null
+    Silos?: number | null
+    Telefone?: number | null
+    TVCabo?: number | null
+    Varanda?: number | null
+    CasaCaseiro?: number | null
+    EnergiaEletrica?: number | null
     Interfone?: number | null
+    PocoArtesiano?: number | null
+    Paiol?: number | null
+    ProntoMorar?: number | null
+    Curral?: number | null
+    UtilizeFGTS?: number | null
+    Terraco?: number | null
+    Lavabo?: number | null
     campodefutebol?: number | null
-    PrecoCondominio?: number | null
     NomeCondominio?: string | null
-    video?: string | null
     Photos?: PhotoUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUpdateInput = {
+    CodigoCliente?: NullableStringFieldUpdateOperationsInput | string | null
     CodigoImovel?: StringFieldUpdateOperationsInput | string
     TipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     SubTipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     CategoriaImovel?: NullableStringFieldUpdateOperationsInput | string | null
     Cidade?: StringFieldUpdateOperationsInput | string
     Bairro?: NullableStringFieldUpdateOperationsInput | string | null
-    Endereco?: NullableStringFieldUpdateOperationsInput | string | null
     CEP?: NullableStringFieldUpdateOperationsInput | string | null
     PrecoVenda?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacao?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacaoTemporada?: NullableFloatFieldUpdateOperationsInput | number | null
+    PrecoCondominio?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaUtil?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaTotal?: NullableFloatFieldUpdateOperationsInput | number | null
     QtdDormitorios?: NullableIntFieldUpdateOperationsInput | number | null
@@ -4115,44 +4617,65 @@ export namespace Prisma {
     QtdElevador?: NullableIntFieldUpdateOperationsInput | number | null
     QtdUnidadesAndar?: NullableIntFieldUpdateOperationsInput | number | null
     QtdAndar?: NullableIntFieldUpdateOperationsInput | number | null
+    AnoConstrucao?: NullableIntFieldUpdateOperationsInput | number | null
     Observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    titulo?: NullableStringFieldUpdateOperationsInput | string | null
+    TipoOferta?: NullableStringFieldUpdateOperationsInput | string | null
+    AceitaPermuta?: NullableIntFieldUpdateOperationsInput | number | null
     ArCondicionado?: NullableIntFieldUpdateOperationsInput | number | null
-    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
-    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
-    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
-    TipoOferta?: NullableIntFieldUpdateOperationsInput | number | null
+    Cerca?: NullableIntFieldUpdateOperationsInput | number | null
     Churrasqueira?: NullableIntFieldUpdateOperationsInput | number | null
-    Copa?: NullableIntFieldUpdateOperationsInput | number | null
-    WCEmpregada?: NullableIntFieldUpdateOperationsInput | number | null
-    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
+    Esgoto?: NullableIntFieldUpdateOperationsInput | number | null
+    EstacionamentoRotativo?: NullableIntFieldUpdateOperationsInput | number | null
     EstacionamentoVisitantes?: NullableIntFieldUpdateOperationsInput | number | null
+    Heliponto?: NullableIntFieldUpdateOperationsInput | number | null
+    InfraInternet?: NullableIntFieldUpdateOperationsInput | number | null
+    Jardim?: NullableIntFieldUpdateOperationsInput | number | null
+    Lago?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavoura?: NullableIntFieldUpdateOperationsInput | number | null
+    Pasto?: NullableIntFieldUpdateOperationsInput | number | null
+    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
     Playground?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraTenis?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraPoliEsportiva?: NullableIntFieldUpdateOperationsInput | number | null
+    RuaAsfaltada?: NullableIntFieldUpdateOperationsInput | number | null
     SalaGinastica?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoFestas?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoJogos?: NullableIntFieldUpdateOperationsInput | number | null
+    Sauna?: NullableIntFieldUpdateOperationsInput | number | null
+    Silos?: NullableIntFieldUpdateOperationsInput | number | null
+    Telefone?: NullableIntFieldUpdateOperationsInput | number | null
+    TVCabo?: NullableIntFieldUpdateOperationsInput | number | null
+    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
+    CasaCaseiro?: NullableIntFieldUpdateOperationsInput | number | null
+    EnergiaEletrica?: NullableIntFieldUpdateOperationsInput | number | null
     Interfone?: NullableIntFieldUpdateOperationsInput | number | null
+    PocoArtesiano?: NullableIntFieldUpdateOperationsInput | number | null
+    Paiol?: NullableIntFieldUpdateOperationsInput | number | null
+    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
+    Curral?: NullableIntFieldUpdateOperationsInput | number | null
+    UtilizeFGTS?: NullableIntFieldUpdateOperationsInput | number | null
+    Terraco?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
     campodefutebol?: NullableIntFieldUpdateOperationsInput | number | null
-    PrecoCondominio?: NullableIntFieldUpdateOperationsInput | number | null
     NomeCondominio?: NullableStringFieldUpdateOperationsInput | string | null
-    video?: NullableStringFieldUpdateOperationsInput | string | null
     Photos?: PhotoUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    CodigoCliente?: NullableStringFieldUpdateOperationsInput | string | null
     CodigoImovel?: StringFieldUpdateOperationsInput | string
     TipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     SubTipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     CategoriaImovel?: NullableStringFieldUpdateOperationsInput | string | null
     Cidade?: StringFieldUpdateOperationsInput | string
     Bairro?: NullableStringFieldUpdateOperationsInput | string | null
-    Endereco?: NullableStringFieldUpdateOperationsInput | string | null
     CEP?: NullableStringFieldUpdateOperationsInput | string | null
     PrecoVenda?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacao?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacaoTemporada?: NullableFloatFieldUpdateOperationsInput | number | null
+    PrecoCondominio?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaUtil?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaTotal?: NullableFloatFieldUpdateOperationsInput | number | null
     QtdDormitorios?: NullableIntFieldUpdateOperationsInput | number | null
@@ -4163,44 +4686,65 @@ export namespace Prisma {
     QtdElevador?: NullableIntFieldUpdateOperationsInput | number | null
     QtdUnidadesAndar?: NullableIntFieldUpdateOperationsInput | number | null
     QtdAndar?: NullableIntFieldUpdateOperationsInput | number | null
+    AnoConstrucao?: NullableIntFieldUpdateOperationsInput | number | null
     Observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    titulo?: NullableStringFieldUpdateOperationsInput | string | null
+    TipoOferta?: NullableStringFieldUpdateOperationsInput | string | null
+    AceitaPermuta?: NullableIntFieldUpdateOperationsInput | number | null
     ArCondicionado?: NullableIntFieldUpdateOperationsInput | number | null
-    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
-    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
-    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
-    TipoOferta?: NullableIntFieldUpdateOperationsInput | number | null
+    Cerca?: NullableIntFieldUpdateOperationsInput | number | null
     Churrasqueira?: NullableIntFieldUpdateOperationsInput | number | null
-    Copa?: NullableIntFieldUpdateOperationsInput | number | null
-    WCEmpregada?: NullableIntFieldUpdateOperationsInput | number | null
-    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
+    Esgoto?: NullableIntFieldUpdateOperationsInput | number | null
+    EstacionamentoRotativo?: NullableIntFieldUpdateOperationsInput | number | null
     EstacionamentoVisitantes?: NullableIntFieldUpdateOperationsInput | number | null
+    Heliponto?: NullableIntFieldUpdateOperationsInput | number | null
+    InfraInternet?: NullableIntFieldUpdateOperationsInput | number | null
+    Jardim?: NullableIntFieldUpdateOperationsInput | number | null
+    Lago?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavoura?: NullableIntFieldUpdateOperationsInput | number | null
+    Pasto?: NullableIntFieldUpdateOperationsInput | number | null
+    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
     Playground?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraTenis?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraPoliEsportiva?: NullableIntFieldUpdateOperationsInput | number | null
+    RuaAsfaltada?: NullableIntFieldUpdateOperationsInput | number | null
     SalaGinastica?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoFestas?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoJogos?: NullableIntFieldUpdateOperationsInput | number | null
+    Sauna?: NullableIntFieldUpdateOperationsInput | number | null
+    Silos?: NullableIntFieldUpdateOperationsInput | number | null
+    Telefone?: NullableIntFieldUpdateOperationsInput | number | null
+    TVCabo?: NullableIntFieldUpdateOperationsInput | number | null
+    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
+    CasaCaseiro?: NullableIntFieldUpdateOperationsInput | number | null
+    EnergiaEletrica?: NullableIntFieldUpdateOperationsInput | number | null
     Interfone?: NullableIntFieldUpdateOperationsInput | number | null
+    PocoArtesiano?: NullableIntFieldUpdateOperationsInput | number | null
+    Paiol?: NullableIntFieldUpdateOperationsInput | number | null
+    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
+    Curral?: NullableIntFieldUpdateOperationsInput | number | null
+    UtilizeFGTS?: NullableIntFieldUpdateOperationsInput | number | null
+    Terraco?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
     campodefutebol?: NullableIntFieldUpdateOperationsInput | number | null
-    PrecoCondominio?: NullableIntFieldUpdateOperationsInput | number | null
     NomeCondominio?: NullableStringFieldUpdateOperationsInput | string | null
-    video?: NullableStringFieldUpdateOperationsInput | string | null
     Photos?: PhotoUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyCreateManyInput = {
     id?: number
+    CodigoCliente?: string | null
     CodigoImovel: string
     TipoImovel?: string | null
     SubTipoImovel?: string | null
     CategoriaImovel?: string | null
     Cidade: string
     Bairro?: string | null
-    Endereco?: string | null
     CEP?: string | null
     PrecoVenda?: number | null
     PrecoLocacao?: number | null
     PrecoLocacaoTemporada?: number | null
+    PrecoCondominio?: number | null
     AreaUtil?: number | null
     AreaTotal?: number | null
     QtdDormitorios?: number | null
@@ -4211,42 +4755,63 @@ export namespace Prisma {
     QtdElevador?: number | null
     QtdUnidadesAndar?: number | null
     QtdAndar?: number | null
+    AnoConstrucao?: number | null
     Observacao?: string | null
+    titulo?: string | null
+    TipoOferta?: string | null
+    AceitaPermuta?: number | null
     ArCondicionado?: number | null
-    Varanda?: number | null
-    ProntoMorar?: number | null
-    Lavabo?: number | null
-    TipoOferta?: number | null
+    Cerca?: number | null
     Churrasqueira?: number | null
-    Copa?: number | null
-    WCEmpregada?: number | null
-    Piscina?: number | null
+    Esgoto?: number | null
+    EstacionamentoRotativo?: number | null
     EstacionamentoVisitantes?: number | null
+    Heliponto?: number | null
+    InfraInternet?: number | null
+    Jardim?: number | null
+    Lago?: number | null
+    Lavoura?: number | null
+    Pasto?: number | null
+    Piscina?: number | null
     Playground?: number | null
     QuadraTenis?: number | null
     QuadraPoliEsportiva?: number | null
+    RuaAsfaltada?: number | null
     SalaGinastica?: number | null
     SalaoFestas?: number | null
     SalaoJogos?: number | null
+    Sauna?: number | null
+    Silos?: number | null
+    Telefone?: number | null
+    TVCabo?: number | null
+    Varanda?: number | null
+    CasaCaseiro?: number | null
+    EnergiaEletrica?: number | null
     Interfone?: number | null
+    PocoArtesiano?: number | null
+    Paiol?: number | null
+    ProntoMorar?: number | null
+    Curral?: number | null
+    UtilizeFGTS?: number | null
+    Terraco?: number | null
+    Lavabo?: number | null
     campodefutebol?: number | null
-    PrecoCondominio?: number | null
     NomeCondominio?: string | null
-    video?: string | null
   }
 
   export type PropertyUpdateManyMutationInput = {
+    CodigoCliente?: NullableStringFieldUpdateOperationsInput | string | null
     CodigoImovel?: StringFieldUpdateOperationsInput | string
     TipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     SubTipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     CategoriaImovel?: NullableStringFieldUpdateOperationsInput | string | null
     Cidade?: StringFieldUpdateOperationsInput | string
     Bairro?: NullableStringFieldUpdateOperationsInput | string | null
-    Endereco?: NullableStringFieldUpdateOperationsInput | string | null
     CEP?: NullableStringFieldUpdateOperationsInput | string | null
     PrecoVenda?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacao?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacaoTemporada?: NullableFloatFieldUpdateOperationsInput | number | null
+    PrecoCondominio?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaUtil?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaTotal?: NullableFloatFieldUpdateOperationsInput | number | null
     QtdDormitorios?: NullableIntFieldUpdateOperationsInput | number | null
@@ -4257,43 +4822,64 @@ export namespace Prisma {
     QtdElevador?: NullableIntFieldUpdateOperationsInput | number | null
     QtdUnidadesAndar?: NullableIntFieldUpdateOperationsInput | number | null
     QtdAndar?: NullableIntFieldUpdateOperationsInput | number | null
+    AnoConstrucao?: NullableIntFieldUpdateOperationsInput | number | null
     Observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    titulo?: NullableStringFieldUpdateOperationsInput | string | null
+    TipoOferta?: NullableStringFieldUpdateOperationsInput | string | null
+    AceitaPermuta?: NullableIntFieldUpdateOperationsInput | number | null
     ArCondicionado?: NullableIntFieldUpdateOperationsInput | number | null
-    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
-    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
-    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
-    TipoOferta?: NullableIntFieldUpdateOperationsInput | number | null
+    Cerca?: NullableIntFieldUpdateOperationsInput | number | null
     Churrasqueira?: NullableIntFieldUpdateOperationsInput | number | null
-    Copa?: NullableIntFieldUpdateOperationsInput | number | null
-    WCEmpregada?: NullableIntFieldUpdateOperationsInput | number | null
-    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
+    Esgoto?: NullableIntFieldUpdateOperationsInput | number | null
+    EstacionamentoRotativo?: NullableIntFieldUpdateOperationsInput | number | null
     EstacionamentoVisitantes?: NullableIntFieldUpdateOperationsInput | number | null
+    Heliponto?: NullableIntFieldUpdateOperationsInput | number | null
+    InfraInternet?: NullableIntFieldUpdateOperationsInput | number | null
+    Jardim?: NullableIntFieldUpdateOperationsInput | number | null
+    Lago?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavoura?: NullableIntFieldUpdateOperationsInput | number | null
+    Pasto?: NullableIntFieldUpdateOperationsInput | number | null
+    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
     Playground?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraTenis?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraPoliEsportiva?: NullableIntFieldUpdateOperationsInput | number | null
+    RuaAsfaltada?: NullableIntFieldUpdateOperationsInput | number | null
     SalaGinastica?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoFestas?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoJogos?: NullableIntFieldUpdateOperationsInput | number | null
+    Sauna?: NullableIntFieldUpdateOperationsInput | number | null
+    Silos?: NullableIntFieldUpdateOperationsInput | number | null
+    Telefone?: NullableIntFieldUpdateOperationsInput | number | null
+    TVCabo?: NullableIntFieldUpdateOperationsInput | number | null
+    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
+    CasaCaseiro?: NullableIntFieldUpdateOperationsInput | number | null
+    EnergiaEletrica?: NullableIntFieldUpdateOperationsInput | number | null
     Interfone?: NullableIntFieldUpdateOperationsInput | number | null
+    PocoArtesiano?: NullableIntFieldUpdateOperationsInput | number | null
+    Paiol?: NullableIntFieldUpdateOperationsInput | number | null
+    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
+    Curral?: NullableIntFieldUpdateOperationsInput | number | null
+    UtilizeFGTS?: NullableIntFieldUpdateOperationsInput | number | null
+    Terraco?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
     campodefutebol?: NullableIntFieldUpdateOperationsInput | number | null
-    PrecoCondominio?: NullableIntFieldUpdateOperationsInput | number | null
     NomeCondominio?: NullableStringFieldUpdateOperationsInput | string | null
-    video?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PropertyUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    CodigoCliente?: NullableStringFieldUpdateOperationsInput | string | null
     CodigoImovel?: StringFieldUpdateOperationsInput | string
     TipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     SubTipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     CategoriaImovel?: NullableStringFieldUpdateOperationsInput | string | null
     Cidade?: StringFieldUpdateOperationsInput | string
     Bairro?: NullableStringFieldUpdateOperationsInput | string | null
-    Endereco?: NullableStringFieldUpdateOperationsInput | string | null
     CEP?: NullableStringFieldUpdateOperationsInput | string | null
     PrecoVenda?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacao?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacaoTemporada?: NullableFloatFieldUpdateOperationsInput | number | null
+    PrecoCondominio?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaUtil?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaTotal?: NullableFloatFieldUpdateOperationsInput | number | null
     QtdDormitorios?: NullableIntFieldUpdateOperationsInput | number | null
@@ -4304,28 +4890,48 @@ export namespace Prisma {
     QtdElevador?: NullableIntFieldUpdateOperationsInput | number | null
     QtdUnidadesAndar?: NullableIntFieldUpdateOperationsInput | number | null
     QtdAndar?: NullableIntFieldUpdateOperationsInput | number | null
+    AnoConstrucao?: NullableIntFieldUpdateOperationsInput | number | null
     Observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    titulo?: NullableStringFieldUpdateOperationsInput | string | null
+    TipoOferta?: NullableStringFieldUpdateOperationsInput | string | null
+    AceitaPermuta?: NullableIntFieldUpdateOperationsInput | number | null
     ArCondicionado?: NullableIntFieldUpdateOperationsInput | number | null
-    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
-    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
-    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
-    TipoOferta?: NullableIntFieldUpdateOperationsInput | number | null
+    Cerca?: NullableIntFieldUpdateOperationsInput | number | null
     Churrasqueira?: NullableIntFieldUpdateOperationsInput | number | null
-    Copa?: NullableIntFieldUpdateOperationsInput | number | null
-    WCEmpregada?: NullableIntFieldUpdateOperationsInput | number | null
-    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
+    Esgoto?: NullableIntFieldUpdateOperationsInput | number | null
+    EstacionamentoRotativo?: NullableIntFieldUpdateOperationsInput | number | null
     EstacionamentoVisitantes?: NullableIntFieldUpdateOperationsInput | number | null
+    Heliponto?: NullableIntFieldUpdateOperationsInput | number | null
+    InfraInternet?: NullableIntFieldUpdateOperationsInput | number | null
+    Jardim?: NullableIntFieldUpdateOperationsInput | number | null
+    Lago?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavoura?: NullableIntFieldUpdateOperationsInput | number | null
+    Pasto?: NullableIntFieldUpdateOperationsInput | number | null
+    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
     Playground?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraTenis?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraPoliEsportiva?: NullableIntFieldUpdateOperationsInput | number | null
+    RuaAsfaltada?: NullableIntFieldUpdateOperationsInput | number | null
     SalaGinastica?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoFestas?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoJogos?: NullableIntFieldUpdateOperationsInput | number | null
+    Sauna?: NullableIntFieldUpdateOperationsInput | number | null
+    Silos?: NullableIntFieldUpdateOperationsInput | number | null
+    Telefone?: NullableIntFieldUpdateOperationsInput | number | null
+    TVCabo?: NullableIntFieldUpdateOperationsInput | number | null
+    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
+    CasaCaseiro?: NullableIntFieldUpdateOperationsInput | number | null
+    EnergiaEletrica?: NullableIntFieldUpdateOperationsInput | number | null
     Interfone?: NullableIntFieldUpdateOperationsInput | number | null
+    PocoArtesiano?: NullableIntFieldUpdateOperationsInput | number | null
+    Paiol?: NullableIntFieldUpdateOperationsInput | number | null
+    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
+    Curral?: NullableIntFieldUpdateOperationsInput | number | null
+    UtilizeFGTS?: NullableIntFieldUpdateOperationsInput | number | null
+    Terraco?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
     campodefutebol?: NullableIntFieldUpdateOperationsInput | number | null
-    PrecoCondominio?: NullableIntFieldUpdateOperationsInput | number | null
     NomeCondominio?: NullableStringFieldUpdateOperationsInput | string | null
-    video?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PhotoCreateInput = {
@@ -4391,22 +4997,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    mode?: QueryMode
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -4421,6 +5011,22 @@ export namespace Prisma {
     search?: string
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type FloatNullableFilter<$PrismaModel = never> = {
@@ -4468,17 +5074,18 @@ export namespace Prisma {
 
   export type PropertyCountOrderByAggregateInput = {
     id?: SortOrder
+    CodigoCliente?: SortOrder
     CodigoImovel?: SortOrder
     TipoImovel?: SortOrder
     SubTipoImovel?: SortOrder
     CategoriaImovel?: SortOrder
     Cidade?: SortOrder
     Bairro?: SortOrder
-    Endereco?: SortOrder
     CEP?: SortOrder
     PrecoVenda?: SortOrder
     PrecoLocacao?: SortOrder
     PrecoLocacaoTemporada?: SortOrder
+    PrecoCondominio?: SortOrder
     AreaUtil?: SortOrder
     AreaTotal?: SortOrder
     QtdDormitorios?: SortOrder
@@ -4489,28 +5096,48 @@ export namespace Prisma {
     QtdElevador?: SortOrder
     QtdUnidadesAndar?: SortOrder
     QtdAndar?: SortOrder
+    AnoConstrucao?: SortOrder
     Observacao?: SortOrder
-    ArCondicionado?: SortOrder
-    Varanda?: SortOrder
-    ProntoMorar?: SortOrder
-    Lavabo?: SortOrder
+    titulo?: SortOrder
     TipoOferta?: SortOrder
+    AceitaPermuta?: SortOrder
+    ArCondicionado?: SortOrder
+    Cerca?: SortOrder
     Churrasqueira?: SortOrder
-    Copa?: SortOrder
-    WCEmpregada?: SortOrder
-    Piscina?: SortOrder
+    Esgoto?: SortOrder
+    EstacionamentoRotativo?: SortOrder
     EstacionamentoVisitantes?: SortOrder
+    Heliponto?: SortOrder
+    InfraInternet?: SortOrder
+    Jardim?: SortOrder
+    Lago?: SortOrder
+    Lavoura?: SortOrder
+    Pasto?: SortOrder
+    Piscina?: SortOrder
     Playground?: SortOrder
     QuadraTenis?: SortOrder
     QuadraPoliEsportiva?: SortOrder
+    RuaAsfaltada?: SortOrder
     SalaGinastica?: SortOrder
     SalaoFestas?: SortOrder
     SalaoJogos?: SortOrder
+    Sauna?: SortOrder
+    Silos?: SortOrder
+    Telefone?: SortOrder
+    TVCabo?: SortOrder
+    Varanda?: SortOrder
+    CasaCaseiro?: SortOrder
+    EnergiaEletrica?: SortOrder
     Interfone?: SortOrder
+    PocoArtesiano?: SortOrder
+    Paiol?: SortOrder
+    ProntoMorar?: SortOrder
+    Curral?: SortOrder
+    UtilizeFGTS?: SortOrder
+    Terraco?: SortOrder
+    Lavabo?: SortOrder
     campodefutebol?: SortOrder
-    PrecoCondominio?: SortOrder
     NomeCondominio?: SortOrder
-    video?: SortOrder
   }
 
   export type PropertyAvgOrderByAggregateInput = {
@@ -4518,6 +5145,7 @@ export namespace Prisma {
     PrecoVenda?: SortOrder
     PrecoLocacao?: SortOrder
     PrecoLocacaoTemporada?: SortOrder
+    PrecoCondominio?: SortOrder
     AreaUtil?: SortOrder
     AreaTotal?: SortOrder
     QtdDormitorios?: SortOrder
@@ -4528,40 +5156,60 @@ export namespace Prisma {
     QtdElevador?: SortOrder
     QtdUnidadesAndar?: SortOrder
     QtdAndar?: SortOrder
+    AnoConstrucao?: SortOrder
+    AceitaPermuta?: SortOrder
     ArCondicionado?: SortOrder
-    Varanda?: SortOrder
-    ProntoMorar?: SortOrder
-    Lavabo?: SortOrder
-    TipoOferta?: SortOrder
+    Cerca?: SortOrder
     Churrasqueira?: SortOrder
-    Copa?: SortOrder
-    WCEmpregada?: SortOrder
-    Piscina?: SortOrder
+    Esgoto?: SortOrder
+    EstacionamentoRotativo?: SortOrder
     EstacionamentoVisitantes?: SortOrder
+    Heliponto?: SortOrder
+    InfraInternet?: SortOrder
+    Jardim?: SortOrder
+    Lago?: SortOrder
+    Lavoura?: SortOrder
+    Pasto?: SortOrder
+    Piscina?: SortOrder
     Playground?: SortOrder
     QuadraTenis?: SortOrder
     QuadraPoliEsportiva?: SortOrder
+    RuaAsfaltada?: SortOrder
     SalaGinastica?: SortOrder
     SalaoFestas?: SortOrder
     SalaoJogos?: SortOrder
+    Sauna?: SortOrder
+    Silos?: SortOrder
+    Telefone?: SortOrder
+    TVCabo?: SortOrder
+    Varanda?: SortOrder
+    CasaCaseiro?: SortOrder
+    EnergiaEletrica?: SortOrder
     Interfone?: SortOrder
+    PocoArtesiano?: SortOrder
+    Paiol?: SortOrder
+    ProntoMorar?: SortOrder
+    Curral?: SortOrder
+    UtilizeFGTS?: SortOrder
+    Terraco?: SortOrder
+    Lavabo?: SortOrder
     campodefutebol?: SortOrder
-    PrecoCondominio?: SortOrder
   }
 
   export type PropertyMaxOrderByAggregateInput = {
     id?: SortOrder
+    CodigoCliente?: SortOrder
     CodigoImovel?: SortOrder
     TipoImovel?: SortOrder
     SubTipoImovel?: SortOrder
     CategoriaImovel?: SortOrder
     Cidade?: SortOrder
     Bairro?: SortOrder
-    Endereco?: SortOrder
     CEP?: SortOrder
     PrecoVenda?: SortOrder
     PrecoLocacao?: SortOrder
     PrecoLocacaoTemporada?: SortOrder
+    PrecoCondominio?: SortOrder
     AreaUtil?: SortOrder
     AreaTotal?: SortOrder
     QtdDormitorios?: SortOrder
@@ -4572,43 +5220,64 @@ export namespace Prisma {
     QtdElevador?: SortOrder
     QtdUnidadesAndar?: SortOrder
     QtdAndar?: SortOrder
+    AnoConstrucao?: SortOrder
     Observacao?: SortOrder
-    ArCondicionado?: SortOrder
-    Varanda?: SortOrder
-    ProntoMorar?: SortOrder
-    Lavabo?: SortOrder
+    titulo?: SortOrder
     TipoOferta?: SortOrder
+    AceitaPermuta?: SortOrder
+    ArCondicionado?: SortOrder
+    Cerca?: SortOrder
     Churrasqueira?: SortOrder
-    Copa?: SortOrder
-    WCEmpregada?: SortOrder
-    Piscina?: SortOrder
+    Esgoto?: SortOrder
+    EstacionamentoRotativo?: SortOrder
     EstacionamentoVisitantes?: SortOrder
+    Heliponto?: SortOrder
+    InfraInternet?: SortOrder
+    Jardim?: SortOrder
+    Lago?: SortOrder
+    Lavoura?: SortOrder
+    Pasto?: SortOrder
+    Piscina?: SortOrder
     Playground?: SortOrder
     QuadraTenis?: SortOrder
     QuadraPoliEsportiva?: SortOrder
+    RuaAsfaltada?: SortOrder
     SalaGinastica?: SortOrder
     SalaoFestas?: SortOrder
     SalaoJogos?: SortOrder
+    Sauna?: SortOrder
+    Silos?: SortOrder
+    Telefone?: SortOrder
+    TVCabo?: SortOrder
+    Varanda?: SortOrder
+    CasaCaseiro?: SortOrder
+    EnergiaEletrica?: SortOrder
     Interfone?: SortOrder
+    PocoArtesiano?: SortOrder
+    Paiol?: SortOrder
+    ProntoMorar?: SortOrder
+    Curral?: SortOrder
+    UtilizeFGTS?: SortOrder
+    Terraco?: SortOrder
+    Lavabo?: SortOrder
     campodefutebol?: SortOrder
-    PrecoCondominio?: SortOrder
     NomeCondominio?: SortOrder
-    video?: SortOrder
   }
 
   export type PropertyMinOrderByAggregateInput = {
     id?: SortOrder
+    CodigoCliente?: SortOrder
     CodigoImovel?: SortOrder
     TipoImovel?: SortOrder
     SubTipoImovel?: SortOrder
     CategoriaImovel?: SortOrder
     Cidade?: SortOrder
     Bairro?: SortOrder
-    Endereco?: SortOrder
     CEP?: SortOrder
     PrecoVenda?: SortOrder
     PrecoLocacao?: SortOrder
     PrecoLocacaoTemporada?: SortOrder
+    PrecoCondominio?: SortOrder
     AreaUtil?: SortOrder
     AreaTotal?: SortOrder
     QtdDormitorios?: SortOrder
@@ -4619,28 +5288,48 @@ export namespace Prisma {
     QtdElevador?: SortOrder
     QtdUnidadesAndar?: SortOrder
     QtdAndar?: SortOrder
+    AnoConstrucao?: SortOrder
     Observacao?: SortOrder
-    ArCondicionado?: SortOrder
-    Varanda?: SortOrder
-    ProntoMorar?: SortOrder
-    Lavabo?: SortOrder
+    titulo?: SortOrder
     TipoOferta?: SortOrder
+    AceitaPermuta?: SortOrder
+    ArCondicionado?: SortOrder
+    Cerca?: SortOrder
     Churrasqueira?: SortOrder
-    Copa?: SortOrder
-    WCEmpregada?: SortOrder
-    Piscina?: SortOrder
+    Esgoto?: SortOrder
+    EstacionamentoRotativo?: SortOrder
     EstacionamentoVisitantes?: SortOrder
+    Heliponto?: SortOrder
+    InfraInternet?: SortOrder
+    Jardim?: SortOrder
+    Lago?: SortOrder
+    Lavoura?: SortOrder
+    Pasto?: SortOrder
+    Piscina?: SortOrder
     Playground?: SortOrder
     QuadraTenis?: SortOrder
     QuadraPoliEsportiva?: SortOrder
+    RuaAsfaltada?: SortOrder
     SalaGinastica?: SortOrder
     SalaoFestas?: SortOrder
     SalaoJogos?: SortOrder
+    Sauna?: SortOrder
+    Silos?: SortOrder
+    Telefone?: SortOrder
+    TVCabo?: SortOrder
+    Varanda?: SortOrder
+    CasaCaseiro?: SortOrder
+    EnergiaEletrica?: SortOrder
     Interfone?: SortOrder
+    PocoArtesiano?: SortOrder
+    Paiol?: SortOrder
+    ProntoMorar?: SortOrder
+    Curral?: SortOrder
+    UtilizeFGTS?: SortOrder
+    Terraco?: SortOrder
+    Lavabo?: SortOrder
     campodefutebol?: SortOrder
-    PrecoCondominio?: SortOrder
     NomeCondominio?: SortOrder
-    video?: SortOrder
   }
 
   export type PropertySumOrderByAggregateInput = {
@@ -4648,6 +5337,7 @@ export namespace Prisma {
     PrecoVenda?: SortOrder
     PrecoLocacao?: SortOrder
     PrecoLocacaoTemporada?: SortOrder
+    PrecoCondominio?: SortOrder
     AreaUtil?: SortOrder
     AreaTotal?: SortOrder
     QtdDormitorios?: SortOrder
@@ -4658,25 +5348,44 @@ export namespace Prisma {
     QtdElevador?: SortOrder
     QtdUnidadesAndar?: SortOrder
     QtdAndar?: SortOrder
+    AnoConstrucao?: SortOrder
+    AceitaPermuta?: SortOrder
     ArCondicionado?: SortOrder
-    Varanda?: SortOrder
-    ProntoMorar?: SortOrder
-    Lavabo?: SortOrder
-    TipoOferta?: SortOrder
+    Cerca?: SortOrder
     Churrasqueira?: SortOrder
-    Copa?: SortOrder
-    WCEmpregada?: SortOrder
-    Piscina?: SortOrder
+    Esgoto?: SortOrder
+    EstacionamentoRotativo?: SortOrder
     EstacionamentoVisitantes?: SortOrder
+    Heliponto?: SortOrder
+    InfraInternet?: SortOrder
+    Jardim?: SortOrder
+    Lago?: SortOrder
+    Lavoura?: SortOrder
+    Pasto?: SortOrder
+    Piscina?: SortOrder
     Playground?: SortOrder
     QuadraTenis?: SortOrder
     QuadraPoliEsportiva?: SortOrder
+    RuaAsfaltada?: SortOrder
     SalaGinastica?: SortOrder
     SalaoFestas?: SortOrder
     SalaoJogos?: SortOrder
+    Sauna?: SortOrder
+    Silos?: SortOrder
+    Telefone?: SortOrder
+    TVCabo?: SortOrder
+    Varanda?: SortOrder
+    CasaCaseiro?: SortOrder
+    EnergiaEletrica?: SortOrder
     Interfone?: SortOrder
+    PocoArtesiano?: SortOrder
+    Paiol?: SortOrder
+    ProntoMorar?: SortOrder
+    Curral?: SortOrder
+    UtilizeFGTS?: SortOrder
+    Terraco?: SortOrder
+    Lavabo?: SortOrder
     campodefutebol?: SortOrder
-    PrecoCondominio?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -4693,25 +5402,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4731,6 +5421,25 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4828,12 +5537,12 @@ export namespace Prisma {
     connect?: PhotoWhereUniqueInput | PhotoWhereUniqueInput[]
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
   }
 
   export type NullableFloatFieldUpdateOperationsInput = {
@@ -4913,21 +5622,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -4941,6 +5635,21 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
@@ -4992,24 +5701,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5026,6 +5717,24 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5111,17 +5820,18 @@ export namespace Prisma {
   }
 
   export type PropertyCreateWithoutPhotosInput = {
+    CodigoCliente?: string | null
     CodigoImovel: string
     TipoImovel?: string | null
     SubTipoImovel?: string | null
     CategoriaImovel?: string | null
     Cidade: string
     Bairro?: string | null
-    Endereco?: string | null
     CEP?: string | null
     PrecoVenda?: number | null
     PrecoLocacao?: number | null
     PrecoLocacaoTemporada?: number | null
+    PrecoCondominio?: number | null
     AreaUtil?: number | null
     AreaTotal?: number | null
     QtdDormitorios?: number | null
@@ -5132,43 +5842,64 @@ export namespace Prisma {
     QtdElevador?: number | null
     QtdUnidadesAndar?: number | null
     QtdAndar?: number | null
+    AnoConstrucao?: number | null
     Observacao?: string | null
+    titulo?: string | null
+    TipoOferta?: string | null
+    AceitaPermuta?: number | null
     ArCondicionado?: number | null
-    Varanda?: number | null
-    ProntoMorar?: number | null
-    Lavabo?: number | null
-    TipoOferta?: number | null
+    Cerca?: number | null
     Churrasqueira?: number | null
-    Copa?: number | null
-    WCEmpregada?: number | null
-    Piscina?: number | null
+    Esgoto?: number | null
+    EstacionamentoRotativo?: number | null
     EstacionamentoVisitantes?: number | null
+    Heliponto?: number | null
+    InfraInternet?: number | null
+    Jardim?: number | null
+    Lago?: number | null
+    Lavoura?: number | null
+    Pasto?: number | null
+    Piscina?: number | null
     Playground?: number | null
     QuadraTenis?: number | null
     QuadraPoliEsportiva?: number | null
+    RuaAsfaltada?: number | null
     SalaGinastica?: number | null
     SalaoFestas?: number | null
     SalaoJogos?: number | null
+    Sauna?: number | null
+    Silos?: number | null
+    Telefone?: number | null
+    TVCabo?: number | null
+    Varanda?: number | null
+    CasaCaseiro?: number | null
+    EnergiaEletrica?: number | null
     Interfone?: number | null
+    PocoArtesiano?: number | null
+    Paiol?: number | null
+    ProntoMorar?: number | null
+    Curral?: number | null
+    UtilizeFGTS?: number | null
+    Terraco?: number | null
+    Lavabo?: number | null
     campodefutebol?: number | null
-    PrecoCondominio?: number | null
     NomeCondominio?: string | null
-    video?: string | null
   }
 
   export type PropertyUncheckedCreateWithoutPhotosInput = {
     id?: number
+    CodigoCliente?: string | null
     CodigoImovel: string
     TipoImovel?: string | null
     SubTipoImovel?: string | null
     CategoriaImovel?: string | null
     Cidade: string
     Bairro?: string | null
-    Endereco?: string | null
     CEP?: string | null
     PrecoVenda?: number | null
     PrecoLocacao?: number | null
     PrecoLocacaoTemporada?: number | null
+    PrecoCondominio?: number | null
     AreaUtil?: number | null
     AreaTotal?: number | null
     QtdDormitorios?: number | null
@@ -5179,28 +5910,48 @@ export namespace Prisma {
     QtdElevador?: number | null
     QtdUnidadesAndar?: number | null
     QtdAndar?: number | null
+    AnoConstrucao?: number | null
     Observacao?: string | null
+    titulo?: string | null
+    TipoOferta?: string | null
+    AceitaPermuta?: number | null
     ArCondicionado?: number | null
-    Varanda?: number | null
-    ProntoMorar?: number | null
-    Lavabo?: number | null
-    TipoOferta?: number | null
+    Cerca?: number | null
     Churrasqueira?: number | null
-    Copa?: number | null
-    WCEmpregada?: number | null
-    Piscina?: number | null
+    Esgoto?: number | null
+    EstacionamentoRotativo?: number | null
     EstacionamentoVisitantes?: number | null
+    Heliponto?: number | null
+    InfraInternet?: number | null
+    Jardim?: number | null
+    Lago?: number | null
+    Lavoura?: number | null
+    Pasto?: number | null
+    Piscina?: number | null
     Playground?: number | null
     QuadraTenis?: number | null
     QuadraPoliEsportiva?: number | null
+    RuaAsfaltada?: number | null
     SalaGinastica?: number | null
     SalaoFestas?: number | null
     SalaoJogos?: number | null
+    Sauna?: number | null
+    Silos?: number | null
+    Telefone?: number | null
+    TVCabo?: number | null
+    Varanda?: number | null
+    CasaCaseiro?: number | null
+    EnergiaEletrica?: number | null
     Interfone?: number | null
+    PocoArtesiano?: number | null
+    Paiol?: number | null
+    ProntoMorar?: number | null
+    Curral?: number | null
+    UtilizeFGTS?: number | null
+    Terraco?: number | null
+    Lavabo?: number | null
     campodefutebol?: number | null
-    PrecoCondominio?: number | null
     NomeCondominio?: string | null
-    video?: string | null
   }
 
   export type PropertyCreateOrConnectWithoutPhotosInput = {
@@ -5220,17 +5971,18 @@ export namespace Prisma {
   }
 
   export type PropertyUpdateWithoutPhotosInput = {
+    CodigoCliente?: NullableStringFieldUpdateOperationsInput | string | null
     CodigoImovel?: StringFieldUpdateOperationsInput | string
     TipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     SubTipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     CategoriaImovel?: NullableStringFieldUpdateOperationsInput | string | null
     Cidade?: StringFieldUpdateOperationsInput | string
     Bairro?: NullableStringFieldUpdateOperationsInput | string | null
-    Endereco?: NullableStringFieldUpdateOperationsInput | string | null
     CEP?: NullableStringFieldUpdateOperationsInput | string | null
     PrecoVenda?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacao?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacaoTemporada?: NullableFloatFieldUpdateOperationsInput | number | null
+    PrecoCondominio?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaUtil?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaTotal?: NullableFloatFieldUpdateOperationsInput | number | null
     QtdDormitorios?: NullableIntFieldUpdateOperationsInput | number | null
@@ -5241,43 +5993,64 @@ export namespace Prisma {
     QtdElevador?: NullableIntFieldUpdateOperationsInput | number | null
     QtdUnidadesAndar?: NullableIntFieldUpdateOperationsInput | number | null
     QtdAndar?: NullableIntFieldUpdateOperationsInput | number | null
+    AnoConstrucao?: NullableIntFieldUpdateOperationsInput | number | null
     Observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    titulo?: NullableStringFieldUpdateOperationsInput | string | null
+    TipoOferta?: NullableStringFieldUpdateOperationsInput | string | null
+    AceitaPermuta?: NullableIntFieldUpdateOperationsInput | number | null
     ArCondicionado?: NullableIntFieldUpdateOperationsInput | number | null
-    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
-    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
-    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
-    TipoOferta?: NullableIntFieldUpdateOperationsInput | number | null
+    Cerca?: NullableIntFieldUpdateOperationsInput | number | null
     Churrasqueira?: NullableIntFieldUpdateOperationsInput | number | null
-    Copa?: NullableIntFieldUpdateOperationsInput | number | null
-    WCEmpregada?: NullableIntFieldUpdateOperationsInput | number | null
-    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
+    Esgoto?: NullableIntFieldUpdateOperationsInput | number | null
+    EstacionamentoRotativo?: NullableIntFieldUpdateOperationsInput | number | null
     EstacionamentoVisitantes?: NullableIntFieldUpdateOperationsInput | number | null
+    Heliponto?: NullableIntFieldUpdateOperationsInput | number | null
+    InfraInternet?: NullableIntFieldUpdateOperationsInput | number | null
+    Jardim?: NullableIntFieldUpdateOperationsInput | number | null
+    Lago?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavoura?: NullableIntFieldUpdateOperationsInput | number | null
+    Pasto?: NullableIntFieldUpdateOperationsInput | number | null
+    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
     Playground?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraTenis?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraPoliEsportiva?: NullableIntFieldUpdateOperationsInput | number | null
+    RuaAsfaltada?: NullableIntFieldUpdateOperationsInput | number | null
     SalaGinastica?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoFestas?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoJogos?: NullableIntFieldUpdateOperationsInput | number | null
+    Sauna?: NullableIntFieldUpdateOperationsInput | number | null
+    Silos?: NullableIntFieldUpdateOperationsInput | number | null
+    Telefone?: NullableIntFieldUpdateOperationsInput | number | null
+    TVCabo?: NullableIntFieldUpdateOperationsInput | number | null
+    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
+    CasaCaseiro?: NullableIntFieldUpdateOperationsInput | number | null
+    EnergiaEletrica?: NullableIntFieldUpdateOperationsInput | number | null
     Interfone?: NullableIntFieldUpdateOperationsInput | number | null
+    PocoArtesiano?: NullableIntFieldUpdateOperationsInput | number | null
+    Paiol?: NullableIntFieldUpdateOperationsInput | number | null
+    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
+    Curral?: NullableIntFieldUpdateOperationsInput | number | null
+    UtilizeFGTS?: NullableIntFieldUpdateOperationsInput | number | null
+    Terraco?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
     campodefutebol?: NullableIntFieldUpdateOperationsInput | number | null
-    PrecoCondominio?: NullableIntFieldUpdateOperationsInput | number | null
     NomeCondominio?: NullableStringFieldUpdateOperationsInput | string | null
-    video?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PropertyUncheckedUpdateWithoutPhotosInput = {
     id?: IntFieldUpdateOperationsInput | number
+    CodigoCliente?: NullableStringFieldUpdateOperationsInput | string | null
     CodigoImovel?: StringFieldUpdateOperationsInput | string
     TipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     SubTipoImovel?: NullableStringFieldUpdateOperationsInput | string | null
     CategoriaImovel?: NullableStringFieldUpdateOperationsInput | string | null
     Cidade?: StringFieldUpdateOperationsInput | string
     Bairro?: NullableStringFieldUpdateOperationsInput | string | null
-    Endereco?: NullableStringFieldUpdateOperationsInput | string | null
     CEP?: NullableStringFieldUpdateOperationsInput | string | null
     PrecoVenda?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacao?: NullableFloatFieldUpdateOperationsInput | number | null
     PrecoLocacaoTemporada?: NullableFloatFieldUpdateOperationsInput | number | null
+    PrecoCondominio?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaUtil?: NullableFloatFieldUpdateOperationsInput | number | null
     AreaTotal?: NullableFloatFieldUpdateOperationsInput | number | null
     QtdDormitorios?: NullableIntFieldUpdateOperationsInput | number | null
@@ -5288,28 +6061,48 @@ export namespace Prisma {
     QtdElevador?: NullableIntFieldUpdateOperationsInput | number | null
     QtdUnidadesAndar?: NullableIntFieldUpdateOperationsInput | number | null
     QtdAndar?: NullableIntFieldUpdateOperationsInput | number | null
+    AnoConstrucao?: NullableIntFieldUpdateOperationsInput | number | null
     Observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    titulo?: NullableStringFieldUpdateOperationsInput | string | null
+    TipoOferta?: NullableStringFieldUpdateOperationsInput | string | null
+    AceitaPermuta?: NullableIntFieldUpdateOperationsInput | number | null
     ArCondicionado?: NullableIntFieldUpdateOperationsInput | number | null
-    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
-    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
-    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
-    TipoOferta?: NullableIntFieldUpdateOperationsInput | number | null
+    Cerca?: NullableIntFieldUpdateOperationsInput | number | null
     Churrasqueira?: NullableIntFieldUpdateOperationsInput | number | null
-    Copa?: NullableIntFieldUpdateOperationsInput | number | null
-    WCEmpregada?: NullableIntFieldUpdateOperationsInput | number | null
-    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
+    Esgoto?: NullableIntFieldUpdateOperationsInput | number | null
+    EstacionamentoRotativo?: NullableIntFieldUpdateOperationsInput | number | null
     EstacionamentoVisitantes?: NullableIntFieldUpdateOperationsInput | number | null
+    Heliponto?: NullableIntFieldUpdateOperationsInput | number | null
+    InfraInternet?: NullableIntFieldUpdateOperationsInput | number | null
+    Jardim?: NullableIntFieldUpdateOperationsInput | number | null
+    Lago?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavoura?: NullableIntFieldUpdateOperationsInput | number | null
+    Pasto?: NullableIntFieldUpdateOperationsInput | number | null
+    Piscina?: NullableIntFieldUpdateOperationsInput | number | null
     Playground?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraTenis?: NullableIntFieldUpdateOperationsInput | number | null
     QuadraPoliEsportiva?: NullableIntFieldUpdateOperationsInput | number | null
+    RuaAsfaltada?: NullableIntFieldUpdateOperationsInput | number | null
     SalaGinastica?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoFestas?: NullableIntFieldUpdateOperationsInput | number | null
     SalaoJogos?: NullableIntFieldUpdateOperationsInput | number | null
+    Sauna?: NullableIntFieldUpdateOperationsInput | number | null
+    Silos?: NullableIntFieldUpdateOperationsInput | number | null
+    Telefone?: NullableIntFieldUpdateOperationsInput | number | null
+    TVCabo?: NullableIntFieldUpdateOperationsInput | number | null
+    Varanda?: NullableIntFieldUpdateOperationsInput | number | null
+    CasaCaseiro?: NullableIntFieldUpdateOperationsInput | number | null
+    EnergiaEletrica?: NullableIntFieldUpdateOperationsInput | number | null
     Interfone?: NullableIntFieldUpdateOperationsInput | number | null
+    PocoArtesiano?: NullableIntFieldUpdateOperationsInput | number | null
+    Paiol?: NullableIntFieldUpdateOperationsInput | number | null
+    ProntoMorar?: NullableIntFieldUpdateOperationsInput | number | null
+    Curral?: NullableIntFieldUpdateOperationsInput | number | null
+    UtilizeFGTS?: NullableIntFieldUpdateOperationsInput | number | null
+    Terraco?: NullableIntFieldUpdateOperationsInput | number | null
+    Lavabo?: NullableIntFieldUpdateOperationsInput | number | null
     campodefutebol?: NullableIntFieldUpdateOperationsInput | number | null
-    PrecoCondominio?: NullableIntFieldUpdateOperationsInput | number | null
     NomeCondominio?: NullableStringFieldUpdateOperationsInput | string | null
-    video?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PhotoCreateManyPropertyInput = {
