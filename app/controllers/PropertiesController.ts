@@ -6,6 +6,13 @@ import xml2js from "xml2js";
 export class GetImoveisController {
     async handle(request: Request, response: Response) {
         try {
+            // VERIFICAÇÃO DE CRON POR VALIDAÇÃO DE TOKEN
+            const authHeader = request.headers.authorization; 
+            const cronSecret = process.env.CRON_SECRET;
+            if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+                return response.status(401).json({ error: "Não autorizado. Token inválido." });
+            }
+
             const url = "https://portais.infoideias.net/Midas/portais/002061/sitepp/5be54fc9eb29b08/siteproprio.xml";
 
             // 1. Baixa o XML em alta velocidade
