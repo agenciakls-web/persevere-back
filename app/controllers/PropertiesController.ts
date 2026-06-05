@@ -15,31 +15,53 @@ export class GetImoveisController {
             const listaImoveis = parsed?.Carga?.Imoveis?.Imovel ?? [];
             const imoveisArray = Array.isArray(listaImoveis) ? listaImoveis : [listaImoveis];
 
-            // 2. Mapeia todos os códigos válidos do XML para a memória
+            // 2. Mapeia todos os códigos do XML
             const codigosAtuaisDoXml = imoveisArray
                 .map((imovel: any) => imovel.CodigoImovel ? String(imovel.CodigoImovel).trim() : null)
                 .filter(Boolean) as string[];
 
-            // 3. LIMPEZA DOS IMÓVEIS: Remove de uma vez só quem saiu do XML
+            // 3. Puxa do banco APENAS os códigos existentes para comparação (Ultra rápido)
+            const imoveisNoBanco = await prismaClient.property.findMany({
+                select: { CodigoImovel: true }
+            });
+            const setCodigosBanco = new Set(imoveisNoBanco.map(i => i.CodigoImovel));
+
+            // Arrays para o relatório de retorno do Front-end
+            const criados: string[] = [];
+            const atualizados: string[] = [];
+            const deletados: string[] = [];
+
+            // 4. LIMPEZA: Identifica e remove quem saiu do XML
             if (codigosAtuaisDoXml.length > 0) {
+                // Coleta quem está no banco mas NÃO está no XML para o relatório
+                imoveisNoBanco.forEach(i => {
+                    if (!codigosAtuaisDoXml.includes(i.CodigoImovel)) {
+                        deletados.push(i.CodigoImovel);
+                    }
+                });
+
                 await prismaClient.property.deleteMany({
-                    where: {
-                        CodigoImovel: { notIn: codigosAtuaisDoXml },
-                    },
+                    where: { CodigoImovel: { notIn: codigosAtuaisDoXml } },
                 });
             }
 
-            let countProperty = 0;
             const parseIntFlag = (value: any): number => {
                 if (!value) return 0;
                 const parsedValue = parseInt(value);
                 return isNaN(parsedValue) ? 0 : parsedValue;
             };
 
-            // 4. PROCESSAMENTO DOS IMÓVEIS ATUAIS
+            // 5. PROCESSAMENTO PRINCIPAL
             for (const singleImovel of imoveisArray) {
                 if (!singleImovel.CodigoImovel) continue;
                 const codigo = String(singleImovel.CodigoImovel).trim();
+
+                // Alimenta o relatório separando o que é novo do que já existia
+                if (setCodigosBanco.has(codigo)) {
+                    atualizados.push(codigo);
+                } else {
+                    criados.push(codigo);
+                }
 
                 const dadosImovel = {
                     CodigoCliente: singleImovel.CodigoCliente || "",
@@ -107,17 +129,13 @@ export class GetImoveisController {
                     NomeCondominio: singleImovel.NomeCondominio || ""
                 };
 
-                // UPSERT DO IMÓVEL: Atualiza se já existir, cria se for novo
                 const property = await prismaClient.property.upsert({
                     where: { CodigoImovel: codigo },
                     update: dadosImovel,
                     create: { ...dadosImovel, CodigoImovel: codigo }
                 });
 
-                countProperty++;
-
-                // SINCRONIZAÇÃO DAS FOTOS:
-                // Prepara o array de fotos vindas do XML para este imóvel
+                // Sincronização de fotos acelerada
                 const fotos = singleImovel.Fotos?.Foto ?? [];
                 const fotosArray = Array.isArray(fotos) ? fotos : [fotos];
 
@@ -132,18 +150,26 @@ export class GetImoveisController {
                     };
                 }).filter(Boolean) as any[];
 
-                // Executa a sincronização de fotos em lote para este imóvel
                 await prismaClient.$transaction([
-                    // Remove TODAS as antigas deste imóvel (se tinha 5, limpa as 5)
                     prismaClient.photo.deleteMany({ where: { property_id: property.id } }),
-                    // Insere as novas tratadas (se agora tem 3, insere as 3 atualizadas)
                     prismaClient.photo.createMany({ data: fotosParaInserir })
                 ]);
             }
 
+            // Retorna o payload estruturado para o Painel Administrativo do Front-end
             return response.json({
-                countProperty,
-                message: "Sincronização inteligente concluída com sucesso.",
+                success: true,
+                summary: {
+                    totalProcessados: imoveisArray.length,
+                    totalCriados: criados.length,
+                    totalAtualizados: atualizados.length,
+                    totalDeletados: deletados.length
+                },
+                detalhes: {
+                    criados,
+                    atualizados,
+                    deletados
+                }
             });
 
         } catch (error: any) {
