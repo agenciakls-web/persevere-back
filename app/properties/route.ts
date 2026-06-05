@@ -136,7 +136,7 @@ properties.get('/', async (req: Request, res: Response) => {
                 include: { Photos: true }, 
                 skip: skip,
                 take: itemsPerPage,
-                orderBy: { PrecoVenda: 'desc'}
+                orderBy: { PrecoVenda: 'asc'}
             })
         ]);
 
