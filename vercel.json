@@ -11,5 +11,11 @@
             "src": "(.*)",
             "dest": "app/server.ts"
         }
+    ],
+    "crons": [
+        {
+        "path": "/getimoveis-api",
+        "schedule": "0 8 * * *"
+        }
     ]
 }
