@@ -5,7 +5,7 @@ const properties = Router()
 
 properties.get('/', async (req: Request, res: Response) => {
     try {
-        // 1. Desestruturando os query params enviados pelo Axios (Adicionado 'estilo')
+        // 1. Desestruturando os query params (Adicionados 'orderBy' e 'orderDirection')
         const {
             page,
             pesquisa,
@@ -14,8 +14,10 @@ properties.get('/', async (req: Request, res: Response) => {
             quartos,
             condominio,
             CodigoImovel,
-            estilo, // Novo parâmetro para capturar as buscas temáticas do Menu
-            action
+            estilo,
+            action,
+            orderBy,         // Novo: Campo pelo qual ordenar (ex: 'PrecoVenda', 'titulo')
+            orderDirection   // Novo: Direção da ordenação ('asc' ou 'desc')
         } = req.query;
 
         // Define 'comprar' como padrão caso o action não venha preenchido
@@ -34,7 +36,6 @@ properties.get('/', async (req: Request, res: Response) => {
 
         // CONDICIONAL DA ACTION
         if (currentAction === 'codigo') {
-            // Se a action for código, busca APENAS pelo Código do Imóvel (%pesquisa%)
             if (CodigoImovel && (CodigoImovel as string).trim() !== "") {
                 whereClause.CodigoImovel = {
                     contains: (CodigoImovel as string).trim(),
@@ -42,8 +43,6 @@ properties.get('/', async (req: Request, res: Response) => {
                 };
             }
         } else {
-            // Comportamento padrão (action = comprar ou qualquer outra)
-            // Filtro de pesquisa por texto (busca no SubTipo, Bairro ou Cidade)
             if (pesquisa) {
                 whereClause.OR = [
                     { SubTipoImovel: { contains: pesquisa as string, mode: 'insensitive' } },
@@ -53,7 +52,6 @@ properties.get('/', async (req: Request, res: Response) => {
                 ];
             }
 
-            // Filtro por Tipo de Imóvel
             if (TipoImovel) {
                 whereClause.SubTipoImovel = {
                     equals: TipoImovel as string,
@@ -61,21 +59,18 @@ properties.get('/', async (req: Request, res: Response) => {
                 };
             }
 
-            // Filtro por Quantidade Mínima de Quartos
             if (quartos) {
                 whereClause.QtdDormitorios = {
                     gte: parseInt(quartos as string)
                 };
             }
 
-            // Filtro por Condomínio Fechado integrado com os dados reais do seu XML
             if (condominio === '1') {
                 whereClause.NomeCondominio = { not: "" };
             } else if (condominio === '0') {
                 whereClause.NomeCondominio = { equals: "" };
             }
 
-            // Filtro por Faixa de Preço
             if (PrecoVenda) {
                 switch (PrecoVenda as string) {
                     case '1': whereClause.PrecoVenda = { gt: 0, lte: 200000 }; break;
@@ -87,40 +82,28 @@ properties.get('/', async (req: Request, res: Response) => {
                 }
             }
 
-            // ==========================================
-            // NOVOS FILTROS: TRATAMENTO DE ESTILOS DE VIDA
-            // ==========================================
             if (estilo) {
                 switch (estilo as string) {
                     case 'condominio':
-                        // Filtra imóveis que possuem nome de condomínio registrado
                         whereClause.NomeCondominio = { not: "" };
                         break;
-                    
                     case 'lazer':
-                        // Retorna imóveis que tenham piscina E churrasqueira juntos (Lazer Completo)
                         whereClause.Piscina = 1;
                         whereClause.Churrasqueira = 1;
                         break;
-                    
                     case 'espacoso':
-                        // Perfeito para famílias: 3 quartos ou mais e pelo menos 1 vaga
                         whereClause.QtdDormitorios = { gte: 3 };
                         whereClause.QtdVagas = { gte: 1 };
                         break;
-
                     case 'oportunidades':
-                        // Combina facilidades financeiras (Aceita Permuta OU Aceita FGTS)
                         whereClause.OR = [
                             { AceitaPermuta: 1 },
                             { UtilizeFGTS: 1 }
                         ];
                         break;
-
                     case 'permuta':
                         whereClause.AceitaPermuta = 1;
                         break;
-
                     case 'fgts':
                         whereClause.UtilizeFGTS = 1;
                         break;
@@ -128,7 +111,21 @@ properties.get('/', async (req: Request, res: Response) => {
             }
         }
 
-        // 4. Executa as queries no banco de forma paralela
+        // ==========================================
+        // CONFIGURAÇÃO DA ORDENAÇÃO DINÂMICA (PRISMA)
+        // ==========================================
+        // Mapeia os campos válidos para evitar SQL Injection via query string
+        const camposValidos = ['PrecoVenda', 'titulo', 'PrecoLocacao', 'id'];
+        const campoOrdenacao = camposValidos.includes(orderBy as string) ? (orderBy as string) : 'PrecoVenda';
+        
+        // Define a direção ('asc' ou 'desc'). Padrão: 'asc' (crescente)
+        const direcaoOrdenacao = orderDirection === 'desc' ? 'desc' : 'asc';
+
+        const orderByClause: any = {
+            [campoOrdenacao]: direcaoOrdenacao
+        };
+
+        // 4. Executa as queries no banco de forma paralela usando o orderByClause dinâmico
         const [totalItems, filteredProperties] = await prismaClient.$transaction([
             prismaClient.property.count({ where: whereClause }),
             prismaClient.property.findMany({
@@ -136,7 +133,7 @@ properties.get('/', async (req: Request, res: Response) => {
                 include: { Photos: true }, 
                 skip: skip,
                 take: itemsPerPage,
-                orderBy: { PrecoVenda: 'asc'}
+                orderBy: orderByClause // Substituído o estático pelo dinâmico aqui
             })
         ]);
 
