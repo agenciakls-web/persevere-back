@@ -6,52 +6,43 @@ import xml2js from "xml2js";
 export class GetImoveisController {
     async handle(request: Request, response: Response) {
         try {
-            const url =
-                "https://portais.infoideias.net/Midas/portais/002061/sitepp/5be54fc9eb29b08/siteproprio.xml";
+            const url = "https://portais.infoideias.net/Midas/portais/002061/sitepp/5be54fc9eb29b08/siteproprio.xml";
 
-            // Baixa XML via axios
+            // 1. Baixa o XML em memória
             const { data } = await axios.get(url, { timeout: 15000 });
-
-            // Converte XML para objeto JS direto em memória
             const parser = new xml2js.Parser({ explicitArray: false });
             const parsed = await parser.parseStringPromise(data);
-
             const listaImoveis = parsed?.Carga?.Imoveis?.Imovel ?? [];
+            const imoveisArray = Array.isArray(listaImoveis) ? listaImoveis : [listaImoveis];
 
-            // Normaliza para array
-            const imoveisArray = Array.isArray(listaImoveis)
-                ? listaImoveis
-                : [listaImoveis];
+            // 2. Mapeia todos os códigos válidos do XML para a memória
+            const codigosAtuaisDoXml = imoveisArray
+                .map((imovel: any) => imovel.CodigoImovel ? String(imovel.CodigoImovel).trim() : null)
+                .filter(Boolean) as string[];
 
-            // Remove imóveis que não estão mais no XML
-            const codigosAtuais = imoveisArray.map(
-                (imovel: any) => imovel.CodigoImovel
-            ).filter(Boolean);
-
-            if (codigosAtuais.length > 0) {
+            // 3. LIMPEZA DOS IMÓVEIS: Remove de uma vez só quem saiu do XML
+            if (codigosAtuaisDoXml.length > 0) {
                 await prismaClient.property.deleteMany({
                     where: {
-                        CodigoImovel: { notIn: codigosAtuais },
+                        CodigoImovel: { notIn: codigosAtuaisDoXml },
                     },
                 });
             }
 
             let countProperty = 0;
-
-            // Função auxiliar para tratar as características booleanas (0 ou 1) vindas do XML
             const parseIntFlag = (value: any): number => {
                 if (!value) return 0;
                 const parsedValue = parseInt(value);
                 return isNaN(parsedValue) ? 0 : parsedValue;
             };
 
+            // 4. PROCESSAMENTO DOS IMÓVEIS ATUAIS
             for (const singleImovel of imoveisArray) {
-                // Pula o registro caso não possua o código do imóvel
                 if (!singleImovel.CodigoImovel) continue;
+                const codigo = String(singleImovel.CodigoImovel).trim();
 
-                const arrayImovel = {
+                const dadosImovel = {
                     CodigoCliente: singleImovel.CodigoCliente || "",
-                    CodigoImovel: singleImovel.CodigoImovel,
                     TipoImovel: singleImovel.TipoImovel || "",
                     SubTipoImovel: singleImovel.SubTipoImovel || "",
                     CategoriaImovel: singleImovel.CategoriaImovel || "",
@@ -64,8 +55,6 @@ export class GetImoveisController {
                     PrecoCondominio: parseFloat(singleImovel.PrecoCondominio || 0),
                     AreaUtil: parseFloat(singleImovel.AreaUtil || 0),
                     AreaTotal: parseFloat(singleImovel.AreaTotal || 0),
-                    
-                    // Quantidades e Datas
                     QtdDormitorios: parseInt(singleImovel.QtdDormitorios || 0),
                     QtdSuites: parseInt(singleImovel.QtdSuites || 0),
                     QtdBanheiros: parseInt(singleImovel.QtdBanheiros || 0),
@@ -75,12 +64,9 @@ export class GetImoveisController {
                     QtdUnidadesAndar: parseInt(singleImovel.QtdUnidadesAndar || 0),
                     QtdAndar: parseInt(singleImovel.QtdAndar || 0),
                     AnoConstrucao: singleImovel.AnoConstrucao ? parseInt(singleImovel.AnoConstrucao) : null,
-                    
                     Observacao: singleImovel.Observacao || "",
                     titulo: singleImovel.titulo || "",
                     TipoOferta: singleImovel.TipoOferta || "N",
-
-                    // Características / Flags (0 ou 1) sincronizadas com o XML
                     AceitaPermuta: parseIntFlag(singleImovel.AceitaPermuta),
                     ArCondicionado: parseIntFlag(singleImovel.ArCondicionado),
                     Cerca: parseIntFlag(singleImovel.Cerca),
@@ -118,84 +104,52 @@ export class GetImoveisController {
                     Terraco: parseIntFlag(singleImovel.Terraco),
                     Lavabo: parseIntFlag(singleImovel.Lavabo),
                     campodefutebol: parseIntFlag(singleImovel.campodefutebol),
-                    NomeCondominio: singleImovel.NomeCondominio || "",
+                    NomeCondominio: singleImovel.NomeCondominio || ""
                 };
 
-                // Busca imóvel existente para Upsert manual
-                let property = await prismaClient.property.findUnique({
-                    where: { CodigoImovel: arrayImovel.CodigoImovel },
+                // UPSERT DO IMÓVEL: Atualiza se já existir, cria se for novo
+                const property = await prismaClient.property.upsert({
+                    where: { CodigoImovel: codigo },
+                    update: dadosImovel,
+                    create: { ...dadosImovel, CodigoImovel: codigo }
                 });
-
-                if (property) {
-                    property = await prismaClient.property.update({
-                        where: { CodigoImovel: arrayImovel.CodigoImovel },
-                        data: arrayImovel,
-                    });
-                } else {
-                    property = await prismaClient.property.create({
-                        data: arrayImovel,
-                    });
-                }
 
                 countProperty++;
 
-                // Sincronização Incremental das Fotos
+                // SINCRONIZAÇÃO DAS FOTOS:
+                // Prepara o array de fotos vindas do XML para este imóvel
                 const fotos = singleImovel.Fotos?.Foto ?? [];
                 const fotosArray = Array.isArray(fotos) ? fotos : [fotos];
 
-                const currentPhotos = await prismaClient.photo.findMany({
-                    where: { property_id: property.id },
-                });
-
-                const currentPhotosMap: Record<string, any> = {};
-                currentPhotos.forEach((p) => {
-                    if (p.URLArquivo) { currentPhotosMap[p.URLArquivo] = p; }
-                });
-
-                for (const singleFoto of fotosArray) {
+                const fotosParaInserir = fotosArray.map((singleFoto: any) => {
                     const urlFoto = singleFoto.URLArquivo || "";
-                    if (!urlFoto) continue;
+                    if (!urlFoto) return null;
+                    return {
+                        URLArquivo: urlFoto,
+                        Principal: parseIntFlag(singleFoto.Principal),
+                        Alterada: parseIntFlag(singleFoto.Alterada),
+                        property_id: property.id
+                    };
+                }).filter(Boolean) as any[];
 
-                    const principal = parseIntFlag(singleFoto.Principal);
-                    const alterada = parseIntFlag(singleFoto.Alterada);
-
-                    if (currentPhotosMap[urlFoto]) {
-                        // Foto já existe, atualiza metadados se mudaram
-                        await prismaClient.photo.update({
-                            where: { id: currentPhotosMap[urlFoto].id },
-                            data: {
-                                Principal: principal,
-                                Alterada: alterada,
-                            },
-                        });
-                        delete currentPhotosMap[urlFoto];
-                    } else {
-                        // Nova foto inserida no banco
-                        await prismaClient.photo.create({
-                            data: {
-                                URLArquivo: urlFoto,
-                                Principal: principal,
-                                Alterada: alterada,
-                                property_id: property.id,
-                            },
-                        });
-                    }
-                }
-
-                // Remove fotos órfãs que sumiram do XML atualizado
-                for (const photo of Object.values(currentPhotosMap)) {
-                    await prismaClient.photo.delete({ where: { id: photo.id } });
-                }
+                // Executa a sincronização de fotos em lote para este imóvel
+                await prismaClient.$transaction([
+                    // Remove TODAS as antigas deste imóvel (se tinha 5, limpa as 5)
+                    prismaClient.photo.deleteMany({ where: { property_id: property.id } }),
+                    // Insere as novas tratadas (se agora tem 3, insere as 3 atualizadas)
+                    prismaClient.photo.createMany({ data: fotosParaInserir })
+                ]);
             }
 
             return response.json({
                 countProperty,
-                message: "Importação concluída com sucesso.",
+                message: "Sincronização inteligente concluída com sucesso.",
             });
+
         } catch (error: any) {
+            console.error(error);
             return response.status(500).json({ error: error.message });
         }
     }
 }
-
 export default GetImoveisController;
