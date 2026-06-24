@@ -121,9 +121,10 @@ properties.get('/', async (req: Request, res: Response) => {
         // Define a direção ('asc' ou 'desc'). Padrão: 'asc' (crescente)
         const direcaoOrdenacao = orderDirection === 'desc' ? 'desc' : 'asc';
 
-        const orderByClause: any = {
-            [campoOrdenacao]: direcaoOrdenacao
-        };
+        const orderByClause: any = [
+            { [campoOrdenacao]: direcaoOrdenacao },
+            { id: 'asc' } // CRITÉRIO DE DESEMPATE: Garante que a paginação seja 100% determinística e nenhum imóvel suma!
+        ];
 
         // 4. Executa as queries no banco de forma paralela usando o orderByClause dinâmico
         const [totalItems, filteredProperties] = await prismaClient.$transaction([
