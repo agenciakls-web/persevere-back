@@ -16,7 +16,8 @@ properties.get('/', async (req: Request, res: Response) => {
             estilo,
             action,
             orderBy,         
-            orderDirection   
+            orderDirection,
+            Cidade
         } = req.query;
 
         const currentAction = (action as string) || 'comprar';
@@ -95,6 +96,13 @@ properties.get('/', async (req: Request, res: Response) => {
                     case 'fgts': whereClause.UtilizeFGTS = 1; break;
                 }
             }
+            
+            if (Cidade && (Cidade as string).trim() !== "") {
+                whereClause.Cidade = {
+                    equals: (Cidade as string).trim(),
+                    mode: 'insensitive' // Ignora maiúsculas/minúsculas
+                };
+            }
         }
 
         // 3. Mapeamento e Segurança da Ordenação
@@ -140,7 +148,7 @@ properties.get('/', async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Erro interno no servidor' });
     }
 });
-// Nova rota adicionada no backend para buscar pelo slug
+
 properties.get('/codigo/:slug', async (req: Request, res: Response) => {
     try {
         const { slug } = req.params;
