@@ -96,7 +96,7 @@ properties.get('/', async (req: Request, res: Response) => {
                     case 'fgts': whereClause.UtilizeFGTS = 1; break;
                 }
             }
-            
+
             if (Cidade && (Cidade as string).trim() !== "") {
                 whereClause.Cidade = {
                     equals: (Cidade as string).trim(),
@@ -278,6 +278,33 @@ properties.get('/destaques', async (req: Request, res: Response) => {
     } catch (error) {
         console.error("Erro ao buscar imóveis de destaque:", error);
         res.status(500).json({ error: "Erro interno no servidor" });
+    }
+});
+
+properties.get('/cidades', async (req: Request, res: Response) => {
+    try {
+        const cidadesDistintas = await prismaClient.property.findMany({
+            select: {
+                Cidade: true,
+            },
+            distinct: ['Cidade'], // Remove duplicadas
+            where: {
+                Cidade: { not: "" } // Evita trazer registros sem cidade preenchida
+            },
+            orderBy: {
+                Cidade: 'asc' // Organiza de A-Z
+            }
+        });
+
+        // Formata o retorno para manter uma estrutura limpa para o front-end
+        const resultadoFormatado = cidadesDistintas.map(item => ({
+            Cidade: item.Cidade
+        }));
+
+        res.json(resultadoFormatado);
+    } catch (error) {
+        console.error("Erro ao buscar cidades dos imóveis:", error);
+        res.status(500).json({ error: 'Erro interno ao buscar cidades' });
     }
 });
 
