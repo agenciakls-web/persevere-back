@@ -5,7 +5,6 @@ const properties = Router()
 
 properties.get('/', async (req: Request, res: Response) => {
     try {
-        // 1. Desestruturando os query params (Adicionados 'orderBy' e 'orderDirection')
         const {
             page,
             pesquisa,
@@ -16,25 +15,21 @@ properties.get('/', async (req: Request, res: Response) => {
             CodigoImovel,
             estilo,
             action,
-            orderBy,         // Novo: Campo pelo qual ordenar (ex: 'PrecoVenda', 'titulo')
-            orderDirection   // Novo: Direção da ordenação ('asc' ou 'desc')
+            orderBy,         
+            orderDirection   
         } = req.query;
 
-        // Define 'comprar' como padrão caso o action não venha preenchido
         const currentAction = (action as string) || 'comprar';
 
-        // 2. Configuração da Paginação
+        // 1. Configuração da Paginação (Mantido dinâmico conforme enviado)
         const itemsPerPage = 9; 
         const currentPage = Math.max(1, parseInt(page as string) || 1);
         const skip = (currentPage - 1) * itemsPerPage;
 
-        // 3. Construindo dinamicamente o objeto de filtros (where) do Prisma
+        // 2. Construindo o objeto de filtros (where)
         const whereClause: any = {};
+        whereClause.PrecoVenda = { gt: 0 }; // Foco 100% Venda
 
-        // Como o foco é 100% Venda, garantimos que só traga imóveis com valor de venda ativo
-        whereClause.PrecoVenda = { gt: 0 };
-
-        // CONDICIONAL DA ACTION
         if (currentAction === 'codigo') {
             if (CodigoImovel && (CodigoImovel as string).trim() !== "") {
                 whereClause.CodigoImovel = {
@@ -84,9 +79,7 @@ properties.get('/', async (req: Request, res: Response) => {
 
             if (estilo) {
                 switch (estilo as string) {
-                    case 'condominio':
-                        whereClause.NomeCondominio = { not: "" };
-                        break;
+                    case 'condominio': whereClause.NomeCondominio = { not: "" }; break;
                     case 'lazer':
                         whereClause.Piscina = 1;
                         whereClause.Churrasqueira = 1;
@@ -96,37 +89,32 @@ properties.get('/', async (req: Request, res: Response) => {
                         whereClause.QtdVagas = { gte: 1 };
                         break;
                     case 'oportunidades':
-                        whereClause.OR = [
-                            { AceitaPermuta: 1 },
-                            { UtilizeFGTS: 1 }
-                        ];
+                        whereClause.OR = [{ AceitaPermuta: 1 }, { UtilizeFGTS: 1 }];
                         break;
-                    case 'permuta':
-                        whereClause.AceitaPermuta = 1;
-                        break;
-                    case 'fgts':
-                        whereClause.UtilizeFGTS = 1;
-                        break;
+                    case 'permuta': whereClause.AceitaPermuta = 1; break;
+                    case 'fgts': whereClause.UtilizeFGTS = 1; break;
                 }
             }
         }
 
-        // ==========================================
-        // CONFIGURAÇÃO DA ORDENAÇÃO DINÂMICA (PRISMA)
-        // ==========================================
-        // Mapeia os campos válidos para evitar SQL Injection via query string
-        const camposValidos = ['PrecoVenda', 'titulo', 'PrecoLocacao', 'id'];
-        const campoOrdenacao = camposValidos.includes(orderBy as string) ? (orderBy as string) : 'PrecoVenda';
-        
-        // Define a direção ('asc' ou 'desc'). Padrão: 'asc' (crescente)
+        // 3. Mapeamento e Segurança da Ordenação
+        // Se vier 'titulo' do Front-end, convertemos para a coluna real do seu banco (ex: SubTipoImovel)
+        let campoOrdenacao = 'PrecoVenda';
+        if (orderBy === 'titulo') {
+            campoOrdenacao = 'SubTipoImovel';
+        } else if (orderBy === 'PrecoLocacao' || orderBy === 'id') {
+            campoOrdenacao = orderBy as string;
+        }
+
         const direcaoOrdenacao = orderDirection === 'desc' ? 'desc' : 'asc';
 
+        // Ordenação composta para blindar quebras de paginação determinística
         const orderByClause: any = [
             { [campoOrdenacao]: direcaoOrdenacao },
-            { id: 'asc' } // CRITÉRIO DE DESEMPATE: Garante que a paginação seja 100% determinística e nenhum imóvel suma!
+            { id: 'asc' } 
         ];
 
-        // 4. Executa as queries no banco de forma paralela usando o orderByClause dinâmico
+        // 4. Consulta Paralela via Transaction do Prisma
         const [totalItems, filteredProperties] = await prismaClient.$transaction([
             prismaClient.property.count({ where: whereClause }),
             prismaClient.property.findMany({
@@ -134,14 +122,13 @@ properties.get('/', async (req: Request, res: Response) => {
                 include: { Photos: true }, 
                 skip: skip,
                 take: itemsPerPage,
-                orderBy: orderByClause // Substituído o estático pelo dinâmico aqui
+                orderBy: orderByClause
             })
         ]);
 
-        // 5. Calcula o total de páginas existentes
         const totalPaginas = Math.ceil(totalItems / itemsPerPage);
 
-        // 6. Retorna a estrutura esperada pelo componente frontend
+        // 5. Retorno limpo para a listagem
         res.json({
             resultado: filteredProperties,
             totalPaginas: totalPaginas || 1,
@@ -153,7 +140,6 @@ properties.get('/', async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Erro interno no servidor' });
     }
 });
-
 // Nova rota adicionada no backend para buscar pelo slug
 properties.get('/codigo/:slug', async (req: Request, res: Response) => {
     try {
