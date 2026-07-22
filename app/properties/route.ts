@@ -9,7 +9,7 @@ properties.get('/', async (req: Request, res: Response) => {
             page,
             pesquisa,
             TipoImovel,
-            PrecoVenda,
+            PrecoVenda, // Pode vir na requisição representando o filtro de valor
             quartos,
             condominio,
             CodigoImovel,
@@ -22,23 +22,31 @@ properties.get('/', async (req: Request, res: Response) => {
 
         const currentAction = (action as string) || 'comprar';
 
-        // 1. Configuração da Paginação (Mantido dinâmico conforme enviado)
+        // 1. Configuração da Paginação
         const itemsPerPage = 9; 
         const currentPage = Math.max(1, parseInt(page as string) || 1);
         const skip = (currentPage - 1) * itemsPerPage;
 
         // 2. Construindo o objeto de filtros (where)
         const whereClause: any = {};
-        whereClause.PrecoVenda = { gt: 0 }; // Foco 100% Venda
 
-        if (currentAction === 'codigo') {
+        // Regra Dinâmica conforme o tipo de Ação (alugar vs comprar vs codigo)
+        if (currentAction === 'alugar') {
+            whereClause.PrecoLocacao = { gt: 0 };
+        } else if (currentAction === 'comprar') {
+            whereClause.PrecoVenda = { gt: 0 };
+        } else if (currentAction === 'codigo') {
+            // Se for busca por código, traz o imóvel independentemente do valor de venda/locação
             if (CodigoImovel && (CodigoImovel as string).trim() !== "") {
                 whereClause.CodigoImovel = {
                     contains: (CodigoImovel as string).trim(),
                     mode: 'insensitive'
                 };
             }
-        } else {
+        }
+
+        // Aplicar demais filtros apenas se não for busca direta por código
+        if (currentAction !== 'codigo') {
             if (pesquisa) {
                 whereClause.OR = [
                     { SubTipoImovel: { contains: pesquisa as string, mode: 'insensitive' } },
@@ -67,14 +75,30 @@ properties.get('/', async (req: Request, res: Response) => {
                 whereClause.NomeCondominio = { equals: "" };
             }
 
+            // Intervalo de preços adaptativo (funciona para PrecoVenda ou PrecoLocacao)
             if (PrecoVenda) {
-                switch (PrecoVenda as string) {
-                    case '1': whereClause.PrecoVenda = { gt: 0, lte: 200000 }; break;
-                    case '2': whereClause.PrecoVenda = { gte: 200000, lte: 400000 }; break;
-                    case '3': whereClause.PrecoVenda = { gte: 400000, lte: 600000 }; break;
-                    case '4': whereClause.PrecoVenda = { gte: 600000, lte: 800000 }; break;
-                    case '5': whereClause.PrecoVenda = { gte: 800000, lte: 1000000 }; break;
-                    case '6': whereClause.PrecoVenda = { gte: 1000000 }; break;
+                const campoPreco = currentAction === 'alugar' ? 'PrecoLocacao' : 'PrecoVenda';
+                const valorOpcao = PrecoVenda as string;
+
+                if (currentAction === 'alugar') {
+                    // Valores ajustados para faixa de aluguel (exemplo)
+                    switch (valorOpcao) {
+                        case '1': whereClause[campoPreco] = { gt: 0, lte: 1000 }; break;
+                        case '2': whereClause[campoPreco] = { gte: 1000, lte: 2000 }; break;
+                        case '3': whereClause[campoPreco] = { gte: 2000, lte: 3000 }; break;
+                        case '4': whereClause[campoPreco] = { gte: 3000, lte: 5000 }; break;
+                        case '5': whereClause[campoPreco] = { gte: 5000 }; break;
+                    }
+                } else {
+                    // Valores para venda
+                    switch (valorOpcao) {
+                        case '1': whereClause[campoPreco] = { gt: 0, lte: 200000 }; break;
+                        case '2': whereClause[campoPreco] = { gte: 200000, lte: 400000 }; break;
+                        case '3': whereClause[campoPreco] = { gte: 400000, lte: 600000 }; break;
+                        case '4': whereClause[campoPreco] = { gte: 600000, lte: 800000 }; break;
+                        case '5': whereClause[campoPreco] = { gte: 800000, lte: 1000000 }; break;
+                        case '6': whereClause[campoPreco] = { gte: 1000000 }; break;
+                    }
                 }
             }
 
@@ -100,23 +124,22 @@ properties.get('/', async (req: Request, res: Response) => {
             if (Cidade && (Cidade as string).trim() !== "") {
                 whereClause.Cidade = {
                     equals: (Cidade as string).trim(),
-                    mode: 'insensitive' // Ignora maiúsculas/minúsculas
+                    mode: 'insensitive'
                 };
             }
         }
 
-        // 3. Mapeamento e Segurança da Ordenação
-        // Se vier 'titulo' do Front-end, convertemos para a coluna real do seu banco (ex: SubTipoImovel)
-        let campoOrdenacao = 'PrecoVenda';
+        // 3. Mapeamento da Ordenação
+        let campoOrdenacao = currentAction === 'alugar' ? 'PrecoLocacao' : 'PrecoVenda';
+        
         if (orderBy === 'titulo') {
             campoOrdenacao = 'SubTipoImovel';
-        } else if (orderBy === 'PrecoLocacao' || orderBy === 'id') {
+        } else if (orderBy === 'PrecoLocacao' || orderBy === 'PrecoVenda' || orderBy === 'id') {
             campoOrdenacao = orderBy as string;
         }
 
         const direcaoOrdenacao = orderDirection === 'desc' ? 'desc' : 'asc';
 
-        // Ordenação composta para blindar quebras de paginação determinística
         const orderByClause: any = [
             { [campoOrdenacao]: direcaoOrdenacao },
             { id: 'asc' } 
@@ -136,7 +159,7 @@ properties.get('/', async (req: Request, res: Response) => {
 
         const totalPaginas = Math.ceil(totalItems / itemsPerPage);
 
-        // 5. Retorno limpo para a listagem
+        // 5. Retorno da API
         res.json({
             resultado: filteredProperties,
             totalPaginas: totalPaginas || 1,
