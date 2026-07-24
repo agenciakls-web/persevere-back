@@ -9,7 +9,7 @@ properties.get('/', async (req: Request, res: Response) => {
             page,
             pesquisa,
             TipoImovel,
-            PrecoVenda, // Pode vir na requisição representando o filtro de valor
+            PrecoVenda,
             quartos,
             condominio,
             CodigoImovel,
@@ -17,26 +17,25 @@ properties.get('/', async (req: Request, res: Response) => {
             action,
             orderBy,         
             orderDirection,
-            Cidade
+            Cidade,
+            NomeCondominio // <-- Adicionado parâmetro da query
         } = req.query;
 
         const currentAction = (action as string) || 'comprar';
 
-        // 1. Configuração da Paginação
+        // 1. Paginação
         const itemsPerPage = 9; 
         const currentPage = Math.max(1, parseInt(page as string) || 1);
         const skip = (currentPage - 1) * itemsPerPage;
 
-        // 2. Construindo o objeto de filtros (where)
+        // 2. Filtros (where)
         const whereClause: any = {};
 
-        // Regra Dinâmica conforme o tipo de Ação (alugar vs comprar vs codigo)
         if (currentAction === 'alugar') {
             whereClause.PrecoLocacao = { gt: 0 };
         } else if (currentAction === 'comprar') {
             whereClause.PrecoVenda = { gt: 0 };
         } else if (currentAction === 'codigo') {
-            // Se for busca por código, traz o imóvel independentemente do valor de venda/locação
             if (CodigoImovel && (CodigoImovel as string).trim() !== "") {
                 whereClause.CodigoImovel = {
                     contains: (CodigoImovel as string).trim(),
@@ -45,7 +44,6 @@ properties.get('/', async (req: Request, res: Response) => {
             }
         }
 
-        // Aplicar demais filtros apenas se não for busca direta por código
         if (currentAction !== 'codigo') {
             if (pesquisa) {
                 whereClause.OR = [
@@ -53,6 +51,7 @@ properties.get('/', async (req: Request, res: Response) => {
                     { CodigoImovel: { contains: pesquisa as string, mode: 'insensitive' } },
                     { Bairro: { contains: pesquisa as string, mode: 'insensitive' } },
                     { Cidade: { contains: pesquisa as string, mode: 'insensitive' } },
+                    { NomeCondominio: { contains: pesquisa as string, mode: 'insensitive' } }, // <-- Adicionado na busca ampla
                 ];
             }
 
@@ -75,13 +74,19 @@ properties.get('/', async (req: Request, res: Response) => {
                 whereClause.NomeCondominio = { equals: "" };
             }
 
-            // Intervalo de preços adaptativo (funciona para PrecoVenda ou PrecoLocacao)
+            // Filtro específico do nome do condomínio selecionado
+            if (NomeCondominio && (NomeCondominio as string).trim() !== "") {
+                whereClause.NomeCondominio = {
+                    equals: (NomeCondominio as string).trim(),
+                    mode: 'insensitive'
+                };
+            }
+
             if (PrecoVenda) {
                 const campoPreco = currentAction === 'alugar' ? 'PrecoLocacao' : 'PrecoVenda';
                 const valorOpcao = PrecoVenda as string;
 
                 if (currentAction === 'alugar') {
-                    // Valores ajustados para faixa de aluguel (exemplo)
                     switch (valorOpcao) {
                         case '1': whereClause[campoPreco] = { gt: 0, lte: 1000 }; break;
                         case '2': whereClause[campoPreco] = { gte: 1000, lte: 2000 }; break;
@@ -90,7 +95,6 @@ properties.get('/', async (req: Request, res: Response) => {
                         case '5': whereClause[campoPreco] = { gte: 5000 }; break;
                     }
                 } else {
-                    // Valores para venda
                     switch (valorOpcao) {
                         case '1': whereClause[campoPreco] = { gt: 0, lte: 200000 }; break;
                         case '2': whereClause[campoPreco] = { gte: 200000, lte: 400000 }; break;
@@ -129,7 +133,7 @@ properties.get('/', async (req: Request, res: Response) => {
             }
         }
 
-        // 3. Mapeamento da Ordenação
+        // 3. Ordenação
         let campoOrdenacao = currentAction === 'alugar' ? 'PrecoLocacao' : 'PrecoVenda';
         
         if (orderBy === 'titulo') {
@@ -145,7 +149,7 @@ properties.get('/', async (req: Request, res: Response) => {
             { id: 'asc' } 
         ];
 
-        // 4. Consulta Paralela via Transaction do Prisma
+        // 4. Consulta paralela
         const [totalItems, filteredProperties] = await prismaClient.$transaction([
             prismaClient.property.count({ where: whereClause }),
             prismaClient.property.findMany({
@@ -159,7 +163,6 @@ properties.get('/', async (req: Request, res: Response) => {
 
         const totalPaginas = Math.ceil(totalItems / itemsPerPage);
 
-        // 5. Retorno da API
         res.json({
             resultado: filteredProperties,
             totalPaginas: totalPaginas || 1,
@@ -453,5 +456,30 @@ properties.post('/banners', async (req: Request, res: Response) => {
     }
 });
 
+properties.get('/condominios', async (req: Request, res: Response) => {
+    try {
+        const condominiosDistintos = await prismaClient.property.findMany({
+            select: {
+                NomeCondominio: true,
+            },
+            distinct: ['NomeCondominio'], // Remove duplicadas
+            where: {
+                NomeCondominio: { not: "" } // Evita registros vazios
+            },
+            orderBy: {
+                NomeCondominio: 'asc' // Organiza de A-Z
+            }
+        });
+
+        const resultadoFormatado = condominiosDistintos.map(item => ({
+            NomeCondominio: item.NomeCondominio
+        }));
+
+        res.json(resultadoFormatado);
+    } catch (error) {
+        console.error("Erro ao buscar condomínios dos imóveis:", error);
+        res.status(500).json({ error: 'Erro interno ao buscar condomínios' });
+    }
+});
 
 export default properties;
